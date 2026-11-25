@@ -148,6 +148,11 @@
   @keyframes tense { from { transform: scale(1); } to { transform: scale(1.05); } }
   .roll.punch { animation: punch .35s ease-out; }
   @keyframes punch { from { transform: scale(1.14); } to { transform: scale(1); } }
+  /* Combat à l'adresse : l'aiguille fait des allers-retours, tu l'arrêtes dans la zone verte */
+  .roll.timing .zone { border-radius: 0; box-shadow: 0 0 12px #22c06a88; }
+  .roll.timing .perf { position: absolute; top: 0; bottom: 0; width: 4%; margin-left: -2%; background: #fff8; box-shadow: 0 0 10px #fff; }
+  .roll.timing .thint { display: inline-block; font-size: 22px; font-weight: 900; color: #ffcf4a; animation: dodgep .3s infinite alternate; }
+  .roll.perfect { box-shadow: 0 0 0 3px #ffcf4a, 0 0 50px #ffcf4a99, 0 10px 40px #000a; }
   .combo { position: absolute; z-index: 42; left: 50%; top: 30%; transform: translateX(-50%); font-weight: 900; font-size: 28px; color: #ffb340; text-shadow: 0 0 18px #ff6a00, 0 3px 0 #7a2a00; pointer-events: none; white-space: nowrap; animation: rise 1.6s ease-out forwards; }
   .combo.lost { color: #b8c4d0; font-size: 20px; text-shadow: 0 2px 0 #000, 0 0 12px #000; }
 
@@ -2058,7 +2063,7 @@ function choose(like, x, y) {
     spawn('burst', c.stake ? '⚔️' : '✔️', x ?? r.width / 2, y ?? r.height * .4);
     sfx.like(); buzz(15);
     if (c.wheel) { spinWheel(c); return; }
-    if (c.stake) { if (c.kind === 'boss' && !c.assault && !autoOn) bossDuel(c, () => gamble(c)); else gamble(c); return; }
+    if (c.stake) { if (c.kind === 'boss' && !c.assault && !autoOn) bossDuel(c, () => gamble(c)); else if (useTiming(c)) timingBar(c, () => gamble(c)); else gamble(c); return; }
     if (c.cost) G.gold -= c.cost;
     if (c.likeFx) c.likeFx();
   } else {
@@ -2081,7 +2086,7 @@ function pickOpt(i, x, y) {
   if (o.stake) {
     c.stake = o.stake; if (o.risk) c.risk = o.risk;
     const r = phone.getBoundingClientRect(); spawn('burst', '⚔️', x ?? r.width / 2, y ?? r.height * .4);
-    gamble(c); return;
+    if (useTiming(c)) timingBar(c, () => gamble(c)); else gamble(c); return;
   }
   if (o.cost) G.gold -= o.cost;
   if (o.fx) o.fx();
@@ -2095,6 +2100,45 @@ function finish() {
 
 /* Duel de boss : tape le boss pour remplir la jauge, esquive ses attaques annoncées.
    Le score change la chance du combat (de −10 à +15 points), puis le jet se fait normalement. */
+// Combats normaux : à toi d'arrêter l'aiguille. La zone verte fait la taille de ta chance,
+// placée au hasard ; le centre exact (« PARFAIT ») donne un coup critique. En auto-clic : tirage classique.
+const useTiming = c => c.stake && c.stake.fight && !c.assault && c.kind !== 'boss' && !autoOn;
+function timingBar(c, done) {
+  // la zone verte ne fait que 40 % de ta chance, et l'aiguille change de vitesse sans prévenir : il faut viser juste
+  const s = c.stake, ch = clamp(Math.round(s.chance * .4), 3, 40);
+  const z0 = rnd(0, 100 - ch), mid = z0 + ch / 2;
+  const box = document.createElement('div'); box.className = 'roll timing';
+  box.innerHTML = `<div class="rlabel">🎯 ${Math.round(s.chance)}% · arrête l'aiguille dans le vert !</div><div class="track"><div class="zone" style="left:${z0}%;width:${ch}%"></div><div class="perf" style="left:${mid}%"></div><div class="needle" style="transition:none;left:0"></div></div><div class="rres"><span class="thint">👆 TAPE !</span></div>`;
+  c.el.appendChild(box);
+  const nd = box.querySelector('.needle'), P = Math.max(380, 600 - G.chap * 22);
+  let pos = 0, stopped = false, raf, to;
+  let last = performance.now(), dir = 1, k = 1, nextK = last + rnd(250, 550);
+  const step = now => {
+    if (stopped) return;
+    const dt = Math.min(50, now - last); last = now;
+    if (now > nextK) { k = rnd(.6, 1.7); nextK = now + rnd(250, 550); }
+    pos += dir * dt / P * 100 * k;
+    if (pos >= 100) { pos = 200 - pos; dir = -1; } else if (pos <= 0) { pos = -pos; dir = 1; }
+    nd.style.left = pos + '%'; raf = requestAnimationFrame(step);
+  };
+  raf = requestAnimationFrame(step);
+  const stop = e => {
+    if (stopped) return;
+    if (e && e.type === 'pointerdown') { e.stopPropagation(); e.preventDefault(); }
+    if (e && e.type === 'keydown') { if (![' ', 'Enter', 'ArrowUp'].includes(e.key)) return; e.preventDefault(); e.stopPropagation(); }
+    stopped = true; cancelAnimationFrame(raf); clearTimeout(to);
+    phone.removeEventListener('pointerdown', stop, true); document.removeEventListener('keydown', stop, true);
+    const inZ = pos >= z0 && pos <= z0 + ch, perfect = inZ && Math.abs(pos - mid) <= 2;
+    const r = inZ ? (pos - z0) / ch * s.chance * .999 : Math.min(99.9, s.chance + Math.max(.5, Math.min(Math.abs(pos - z0), Math.abs(pos - z0 - ch))));
+    c.tim = { r, perfect, box };
+    box.querySelector('.thint')?.remove();
+    tone(inZ ? 990 : 260, .08, { type: 'square', vol: .08 }); buzz(25);
+    if (perfect) { box.classList.add('perfect'); spawn('combo', '🎯 PARFAIT !'); tone(1568, .2, { type: 'triangle', at: .08, vol: .1 }); }
+    later(done, SP(perfect ? 520 : 300));
+  };
+  later(() => { if (stopped) return; phone.addEventListener('pointerdown', stop, true); document.addEventListener('keydown', stop, true); }, 150);
+  to = setTimeout(stop, 4000);
+}
 function bossDuel(c, done) {
   const s = c.stake, art = c.el.querySelector('.art span')?.innerHTML || esc(c.art || '💀');
   const GOAL = 30, DUR = 6500;
@@ -2152,12 +2196,12 @@ function bossDuel(c, done) {
 function gamble(c) {
   const s = c.stake, st0 = G.streak;
   rollHold = rollHold || [];
-  const r = Math.random() * 100, win = r < s.chance;
+  const r = c.tim ? c.tim.r : Math.random() * 100, win = r < s.chance;
   let amt, crit = false, drop = null, drop2 = null;
   if (win) {
     amt = s.win;
     if (s.fight && TL('marchand', 4)) amt += Math.min(G.gold * .01, B() * 3);
-    if (s.fight && !s.noCrit && Math.random() * 100 < critP()) { crit = true; amt *= TL('guerrier', 4) ? 4 : 3; G.f.crit = 1; }
+    if (s.fight && !s.noCrit && (c.tim?.perfect || Math.random() * 100 < critP())) { crit = true; amt *= TL('guerrier', 4) ? 4 : 3; G.f.crit = 1; }
     amt = Math.round(amt); G.gold += amt; G.bigWin = Math.max(G.bigWin, amt);
     if (s.golden) G.f.golden = 1;
     if (s.bet === 10) G.f.tout = 1;
@@ -2200,12 +2244,12 @@ function gamble(c) {
 
   // Affichage : l'aiguille tombe parfois juste à côté de la zone verte (« si près ! »)
   let disp = r;
-  if (!win && Math.random() < .4) disp = Math.min(99.5, s.chance + rnd(.6, 5));
+  if (!win && !c.tim && Math.random() < .4) disp = Math.min(99.5, s.chance + rnd(.6, 5));
   const near = !win && disp - s.chance < 6;
   if (near) G.f.near = (G.f.near || 0) + 1;
   G.menace = clamp(G.menace, 0, 100); G.gold = Math.max(0, Math.round(G.gold));
   save();
-  (c.assault ? battleAnim : roll)(c, s.chance, disp, box => {
+  (c.assault ? battleAnim : c.tim ? (c2, ch, dp, cb) => cb(c.tim.box) : roll)(c, s.chance, disp, box => {
     box.querySelector('.rres').innerHTML = win
       ? `<b class="win">${crit ? `💥 CRITIQUE ×${TL('guerrier', 4) ? 4 : 3} !` : c.assault ? 'LES MURS TIENNENT !' : c.winTxt || 'VICTOIRE !'}</b><span>+${fmt(amt)} 🪙</span>${s.fight && G.streak >= 2 ? `<small class="cmb">🔥 Combo ${G.streak} · gains ×${streakK().toFixed(1)}</small>` : ''}`
       : `<b class="lose">${c.assault ? '🔥 LES MURS CÈDENT' : near ? '😱 SI PRÈS !' : 'DÉFAITE'}</b><span>−${fmt(amt)} 🪙</span>`;
