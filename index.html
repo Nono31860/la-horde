@@ -30,6 +30,10 @@
     #phone { height: 94dvh; border-radius: 26px; box-shadow: 0 0 0 10px #111, 0 20px 80px rgba(0,0,0,.8); }
   }
   #phone.shake { animation: shake .45s; }
+  #phone.shake2 { animation: shake2 .6s; }
+  @keyframes shake2 { 10% { transform: translate(-53%, -50%) rotate(-1deg); } 25% { transform: translate(-47%, -52%) rotate(1deg); } 40% { transform: translate(-52.5%, -48%); } 55% { transform: translate(-48%, -51%) rotate(.5deg); } 70% { transform: translate(-51%, -49.5%); } 85% { transform: translate(-49.5%, -50.5%); } }
+  .flashfx { position: absolute; inset: 0; z-index: 44; pointer-events: none; mix-blend-mode: screen; animation: flashfx .55s ease-out forwards; }
+  @keyframes flashfx { from { opacity: var(--fo); } to { opacity: 0; } }
   @keyframes shake { 20% { transform: translate(-51%, -50%); } 40% { transform: translate(-49%, -51%); } 60% { transform: translate(-51%, -49%); } 80% { transform: translate(-49.5%, -50%); } }
 
   /* ---------- Barre du haut ---------- */
@@ -54,6 +58,19 @@
   #res .xpb { width: 34px; height: 4px; background: #fff3; border-radius: 2px; overflow: hidden; display: inline-block; }
   #res .xpb i { display: block; height: 100%; background: #7cf; }
   #res .fire { color: #ffb340; }
+  #res .fire .fl { font-style: normal; display: inline-block; transform-origin: 50% 90%; animation: flick .5s infinite alternate; }
+  #res .fire.t2 { background: #5a2a00aa; box-shadow: 0 0 10px #ff8a0088; }
+  #res .fire.t2 .fl { font-size: 17px; }
+  #res .fire.t3 { background: linear-gradient(90deg, #7a1a00dd, #c84a00dd); box-shadow: 0 0 16px #ff6a00; color: #fff2a0; }
+  #res .fire.t3 .fl { font-size: 20px; animation-duration: .28s; }
+  @keyframes flick { from { transform: scale(1) rotate(-5deg); } to { transform: scale(1.2) rotate(5deg); } }
+  #res > span.gup { animation: gup .5s ease-out; }
+  #res > span.gdown { animation: gdown .5s ease-out; }
+  @keyframes gup { 30% { transform: scale(1.3); background: #a87a00dd; box-shadow: 0 0 14px #ffcf4a; } }
+  @keyframes gdown { 30% { transform: scale(.88); background: #8a1020dd; } }
+  .gfly { position: absolute; z-index: 34; transform: translateX(-50%); font-weight: 900; font-size: 14px; pointer-events: none; white-space: nowrap; text-shadow: 0 2px 0 #000, 0 0 8px #000; animation: gfly 1.2s ease-out forwards; }
+  .gfly.up { color: #ffd84a; } .gfly.dn { color: #ff6b81; }
+  @keyframes gfly { from { opacity: 0; transform: translate(-50%, -6px) scale(.7); } 20% { opacity: 1; transform: translate(-50%, 4px) scale(1.2); } to { opacity: 0; transform: translate(-50%, 24px) scale(1); } }
   #res .buff { color: #7dffb0; font-size: 12px; }
 
   /* ---------- Cartes ---------- */
@@ -122,6 +139,42 @@
   .rres b.lose { color: #ff6b81; text-shadow: 0 0 18px #b3243c; }
   .rres span { font-size: 20px; font-weight: 800; }
   .rlabel { font-size: 12px; opacity: .7; margin-bottom: 8px; }
+  .rlabel em { font-style: normal; font-weight: 900; } .rlabel em.up { color: #5dff9a; } .rlabel em.dn { color: #ff6b81; }
+  .rres small.cmb { display: block; font-size: 13px; font-weight: 800; color: #ffb340; margin-top: 3px; }
+  .roll.bossroll { border: 2px solid #ff5a5a88; }
+  .roll.tense { animation: tense .42s ease-in-out infinite alternate; box-shadow: 0 0 0 2px #ffcf4aaa, 0 10px 40px #000a, 0 0 46px #ffcf4a55; }
+  .roll.tense .needle { transition: left .32s cubic-bezier(.3, 1.6, .5, 1); }
+  .roll.tense .zone { box-shadow: 3px 0 14px #ffcf4a; }
+  @keyframes tense { from { transform: scale(1); } to { transform: scale(1.05); } }
+  .roll.punch { animation: punch .35s ease-out; }
+  @keyframes punch { from { transform: scale(1.14); } to { transform: scale(1); } }
+  .combo { position: absolute; z-index: 42; left: 50%; top: 30%; transform: translateX(-50%); font-weight: 900; font-size: 28px; color: #ffb340; text-shadow: 0 0 18px #ff6a00, 0 3px 0 #7a2a00; pointer-events: none; white-space: nowrap; animation: rise 1.6s ease-out forwards; }
+  .combo.lost { color: #b8c4d0; font-size: 20px; text-shadow: 0 2px 0 #000, 0 0 12px #000; }
+
+  /* Duel de boss en temps réel */
+  .bduel { position: absolute; inset: 0; z-index: 56; background: radial-gradient(circle at 50% 48%, #4a0f1af0, #000000f4 72%); display: flex; flex-direction: column; align-items: center; padding: 74px 20px 26px; touch-action: none; user-select: none; -webkit-user-select: none; animation: rollin .2s; }
+  .bduel .dt { font-size: 23px; font-weight: 900; color: #ffcf4a; text-shadow: 0 0 14px #f60; text-align: center; }
+  .bduel .dh { font-size: 13px; opacity: .85; text-align: center; margin: 8px 0 12px; min-height: 34px; line-height: 1.35; }
+  .bduel .dbar { width: 86%; height: 16px; background: #3a0a12; border: 2px solid #ffcf4a; border-radius: 8px; overflow: hidden; }
+  .bduel .dbar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, #ffcf4a, #ff7a1a); transition: width .12s; }
+  .bduel .dtime { width: 86%; height: 6px; background: #fff2; border-radius: 3px; overflow: hidden; margin-top: 8px; }
+  .bduel .dtime i { display: block; height: 100%; width: 100%; background: #7cf; }
+  .bduel .dboss { flex: 1; display: flex; align-items: center; justify-content: center; width: 100%; font-size: 120px; pointer-events: none; }
+  .bduel .dboss img { width: 72%; max-width: 270px; image-rendering: pixelated; filter: drop-shadow(0 0 20px #f006); }
+  .bduel .dboss.hit { animation: bhit .15s; }
+  @keyframes bhit { 50% { transform: scale(.92) translateX(5px); filter: brightness(2.4); } }
+  .bduel .dboss.wind { animation: wind .22s infinite alternate; }
+  @keyframes wind { from { transform: scale(1.06) rotate(-3deg); filter: drop-shadow(0 0 20px #f00) brightness(1.3); } to { transform: scale(1.14) rotate(3deg); filter: drop-shadow(0 0 34px #f00) brightness(1.7); } }
+  .bduel.warn { box-shadow: inset 0 0 90px #f00d; }
+  .bduel .dsc { font-size: 36px; font-weight: 900; min-height: 46px; text-shadow: 0 0 14px #000; }
+  .bduel .dsc b.win { color: #5dff9a; } .bduel .dsc b.lose { color: #ff6b81; }
+  .dodge { position: absolute; top: 44%; width: 106px; height: 106px; border-radius: 50%; border: 3px solid #fff; background: #1a6aff; color: #fff; font-family: inherit; font-weight: 900; font-size: 15px; line-height: 1.15; box-shadow: 0 0 26px #4af; animation: dodgein .18s ease-out, dodgep .3s .18s infinite alternate; z-index: 2; }
+  .dodge.l { left: 7%; } .dodge.r { right: 7%; }
+  .dodge.ok { background: #22c06a; box-shadow: 0 0 30px #5dff9a; animation: none; transform: scale(1.2); }
+  @keyframes dodgein { from { transform: scale(0); } }
+  @keyframes dodgep { to { transform: scale(1.1); } }
+  .dhit { position: absolute; z-index: 58; font-size: 30px; pointer-events: none; transform: translate(-50%, -50%); animation: dhitf .45s ease-out forwards; }
+  @keyframes dhitf { from { transform: translate(-50%, -50%) scale(.4); opacity: 1; } to { transform: translate(-50%, -120%) scale(1.3); opacity: 0; } }
 
   /* Effets */
   .burst { position: absolute; z-index: 30; font-size: 96px; pointer-events: none; transform: translate(-50%, -50%) scale(.2) rotate(-15deg); animation: burst .7s ease-out forwards; }
@@ -1946,7 +1999,7 @@ function updateHud() {
   if (G.merc > 0) buffs.push(`🪓×${G.merc}`);
   $('res').innerHTML = `<span>🪙 <b id="gold">${fmt(shownGold)}</b></span>
     <span>⭐ Niv ${G.lvl}<span class="xpb"><i style="width:${Math.min(100, G.xp / xpNeed() * 100)}%"></i></span></span>
-    ${G.streak > 0 ? `<span class="fire">🔥${G.streak} ×${streakK().toFixed(1)}</span>` : ''}
+    ${G.streak > 0 ? `<span class="fire t${G.streak >= 10 ? 3 : G.streak >= 5 ? 2 : 1}"><i class="fl">🔥</i>${G.streak} ×${streakK().toFixed(1)}</span>` : ''}
     ${buffs.length ? `<span class="buff">${buffs.join(' ')}</span>` : ''}
     ${G.crowns || G.prestige ? `<span>👑 ${G.crowns}</span>` : ''}
     <span class="wx" title="${WX[G.wx.k].n} : ${WX[G.wx.k].d}">${SEASONS[season()][0]}${G.wx.k !== 'soleil' ? WX[G.wx.k].e : ''}</span>
@@ -1962,9 +2015,21 @@ function updateHud() {
   phone.classList.toggle('danger', m >= 85);
   if (view !== 'feed') renderPanel();
 }
+let goldPopTo = null;
+// Le compteur d'or réagit : il grossit, et un « +X » ou « −X » s'en échappe
+function goldPop(d) {
+  const el = $('gold'); if (!el) return;
+  const sp = el.parentElement; sp.classList.remove('gup', 'gdown'); void sp.offsetWidth; sp.classList.add(d > 0 ? 'gup' : 'gdown');
+  const r = el.getBoundingClientRect(), p = phone.getBoundingClientRect();
+  const f = document.createElement('div'); f.className = 'gfly ' + (d > 0 ? 'up' : 'dn'); f.textContent = (d > 0 ? '+' : '−') + fmt(Math.abs(d));
+  f.style.left = (r.left - p.left + r.width / 2) + 'px'; f.style.top = (r.bottom - p.top + 4) + 'px';
+  phone.appendChild(f); setTimeout(() => f.remove(), 1300);
+}
 function tweenGold() {
   clearInterval(goldTimer);
   const from = shownGold, to = G.gold; let i = 0;
+  if (goldPopTo !== null && to !== goldPopTo && started) goldPop(to - goldPopTo);
+  goldPopTo = to;
   if (from === to) return;
   goldTimer = setInterval(() => {
     i++; shownGold = Math.round(from + (to - from) * (i / 14));
@@ -1993,7 +2058,7 @@ function choose(like, x, y) {
     spawn('burst', c.stake ? '⚔️' : '✔️', x ?? r.width / 2, y ?? r.height * .4);
     sfx.like(); buzz(15);
     if (c.wheel) { spinWheel(c); return; }
-    if (c.stake) { gamble(c); return; }
+    if (c.stake) { if (c.kind === 'boss' && !c.assault && !autoOn) bossDuel(c, () => gamble(c)); else gamble(c); return; }
     if (c.cost) G.gold -= c.cost;
     if (c.likeFx) c.likeFx();
   } else {
@@ -2028,8 +2093,64 @@ function finish() {
   updateHud(); save();
 }
 
+/* Duel de boss : tape le boss pour remplir la jauge, esquive ses attaques annoncées.
+   Le score change la chance du combat (de −10 à +15 points), puis le jet se fait normalement. */
+function bossDuel(c, done) {
+  const s = c.stake, art = c.el.querySelector('.art span')?.innerHTML || esc(c.art || '💀');
+  const GOAL = 30, DUR = 6500;
+  const d = document.createElement('div'); d.className = 'bduel';
+  d.innerHTML = `<div class="dt">⚔️ DUEL · ${esc(c.who.n)}</div><div class="dh">Tape le boss le plus vite possible !<br>⚠️ Quand il charge, appuie sur <b>ESQUIVE</b></div>
+    <div class="dbar"><i></i></div><div class="dtime"><i></i></div><div class="dboss">${art}</div><div class="dsc">PRÊT ?</div>`;
+  phone.appendChild(d);
+  const bar = d.querySelector('.dbar i'), bossEl = d.querySelector('.dboss'), tm = d.querySelector('.dtime i'), sc = d.querySelector('.dsc');
+  let hits = 0, taken = 0, dodged = 0, atk = null, go = false, over = false;
+  const setBar = () => { bar.style.width = Math.min(100, hits / GOAL * 100) + '%'; };
+  d.addEventListener('pointerdown', e => {
+    e.stopPropagation(); e.preventDefault();
+    if (!go || over || atk) return;
+    hits++; setBar(); sc.textContent = hits;
+    bossEl.classList.remove('hit'); void bossEl.offsetWidth; bossEl.classList.add('hit');
+    tone(170 + rnd(0, 140), .05, { type: 'square', vol: .06 }); buzz(8);
+    const r = phone.getBoundingClientRect(); spawn('dhit', ['💥', '⚔️', '✨'][hits % 3], e.clientX - r.left, e.clientY - r.top);
+  });
+  ['pointerup', 'pointermove', 'click'].forEach(ev => d.addEventListener(ev, e => e.stopPropagation()));
+  const attack = () => {
+    if (over) return;
+    const b = document.createElement('button'); b.className = 'dodge ' + (Math.random() < .5 ? 'l' : 'r'); b.innerHTML = '💨<br>ESQUIVE';
+    atk = b; d.appendChild(b); d.classList.add('warn'); bossEl.classList.add('wind');
+    tone(880, .09, { type: 'square', vol: .07 }); tone(880, .09, { type: 'square', at: .14, vol: .07 }); buzz([30, 30, 30]);
+    let ok = false;
+    const end = () => {
+      d.classList.remove('warn'); bossEl.classList.remove('wind'); atk = null;
+      later(() => b.remove(), 260);
+      if (ok || over) return;
+      taken++; hits = Math.max(0, hits - 4); setBar(); sc.textContent = hits;
+      flashIt('#f0244a', .45); shakeIt(1); tone(120, .3, { type: 'sawtooth', to: 50, vol: .14 }); buzz(150);
+      spawn('gain', '💥 Touché ! −4 coups');
+    };
+    b.addEventListener('pointerdown', e => { e.stopPropagation(); if (ok || over) return; ok = true; dodged++; b.classList.add('ok'); noise(.2, { f: 3000, to: 800, vol: .1 }); tone(1200, .08, { type: 'triangle', vol: .08 }); end(); });
+    later(() => { if (!ok) end(); }, Math.max(650, 950 - G.chap * 30));
+  };
+  const finishDuel = () => {
+    over = true; if (atk) atk.remove();
+    d.classList.remove('warn'); bossEl.classList.remove('wind');
+    const bonus = clamp(Math.round(-8 + Math.min(1, hits / GOAL) * 20 + dodged - taken * 3), -10, 15);
+    s.chance = clamp(s.chance + bonus, 1, 99); c.duelB = bonus;
+    G.f.duel = Math.max(G.f.duel || 0, hits);
+    d.querySelector('.dh').innerHTML = `${hits} coups · ${dodged} esquive${dodged > 1 ? 's' : ''}${taken ? ` · touché ${taken} fois` : ''}<br>Chance de victoire : <b>${s.chance} %</b>`;
+    sc.innerHTML = `<b class="${bonus >= 0 ? 'win' : 'lose'}">${bonus >= 0 ? '+' : ''}${bonus} % de chance</b>`;
+    if (bonus >= 0) sfx.win(); else sfx.near();
+    later(() => { d.remove(); done(); }, 1500);
+  };
+  later(() => {
+    go = true; sc.textContent = 'GO !'; tone(660, .15, { type: 'square', vol: .08 }); buzz(40);
+    tm.style.transition = `width ${DUR}ms linear`; void tm.offsetWidth; tm.style.width = '0%';
+    [1300 + rnd(0, 600), 3100 + rnd(0, 500), 4800 + rnd(0, 400)].forEach(t => later(attack, t));
+    later(finishDuel, DUR);
+  }, 900);
+}
 function gamble(c) {
-  const s = c.stake;
+  const s = c.stake, st0 = G.streak;
   rollHold = rollHold || [];
   const r = Math.random() * 100, win = r < s.chance;
   let amt, crit = false, drop = null, drop2 = null;
@@ -2086,13 +2207,22 @@ function gamble(c) {
   save();
   (c.assault ? battleAnim : roll)(c, s.chance, disp, box => {
     box.querySelector('.rres').innerHTML = win
-      ? `<b class="win">${crit ? `💥 CRITIQUE ×${TL('guerrier', 4) ? 4 : 3} !` : c.assault ? 'LES MURS TIENNENT !' : c.winTxt || 'VICTOIRE !'}</b><span>+${fmt(amt)} 🪙</span>`
+      ? `<b class="win">${crit ? `💥 CRITIQUE ×${TL('guerrier', 4) ? 4 : 3} !` : c.assault ? 'LES MURS TIENNENT !' : c.winTxt || 'VICTOIRE !'}</b><span>+${fmt(amt)} 🪙</span>${s.fight && G.streak >= 2 ? `<small class="cmb">🔥 Combo ${G.streak} · gains ×${streakK().toFixed(1)}</small>` : ''}`
       : `<b class="lose">${c.assault ? '🔥 LES MURS CÈDENT' : near ? '😱 SI PRÈS !' : 'DÉFAITE'}</b><span>−${fmt(amt)} 🪙</span>`;
+    box.classList.remove('tense'); box.classList.add('punch');
+    const bossKill = c.kind === 'boss' && !c.phaseMid && !c.assault;
     if (win) {
       sfx.win(); buzz(40);
       coins(Math.min(18, 5 + Math.round(amt / 40)));
-      if (amt >= 400 * mult() || crit || s.golden) { spawn('jackpot', crit ? '💥 CRITIQUE 💥' : '💰 JACKPOT 💰'); shakeIt(); sfx.jackpot(); buzz([80, 40, 80, 40, 200]); }
-    } else { shakeIt(); if (near) { sfx.near(); buzz([40, 40, 40]); } else { sfx.lose(); buzz(220); } }
+      if (bossKill) { flashIt('#fff', .9); shakeIt(2); spawn('jackpot', '👑 BOSS VAINCU 👑'); sfx.jackpot(); buzz([120, 60, 120, 60, 400]); }
+      else if (amt >= 400 * mult() || crit || s.golden) { flashIt('#ffcf4a', .55); spawn('jackpot', crit ? '💥 CRITIQUE 💥' : '💰 JACKPOT 💰'); shakeIt(crit ? 2 : 1); sfx.jackpot(); buzz([80, 40, 80, 40, 200]); }
+      else if (c.kind === 'boss') { flashIt('#fff', .45); shakeIt(1); }
+      if (s.fight) comboFx();
+    } else {
+      flashIt('#f0244a', near ? .25 : .42); shakeIt(c.kind === 'boss' ? 2 : 1);
+      if (near) { sfx.near(); buzz([40, 40, 40]); } else { sfx.lose(); buzz(220); }
+      if (s.fight && st0 >= 3) later(() => comboLost(st0), 400);
+    }
     releaseToasts(lv ? 2200 : 700);
     updateHud();
     if (lv) later(() => { toast(`⭐ NIVEAU ${G.lvl} !<small>${G.lvl <= 11 ? '+1,5 % de chance à chaque combat · ' : ''}+${lv} 🪙</small>`); sfx.level(); buzz([50, 30, 50]); }, 350);
@@ -2191,18 +2321,32 @@ function battleAnim(c, chance, disp, done) {
 }
 function roll(c, chance, disp, done) {
   const box = document.createElement('div');
-  box.className = 'roll';
-  box.innerHTML = `<div class="rlabel">🎲 ${chance}% de chance</div><div class="track"><div class="zone" style="width:${chance}%"></div><div class="needle"></div></div><div class="rres"></div>`;
+  const st = c.stake || {}, boss = c.kind === 'boss';
+  // Suspense : boss, résultat serré ou grosse mise → l'aiguille hésite autour de la limite, le cœur bat
+  const tense = boss || Math.abs(disp - chance) < 7 || (G.gold > 0 && st.lose >= G.gold * .3);
+  box.className = 'roll' + (boss ? ' bossroll' : '');
+  const db = c.duelB;
+  box.innerHTML = `<div class="rlabel">🎲 ${chance}% de chance${db ? ` <em class="${db > 0 ? 'up' : 'dn'}">(${db > 0 ? '+' : ''}${db} au duel)</em>` : ''}</div><div class="track"><div class="zone" style="width:${chance}%"></div><div class="needle"></div></div><div class="rres"></div>`;
   c.el.appendChild(box);
   const nd = box.querySelector('.needle');
   let t = 0;
-  for (let i = 0; i < 11; i++) {
+  for (let i = 0; i < 10; i++) {
     t += SP(55 + i * 15);
-    // les derniers sauts tournent autour de la limite pour faire monter le suspense
-    const p = i === 10 ? disp : i >= 8 ? clamp(chance + rnd(-12, 12), 1, 99) : Math.random() * 100;
+    const p = i >= 8 ? clamp(chance + rnd(-12, 12), 1, 99) : Math.random() * 100;
     later(() => { nd.style.left = p + '%'; sfx.tick(i); }, t);
   }
-  later(() => done(box), t + SP(230));
+  if (tense) {
+    later(() => box.classList.add('tense'), t);
+    const n = boss ? 4 : 3;
+    for (let k = 0; k < n; k++) {
+      t += SP(320 + k * 110);
+      const p = clamp(chance + (k % 2 ? 1 : -1) * rnd(1.5, 7 - k), 1, 99);
+      later(() => { nd.style.left = p + '%'; heartBeat(); buzz(15); }, t);
+    }
+    t += SP(430);
+  } else t += SP(205);
+  later(() => { nd.style.left = disp + '%'; sfx.tick(10); }, t);
+  later(() => done(box), t + SP(tense ? 360 : 230));
 }
 
 /* =====================================================================
@@ -2339,19 +2483,30 @@ function musIcon() { $('mus').classList.toggle('off', !OPT.mus); $('mus').queryS
 
 function coins(n) {
   sfx.coins(n);
-  const r = phone.getBoundingClientRect();
+  const r = phone.getBoundingClientRect(), g = $('gold'), gr = g && g.getBoundingClientRect();
+  const tx = gr && gr.width ? gr.left - r.left + gr.width / 2 - 13 : r.width * .35, ty = gr && gr.width ? gr.top - r.top - 8 : 95;
+  for (let i = 0; i < n; i++) later(() => { const s = $('gold'); if (!s) return; const sp = s.parentElement; sp.classList.remove('gup'); void sp.offsetWidth; sp.classList.add('gup'); }, 950 + i * 45);
   for (let i = 0; i < n; i++) {
     const d = document.createElement('div');
     d.className = 'coin'; d.textContent = '🪙';
     const x = r.width / 2 + rnd(-70, 70), y = r.height * .45 + rnd(-40, 40);
     d.style.left = x + 'px'; d.style.top = y + 'px';
-    d.style.setProperty('--dx', (r.width * .35 - x) + 'px');
-    d.style.setProperty('--dy', (95 - y) + 'px');
+    d.style.setProperty('--dx', (tx - x) + 'px');
+    d.style.setProperty('--dy', (ty - y) + 'px');
     d.style.animationDelay = (i * 45) + 'ms';
     phone.appendChild(d); setTimeout(() => d.remove(), 1100 + i * 45);
   }
 }
-function shakeIt() { phone.classList.remove('shake'); void phone.offsetWidth; phone.classList.add('shake'); }
+function shakeIt(l = 1) { phone.classList.remove('shake', 'shake2'); void phone.offsetWidth; phone.classList.add(l > 1 ? 'shake2' : 'shake'); }
+function flashIt(col, op = .5) { const d = document.createElement('div'); d.className = 'flashfx'; d.style.background = col; d.style.setProperty('--fo', op); phone.appendChild(d); setTimeout(() => d.remove(), 600); }
+const heartBeat = () => { tone(64, .12, { type: 'sine', vol: .4 }); tone(54, .15, { type: 'sine', at: .17, vol: .32 }); };
+// Combo : un palier franchi s'annonce, une série cassée s'envole en fumée
+const COMBO_AT = [3, 5, 7, 10, 15, 20, 30, 50];
+function comboFx() {
+  const n = G.streak; if (!COMBO_AT.includes(n)) return;
+  later(() => { spawn('combo', `🔥 COMBO ${n} · ×${streakK().toFixed(1)}`); [0, 4, 7, 12].forEach((k, i) => tone(440 * 2 ** ((k + Math.min(n, 12)) / 12), .12, { type: 'square', at: i * .06, vol: .05 })); buzz([30, 30, 60]); }, 450);
+}
+function comboLost(n) { spawn('combo lost', `💨 Combo de ${n} perdu`); tone(300, .35, { type: 'triangle', to: 110, vol: .1 }); noise(.4, { f: 2500, to: 300, vol: .07 }); }
 
 /* =====================================================================
    ROYAUME
