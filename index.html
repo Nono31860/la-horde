@@ -152,6 +152,70 @@
   .roll.timing .zone { border-radius: 0; box-shadow: 0 0 12px #22c06a88; }
   .roll.timing .perf { position: absolute; top: 0; bottom: 0; width: 4%; margin-left: -2%; background: #fff8; box-shadow: 0 0 10px #fff; }
   .roll.timing .thint { display: inline-block; font-size: 22px; font-weight: 900; color: #ffcf4a; animation: dodgep .3s infinite alternate; }
+  .roll.timing .pwr { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; margin-top: 12px; }
+  .roll.timing .pwr:empty { display: none; }
+  .pwb { min-width: 64px; min-height: 48px; border: 0; border-radius: 12px; background: linear-gradient(#5a3fd0, #3a2490); color: #fff; font-size: 20px; font-weight: 900; padding: 4px 8px; box-shadow: 0 3px 0 #1d1250; touch-action: manipulation; }
+  .pwb small { display: block; font-size: 10px; font-weight: 800; opacity: .9; }
+  .pwb.used { opacity: .35; filter: grayscale(1); }
+  .pws { align-self: center; font-size: 14px; font-weight: 900; color: #9fd0ff; }
+  .roll.slowed .needle { background: #8fd6ff; box-shadow: 0 0 14px #8fd6ff; }
+  .nhits { font-size: 18px; margin: -2px 0 8px; letter-spacing: 2px; }
+  .elab { color: #ff7ad9; } .frz { color: #ff9a3a; text-shadow: 0 0 10px #ff5a00; }
+  .trait.elite { color: #ffd0f4; background: linear-gradient(90deg, #6a1458cc, #2a0a40cc); box-shadow: 0 0 12px #ff4fd166; }
+  .card.elitec .art { filter: drop-shadow(0 0 14px #ff4fd1aa); }
+  /* Crochetage */
+  .roll.lockg .lring { position: relative; width: 170px; height: 170px; margin: 4px auto 0; border-radius: 50%; background: radial-gradient(#3a2a18 50%, #1a1008 51%); border: 6px solid #8a6a3a; box-shadow: inset 0 0 20px #000; }
+  .roll.lockg .larc { position: absolute; inset: 0; border-radius: 50%; -webkit-mask: radial-gradient(transparent 58%, #000 59%); mask: radial-gradient(transparent 58%, #000 59%); }
+  .roll.lockg .lpin { position: absolute; left: 50%; top: 4px; width: 5px; height: calc(50% - 4px); margin-left: -2.5px; background: linear-gradient(#fff, #9aa); border-radius: 3px; transform-origin: 50% 100%; box-shadow: 0 0 8px #fff; }
+  .roll.lockg .lpins { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; text-align: center; white-space: pre; font-size: 16px; pointer-events: none; }
+  /* Expédition */
+  .run { position: absolute; inset: 0; z-index: 55; background: linear-gradient(#0008, #000c), url(bg/donjon.png) center / cover; display: flex; flex-direction: column; padding: max(14px, env(safe-area-inset-top)) 14px max(14px, env(safe-area-inset-bottom)); color: #fff; animation: rollin .2s; }
+  .run .rhead { display: flex; gap: 8px; align-items: center; justify-content: space-between; font-size: 14px; flex-wrap: wrap; }
+  .run .rhead b { font-size: 15px; color: #ffd76a; }
+  .run .rprog { display: flex; gap: 4px; margin: 10px 0 6px; } .run .rprog i { flex: 1; height: 8px; border-radius: 4px; background: #ffffff22; font-style: normal; font-size: 0; }
+  .run .rprog i.ok { background: #22c06a; } .run .rprog i.on { background: #ffcf4a; box-shadow: 0 0 8px #ffcf4a; }
+  .run .rrel { min-height: 26px; font-size: 20px; display: flex; gap: 6px; align-items: center; } .run .rrel i { font-size: 12px; opacity: .6; }
+  .run .rbody { position: relative; flex: 1; overflow-y: auto; display: flex; flex-direction: column; align-items: stretch; gap: 10px; padding: 8px 0; }
+  .run .rbody .roll { top: 12%; }
+  .run .rtxt { text-align: center; font-size: 15px; line-height: 1.4; background: #000a; border-radius: 12px; padding: 10px 12px; }
+  .run .rart { height: 130px; display: flex; justify-content: center; } .run .rart img { height: 100%; image-rendering: pixelated; filter: drop-shadow(0 0 16px #000); border-radius: 12px; }
+  .run .doors { display: flex; gap: 10px; justify-content: center; }
+  .door { flex: 1; max-width: 140px; min-height: 150px; border: 2px solid #ffffff30; border-radius: 14px; background: #1a1220dd; color: #fff; padding: 8px 6px; display: flex; flex-direction: column; align-items: center; gap: 4px; touch-action: manipulation; }
+  .door img { height: 76px; image-rendering: pixelated; } .door b { font-size: 14px; } .door small { font-size: 11px; opacity: .75; }
+  .door:active { transform: scale(.95); border-color: #ffcf4a; }
+  .rbtn { min-height: 54px; border: 0; border-radius: 14px; background: linear-gradient(#ffcf4a, #e09a1a); color: #2a1800; font-weight: 900; font-size: 16px; padding: 8px 12px; box-shadow: 0 4px 0 #8a5a0a; touch-action: manipulation; }
+  .rbtn small { display: block; font-size: 12px; font-weight: 700; opacity: .8; } .rbtn:disabled { opacity: .4; }
+  .run .rfoot { display: flex; gap: 8px; } .run .rfoot button { flex: 1; min-height: 46px; border: 0; border-radius: 12px; background: #ffffff1c; color: #fff; font-weight: 800; font-size: 14px; }
+  /* Mini-jeux plein écran */
+  .mg2 { position: absolute; inset: 0; z-index: 62; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; color: #fff; text-align: center; touch-action: none; user-select: none; -webkit-user-select: none; }
+  .mg2.fish { background: linear-gradient(#0004, #000a), url(bg/lac.png) center / cover; }
+  .mg2.race { background: radial-gradient(#2a4a1a, #0b1505); }
+  .mg2 .mgt { font-size: 24px; font-weight: 900; color: #ffd76a; text-shadow: 0 2px 0 #000; }
+  .mg2 .mgs { font-size: 17px; font-weight: 700; background: #000a; border-radius: 12px; padding: 10px 14px; min-height: 48px; }
+  .mg2 .mgs b.win { color: #5dff9a; } .mg2 .mgs b.lose { color: #ff6b81; }
+  .mg2 .bob { font-size: 64px; height: 96px; animation: bob 1.6s ease-in-out infinite; } .mg2 .bob img { height: 96px; image-rendering: pixelated; }
+  .mg2 .bob.bite { animation: bite .18s infinite alternate; color: #ff4a4a; font-weight: 900; }
+  @keyframes bob { 50% { transform: translateY(8px); } } @keyframes bite { to { transform: translateY(14px) scale(1.2); } }
+  .mg2 .mgr { font-size: 28px; min-height: 34px; }
+  .mg2 .mgx { min-width: 160px; min-height: 48px; border: 0; border-radius: 12px; background: #ffffff22; color: #fff; font-weight: 800; font-size: 16px; }
+  .mg2 .lanes { width: 100%; display: flex; flex-direction: column; gap: 8px; }
+  .mg2 .lane { position: relative; height: 58px; background: #00000055; border-radius: 10px; border-bottom: 3px dashed #ffffff22; }
+  .mg2 .lane .rc { position: absolute; left: 0; top: 3px; height: 52px; } .mg2 .lane .rc img { height: 52px; image-rendering: pixelated; }
+  .mg2 .lane .rc.won { filter: drop-shadow(0 0 12px #ffcf4a); } .mg2 .lane .fin { position: absolute; right: 4px; top: 14px; font-style: normal; font-size: 22px; }
+  .mg2 .rbets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
+  .mg2 .rbets button { min-height: 54px; border: 0; border-radius: 12px; background: linear-gradient(#ffcf4a, #e09a1a); color: #2a1800; font-weight: 900; font-size: 16px; }
+  .mg2 .rbets small { display: block; font-size: 13px; }
+  /* Onglet Expé */
+  .xhero { text-align: center; padding: 18px 12px; margin-bottom: 12px; border-radius: 16px; background: linear-gradient(#0006, #000a), url(bg/donjon.png) center / cover; }
+  .xhero b { display: block; font-size: 24px; color: #ffd76a; } .xhero span { font-size: 13px; opacity: .85; }
+  .xcard { display: flex; gap: 12px; align-items: center; background: #ffffff10; border: 1px solid #ffffff1a; border-radius: 16px; padding: 10px 12px; margin-bottom: 10px; }
+  .xcard > img { width: 64px; height: 64px; image-rendering: pixelated; flex: none; }
+  .xcard > div { flex: 1; } .xcard b { display: block; font-size: 15px; } .xcard small { display: block; font-size: 12px; opacity: .75; margin: 2px 0 8px; }
+  .xcard .btn { width: 100%; min-height: 44px; }
+  .reps { display: flex; flex-direction: column; gap: 8px; } .reps > div { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; gap: 4px 10px; background: #ffffff0c; border-radius: 12px; padding: 6px 10px; font-size: 13px; }
+  .reps .rp { grid-row: span 2; width: 44px; height: 44px; border-radius: 10px; overflow: hidden; font-size: 30px; } .reps .rp img { width: 100%; height: 100%; image-rendering: pixelated; }
+  .reps .rbar { grid-column: 2 / 4; position: relative; height: 8px; border-radius: 4px; background: linear-gradient(90deg, #b3243c, #555 50%, #22c06a); }
+  .reps .rbar i { position: absolute; top: -3px; width: 6px; height: 14px; margin-left: -3px; background: #fff; border-radius: 3px; }
   .roll.perfect { box-shadow: 0 0 0 3px #ffcf4a, 0 0 50px #ffcf4a99, 0 10px 40px #000a; }
   .combo { position: absolute; z-index: 42; left: 50%; top: 30%; transform: translateX(-50%); font-weight: 900; font-size: 28px; color: #ffb340; text-shadow: 0 0 18px #ff6a00, 0 3px 0 #7a2a00; pointer-events: none; white-space: nowrap; animation: rise 1.6s ease-out forwards; }
   .combo.lost { color: #b8c4d0; font-size: 20px; text-shadow: 0 2px 0 #000, 0 0 12px #000; }
@@ -221,6 +285,37 @@
   .village.night { filter: sepia(.5) hue-rotate(-30deg) saturate(1.7) brightness(.7); }
   .village .vc { position: absolute; left: 50%; bottom: 6px; transform: translateX(-50%); width: 132px; z-index: 6; }
   .village .vb { position: absolute; }
+  .village .vv { position: absolute; left: -8%; width: 24px; z-index: 19; animation: walk 16s linear infinite; }
+  .village .vv.rev { animation-name: walkr; }
+  .village .vv img { animation: march .5s ease-in-out infinite; }
+  @keyframes walk { 0% { left: -8%; transform: scaleX(1); } 49% { left: 100%; transform: scaleX(1); } 50% { left: 100%; transform: scaleX(-1); } 99% { left: -8%; transform: scaleX(-1); } 100% { left: -8%; transform: scaleX(1); } }
+  @keyframes walkr { 0% { left: 100%; transform: scaleX(-1); } 49% { left: -8%; transform: scaleX(-1); } 50% { left: -8%; transform: scaleX(1); } 99% { left: 100%; transform: scaleX(1); } 100% { left: 100%; transform: scaleX(-1); } }
+  .village.burning { box-shadow: 0 0 0 2px #ff6a2a, 0 0 30px #ff6a2a88; }
+  .village .kfire { position: absolute; bottom: 30px; width: 48px; height: 48px; z-index: 30; cursor: pointer; animation: fire .35s infinite alternate; filter: drop-shadow(0 0 10px #ff8a2a); }
+  .village .kfire::after { content: ''; position: absolute; inset: -12px; }
+  @keyframes fire { to { transform: scale(1.12) translateY(-3px); } }
+  .village .kthief { position: absolute; bottom: 8px; width: 46px; z-index: 30; cursor: pointer; animation: thief 3.2s ease-in-out infinite alternate; filter: drop-shadow(0 0 8px #ffcf4a); }
+  .village .kthief::after { content: ''; position: absolute; inset: -14px; }
+  @keyframes thief { from { left: 4%; } to { left: 82%; } }
+  .village .kfete { position: absolute; top: 8px; left: 0; right: 0; text-align: center; font-size: 26px; z-index: 30; animation: dodgep .5s infinite alternate; }
+  .village .vban { position: absolute; left: 50%; bottom: 96px; margin-left: -60px; width: 18px; height: 34px; z-index: 7; clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 78%, 0 100%); box-shadow: inset 0 3px #ffd76a; animation: march 2s ease-in-out infinite; }
+  .vban.b-rouge { background: #c8283c; } .vban.b-bleu { background: #2c5ad8; } .vban.b-noir { background: #15121a; }
+  .kev { display: flex; flex-direction: column; gap: 4px; padding: 10px 12px; margin-bottom: 10px; border-radius: 14px; background: #ff6a2a22; border: 1px solid #ff8a2a88; animation: rollin .3s; }
+  .kev b { font-size: 15px; } .kev span { font-size: 12px; opacity: .85; } .kev .btn { min-height: 44px; margin-top: 4px; }
+  .kev.k-fete { background: #b98cff22; border-color: #b98cff88; } .kev.k-voleur { background: #ffcf4a1c; border-color: #ffcf4a88; }
+  /* Apparence */
+  .skr { margin-bottom: 10px; } .skr > b { display: block; font-size: 13px; margin-bottom: 6px; }
+  .sko { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .sko button { min-height: 64px; border: 2px solid #ffffff22; border-radius: 12px; background: #ffffff0c; color: #fff; font-size: 22px; padding: 4px 2px; }
+  .sko button small { display: block; font-size: 10px; line-height: 1.2; margin-top: 2px; } .sko button.on { border-color: #ffd76a; background: #ffd76a22; }
+  .needle.sk-epee { width: 8px !important; margin-left: -4px !important; background: linear-gradient(#fff, #b8c4d8 70%, #8a6a3a 70%) !important; clip-path: polygon(50% 0, 100% 12%, 100% 100%, 0 100%, 0 12%); }
+  .needle.sk-fleche { background: linear-gradient(#ffd76a, #c88a2a) !important; box-shadow: 0 0 10px #ffd76a !important; }
+  .needle.sk-eclair { background: #8ae8ff !important; box-shadow: 0 0 14px #8ae8ff, 0 0 4px #fff !important; animation: zap .12s infinite alternate; }
+  @keyframes zap { to { filter: brightness(1.6); } }
+  .card.fr-or { box-shadow: 0 0 0 3px #e2b65c, 0 10px 40px #000a; }
+  .card.fr-runes { box-shadow: 0 0 0 3px #4a8aff, 0 0 18px #4a8aff88, 0 10px 40px #000a; }
+  .card.fr-feu { box-shadow: 0 0 0 3px #ff6a2a, 0 0 26px #ff6a2aaa, 0 10px 40px #000a; animation: frfeu 1.4s ease-in-out infinite alternate; }
+  @keyframes frfeu { to { box-shadow: 0 0 0 3px #ffcf4a, 0 0 34px #ff6a2a, 0 10px 40px #000a; } }
   .village .vg { position: absolute; width: 26px; z-index: 20; animation: work 1.2s ease-in-out infinite; }
   .village img, .bld .be img { width: 100%; display: block; filter: drop-shadow(0 4px 4px #000a); }
   @keyframes work { 50% { transform: translateY(-4px) rotate(10deg); } }
@@ -409,6 +504,12 @@
   .pets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
   .pets > div { background: #ffffff10; border-radius: 14px; padding: 10px; text-align: center; font-size: 11px; line-height: 1.35; border: 2px solid transparent; cursor: pointer; }
   .pets > div { border-color: color-mix(in srgb, var(--rc, #fff) 45%, transparent); }
+  .pets > div.evo img { filter: drop-shadow(0 0 8px #ffd76a) drop-shadow(0 0 2px #fff); }
+  .pfeed { display: flex; gap: 12px; align-items: center; background: linear-gradient(135deg, #ffffff14, #ffffff06); border: 1px solid #ffffff22; border-radius: 16px; padding: 10px 12px; margin-bottom: 12px; }
+  .pfeed > img { width: 72px; height: 72px; image-rendering: pixelated; flex: none; } .pfeed > div { flex: 1; } .pfeed b { font-size: 15px; } .pfeed small { display: block; font-size: 12px; opacity: .8; margin: 3px 0 6px; line-height: 1.35; }
+  .pfeed .btn { width: 100%; min-height: 44px; margin-top: 6px; } .pfeed.evo { border-color: #ffd76a88; box-shadow: 0 0 18px #ffd76a33; } .pfeed.evo > img { filter: drop-shadow(0 0 10px #ffd76a); animation: bob 2s ease-in-out infinite; }
+  .etag { color: #c9a6ff; font-weight: 700; }
+  .sets i { font-style: normal; opacity: .55; } .sets i.ok { opacity: 1; color: #5dff9a; }
   .pets > div.on { border-color: var(--rc, #ffd76a); background: color-mix(in srgb, var(--rc, #ffd76a) 18%, transparent); box-shadow: 0 0 14px color-mix(in srgb, var(--rc, #ffd76a) 50%, transparent); }
   .pets .pr { display: block; font-style: normal; font-weight: 900; font-size: 10px; letter-spacing: 1px; color: var(--rc); margin-bottom: 3px; }
   .ores .egg { border: 1px solid var(--rc); }
@@ -478,6 +579,36 @@
   .mg .nug img { width: 100%; height: 100%; image-rendering: pixelated; pointer-events: none; }
   @keyframes nug { from { transform: scale(.2); opacity: 0; } }
   .merch .it { margin-bottom: 7px; }
+  /* ===== Interface téléphone : barre d'onglets en bas, haut d'écran allégé ===== */
+  :root { --nav: 62px; }
+  #tabs { position: absolute; left: 0; right: 0; bottom: 0; z-index: 40; display: flex; height: calc(var(--nav) + env(safe-area-inset-bottom)); padding-bottom: env(safe-area-inset-bottom);
+    background: linear-gradient(#17120cf2, #0c0906fa); border-top: 1px solid #e2b65c55; box-shadow: 0 -6px 20px #0009; text-align: center; }
+  #tabs span { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1px; margin: 0; padding: 0; opacity: .6; font-family: inherit; font-size: 11px; font-weight: 800; letter-spacing: .02em; border: 0; position: relative; -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+  #tabs span b { font-size: 23px; line-height: 1.1; font-weight: 400; position: relative; transition: transform .15s; }
+  #tabs span.cur { opacity: 1; color: #ffd76a; border: 0; padding: 0; }
+  #tabs span.cur::before { content: ''; position: absolute; top: 0; left: 22%; right: 22%; height: 3px; border-radius: 0 0 3px 3px; background: #e2b65c; box-shadow: 0 0 10px #e2b65c; }
+  #tabs span.cur b { transform: translateY(-2px) scale(1.1); }
+  #tabs span:active b { transform: scale(.88); }
+  #tabs .badge { top: 8px; right: calc(50% - 20px); width: 10px; height: 10px; border: 2px solid #120e09; }
+  #tabs .badge.kev { display: block; background: #ff8a2a; animation: dodgep .4s infinite alternate; }
+  #tabM .pad { position: absolute; right: -8px; bottom: -2px; margin: 0; }
+  #tabM.lockd .pad { display: block; } #tabM.lockd { opacity: .4; }
+  #top { padding: calc(10px + env(safe-area-inset-top)) 56px 22px; }
+  #chap { margin-top: 0; }
+  #snd, #mus, #fast { display: none; }
+  #gear { position: absolute; right: 10px; top: calc(8px + env(safe-area-inset-top)); width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; font-size: 21px; border-radius: 12px; background: #0007; cursor: pointer; z-index: 2; }
+  #auto { right: 10px !important; top: calc(54px + env(safe-area-inset-top)) !important; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border-radius: 12px; background: #0007; }
+  #auto .apad { right: 2px; bottom: 2px; }
+  .info { bottom: calc(var(--nav) + 8px + env(safe-area-inset-bottom)); }
+  #kingdom { padding: calc(112px + env(safe-area-inset-top)) 14px calc(var(--nav) + 24px + env(safe-area-inset-bottom)); }
+  .ktabs { position: sticky; top: calc(-112px - env(safe-area-inset-top)); z-index: 5; flex-wrap: nowrap !important; overflow-x: auto; scrollbar-width: none; margin: 10px -14px 12px; padding: 6px 14px; background: linear-gradient(#0a0908f0, #0a0908d0); }
+  .ktabs::-webkit-scrollbar { display: none; }
+  .ktabs span { flex: 0 0 auto !important; padding: 10px 14px !important; font-size: 13px !important; min-height: 20px; white-space: nowrap; }
+  #kingdom .mini { min-height: 40px; padding: 8px 12px; }
+  #kingdom .bld button { min-height: 48px; min-width: 76px; }
+  .ask .mb button { min-height: 48px; }
+  .ask .mb button.tg { display: flex; justify-content: space-between; align-items: center; } .ask .mb button.tg i { font-style: normal; font-size: 12px; padding: 3px 8px; border-radius: 8px; background: #ffffff1c; }
+  .ask .mb button.tg.on i { background: #22c06a; color: #fff; }
 </style>
 </head>
 <body>
@@ -485,13 +616,13 @@
 <div id="phone">
   <div id="feed"></div>
   <div id="top">
-    <span id="snd">🔊</span><span id="mus" title="Musique"><img src="img/i_note.png" alt="musique"></span><span id="fast" title="Animations rapides (F)"><img src="img/i_fast.png" alt="rapide"></span><span id="auto" title="Auto-clic" class="off"><img src="img/i_auto.png" alt="auto"><img class="apad" src="img/i_padlock.png" alt=""></span>
-    <div id="tabs"><span id="tabM"><img class="pad" src="img/i_padlock.png" alt="">⛏️ Mine<i class="badge"></i></span><span id="tabK">🏰 Royaume<i class="badge"></i></span><span id="tabA">🛡️ Armée<i class="badge"></i></span><span id="tabF" class="cur">⚔️ Aventure</span></div>
+    <span id="gear" title="Réglages">⚙️</span><span id="snd">🔊</span><span id="mus" title="Musique"><img src="img/i_note.png" alt="musique"></span><span id="fast" title="Animations rapides (F)"><img src="img/i_fast.png" alt="rapide"></span><span id="auto" title="Auto-clic" class="off"><img src="img/i_auto.png" alt="auto"><img class="apad" src="img/i_padlock.png" alt=""></span>
     <div id="chap"></div>
     <div id="menace"><span>👹</span><div class="mb"><i></i></div><b></b></div>
     <div id="res"></div>
   </div>
   <div id="kingdom" class="hidden"></div>
+  <nav id="tabs"><span id="tabF" class="cur"><b>⚔️</b>Aventure</span><span id="tabK"><b>🏰</b>Royaume<i class="badge"></i></span><span id="tabX"><b>🧭</b>Expé<i class="badge"></i></span><span id="tabA"><b>🛡️</b>Armée<i class="badge"></i></span><span id="tabM"><b>⛏️<img class="pad" src="img/i_padlock.png" alt=""></b>Mine<i class="badge"></i></span></nav>
   <div id="start" class="screen">
     <div class="logo">La <i>Horde</i></div>
     <div class="bd">
@@ -636,6 +767,7 @@ const CH = {
   pik: { e: '👺', h: 'pik_espion', n: 'Pik (gobelin repenti)' },
   ysolde: { e: '🔮', h: 'ysolde_voit_tout', n: 'Ysolde' },
   gauvin: { e: '🛡️', h: 'sir_gauvin', n: 'Sir Gauvin', ok: 1 },
+  ysalis: { e: '🧙‍♀️', h: 'ysalis_sorciere', n: 'Ysalis la sorcière' },
   louche: { e: '🎩', h: 'marchand_louche', n: 'Le Marchand Louche' },
   margot: { e: '🧪', h: 'margot_potions', n: 'Margot' },
   brac: { e: '🪓', h: 'brac_mercenaires', n: 'Brac' },
@@ -701,13 +833,38 @@ const SLOTS = {
     names: [['👢', 'Bottes'], ['🥾', 'Godillots'], ['🩴', 'Sandales'], ['🪶', 'Plume de vent'], ['🧤', 'Gantelets']] },
 };
 const SUFX = ['', ' solide', ' runique', ' des anciens rois', ' du Néant'];
-/* Panoplies : 2 pièces équipées d'une même panoplie donnent un bonus, 4 pièces un gros bonus */
-const SETS = {
-  meute: { n: 'Meute', e: '🐺', st: 'ch', v: [4, 10] },
-  roi: { n: 'Roi', e: '👑', st: 'g', v: [15, 40] },
-  murg: { n: 'Murg', e: '🔮', st: 'cr', v: [4, 10] },
-  roc: { n: 'Roc', e: '🪨', st: 'l', v: [8, 20] },
+/* Élites : 12 % des bandes après la 20e carte. Plus dures à l'aiguille, mais bien mieux payées */
+const ELITE = {
+  blinde: { e: '🛡️', n: 'Blindé', d: 'zone verte deux fois plus petite', w: .5 },
+  rapide: { e: '💨', n: 'Rapide', d: 'la zone verte se déplace', w: .85, drift: 1 },
+  spectre: { e: '👻', n: 'Spectre', d: "l'aiguille disparaît par moments", ghost: 1 },
+  vampire: { e: '🩸', n: 'Vampire', d: 'touche-le 2 fois, sinon il se soigne', w: 1.3, hits: 2, k: 2 },
 };
+/* Pouvoirs actifs des familiers évolués (1 fois toutes les 20 cartes, bouton dans l'aiguille) */
+const PETPW = {
+  loup: ['🐺', 'Morsure', 'zone verte ×1,5', 'zone'], griffon: ['🦅', 'Serres', 'zone verte ×1,5', 'zone'],
+  slime: ['🫧', 'Rebond', 'un essai de plus', 'retry'], phenix: ['🔥', 'Renaissance', 'un essai de plus', 'retry'],
+  hibou: ['🦉', 'Temps figé', 'aiguille très lente', 'slow'], renard: ['🦊', 'Rapine', 'or ×2 sur ce combat', 'gold'],
+  dragon: ['🐉', 'Souffle', "l'aiguille se pose au centre", 'auto'],
+};
+const petReady = () => G.pet && G.petEvo[G.pet] && G.n >= (G.petCd || 0);
+/* Pouvoirs de combo : une charge tous les 3 combats gagnés d'affilée (3 max par pouvoir) */
+const PW = { sablier: ['⏳', 'Sablier', "ralentit l'aiguille"], oeil: ['🔍', "Œil d'aigle", 'élargit la zone verte'], seconde: ['🔁', 'Seconde chance', 'rejoue un coup raté (automatique)'] };
+function gainPw() {
+  const ks = Object.keys(PW).filter(k => G.pw[k] < 3); if (!ks.length) return;
+  const k = pick(ks); G.pw[k]++;
+  later(() => toast(`${PW[k][0]} POUVOIR GAGNÉ : ${PW[k][1]}<small>${PW[k][2]} · ${G.pw[k]}/3 charges · combo de 3 victoires</small>`), 900);
+}
+/* Panoplies : 2, 3 puis 4 pièces équipées d'une même panoplie donnent un bonus de plus en plus gros */
+const SETS = {
+  meute: { n: 'Meute', e: '🐺', st: 'ch', v: [4, 7, 12] },
+  roi: { n: 'Roi', e: '👑', st: 'g', v: [15, 25, 45] },
+  murg: { n: 'Murg', e: '🔮', st: 'cr', v: [4, 7, 12] },
+  roc: { n: 'Roc', e: '🪨', st: 'l', v: [8, 13, 22] },
+};
+/* Enchantements (forge) : un seul par objet, payé en éclats, conservé si on relance les attributs */
+const ENCH = { feu: ['🔥', 'de feu', 'cr', 3], givre: ['❄️', 'de givre', 'l', 5], or: ['✨', "d'or", 'g', 6], chance: ['🍀', 'de chance', 'ch', 2] };
+const enchCost = it => 30 * (it.r + 1);
 /* Éclats (recyclage) : gain par rareté, prix d'une relance d'attributs, prix d'un renforcement */
 const ECL = [1, 3, 8, 20, 60], RERO = [2, 5, 12, 30, 80], RENF = [4, 10, 25, 60, 150];
 /* Traits des ennemis : chaque bande de la Horde a sa particularité */
@@ -855,7 +1012,8 @@ const PETS = {
 const PETB = { ch: '% de chance', g: "% d'or", l: '% de pertes', xp: "% d'XP", lo: "% d'objets", cr: '% de critique' };
 // Un familier qui t'accompagne 100 cartes gagne un niveau (max 5) : +25 % sur tous ses bonus par niveau
 const petLvl = k => Math.min(5, 1 + Math.floor(((G.petXp || {})[k] || 0) / 100));
-const petMul = k => (1 + .25 * (petLvl(k) - 1)) * (1 + .1 * (G.up.menagerie || 0));
+const petMul = k => (1 + .25 * (petLvl(k) - 1)) * (1 + .1 * (G.up.menagerie || 0)) * (G.petEvo && G.petEvo[k] ? 1.3 : 1);
+const FEED = 5, feedCost = () => Math.round(B() * 4);
 const petDesc = k => Object.entries(PETS[k].b).map(([s, v]) => `${s === 'l' ? '−' : '+'}${Math.round(v * petMul(k) * 10) / 10} ${PETB[s]}`).join(' · ');
 const petB = s => G.pet && PETS[G.pet] && PETS[G.pet].b[s] ? PETS[G.pet].b[s] * petMul(G.pet) : 0;
 const rarSpan = r => `<span style="color:${RAR[r].c}">${RAR[r].n.toLowerCase()}</span>`;
@@ -941,7 +1099,10 @@ function fresh() {
     crowns: 0, prestige: 0, perm: { sang: 0, fortune: 0, heritage: 0, butin: 0, etoile: 0, xp: 0, poches: 0, elan: 0, filon: 0, garde: 0 }, ach: {}, album: {},
     tal: { guerrier: 0, marchand: 0, pillard: 0 }, best: {}, bestR: {}, reigns: [], daily: '',
     pets: { loup: 0, slime: 0, hibou: 0, renard: 0, griffon: 0, dragon: 0, phenix: 0 }, pet: '', eggs: [], towerBest: 0,
-    petXp: {}, evDone: {},
+    petXp: {}, evDone: {}, petEvo: {}, petFood: {}, rep: { marchand: 0, sorciere: 0, chevalier: 0 },
+    skin: { needle: '', frame: '', banner: '' }, dd: { day: '', best: 0, done: 0 }, expBest: 0,
+    // pouvoirs de combo, frénésie, expédition en cours, évènements du royaume, délais des mini-jeux
+    pw: { sablier: 0, oeil: 0, seconde: 0 }, perfRow: 0, frenzy: 0, petCd: 0, run: null, expCd: 0, kev: null, fishCd: 0, raceCd: 0, lockCd: 0,
     // par règne : journal, combos de tribus, route du chapitre, défi
     log: [], tribe: {}, path: '', route: {}, chal: null, chalOff: null, peekK: '' };
 }
@@ -949,14 +1110,14 @@ const save = () => { try { localStorage.setItem(SAVE, JSON.stringify(G)); } catc
 function load() {
   try {
     const s = JSON.parse(localStorage.getItem(SAVE));
-    if (s && s.up) { const f = fresh(), g = Object.assign(f, s); for (const k of ['up', 'eq', 'perm', 'mine', 'army', 'tal', 'rs', 'pets', 'wx', 'armyXp', 'wounded', 'walls', 'ban', 'gens']) g[k] = Object.assign(fresh()[k], s[k]);
+    if (s && s.up) { const f = fresh(), g = Object.assign(f, s); for (const k of ['up', 'eq', 'perm', 'mine', 'army', 'tal', 'rs', 'pets', 'wx', 'armyXp', 'wounded', 'walls', 'ban', 'gens', 'pw', 'petEvo', 'petFood', 'rep', 'skin', 'dd']) g[k] = Object.assign(fresh()[k], s[k]);
       if (g.wolf && !g.pets.loup) { g.pets.loup = 1; if (!g.pet) g.pet = 'loup'; } return g; }
   } catch (e) {}
   return null;
 }
 
 // Bonus des objets équipés
-const eq = st => Object.values(G.eq).reduce((s, it) => s + (it && it[st] || 0), 0) + setBonus(st);
+const eq = st => Object.values(G.eq).reduce((s, it) => s + (it && it[st] || 0) + (it && it.ench && ENCH[it.ench][2] === st ? ENCH[it.ench][3] : 0), 0) + setBonus(st);
 const mult = () => (1 + G.chap * .6) * (1 + (G.cycle - 1) * .3);
 // Gains « du règne » (écuries, amulettes) : les pertes grandissent avec eux
 const gainBase = () => (1 + .12 * G.up.ecuries) * (1 + eq('g') / 100);
@@ -973,7 +1134,7 @@ const lvlBonus = () => Math.min(15, 1.5 * (G.lvl - 1));
 function chanceParts(base) {
   const p = [['🎯 ennemi', base + CHAPS[G.chap].diff], ['⭐ niveau', lvlBonus()], ['⚔️ forge', 3 * G.up.forge], ['🎒 objets', eq('ch')],
     ['👑 lignée', 3 * G.perm.sang + (TL('guerrier', 1) ? 3 : 0) + (TL('guerrier', 3) ? 5 : 0)], ['🛡️ armée', armyBonus()],
-    ['✨ renforts', G.next + (G.merc > 0 ? 10 : 0)], ['🐾 familier', petB('ch')], [advT && counterOf(advT) ? `${UICO[counterOf(advT)]} avantage` : '🎯 avantage', advBonus(advT)], ['🎖️ général', genB('ch')], ['🌧️ pluie', G.wx.k === 'pluie' ? -5 : 0], ['🔁 cycle', -10 * (G.cycle - 1)]];
+    ['✨ renforts', G.next + (G.merc > 0 ? 10 : 0)], ['🐾 familier', petB('ch')], [advT && counterOf(advT) ? `${UICO[counterOf(advT)]} avantage` : '🎯 avantage', advBonus(advT)], ['🎖️ général', genB('ch')], ['📚 bestiaire', G.bestR[G.chap] ? 5 : 0], ['🌧️ pluie', G.wx.k === 'pluie' ? -5 : 0], ['🔁 cycle', -10 * (G.cycle - 1)]];
   const raw = p.reduce((t, x) => t + x[1], 0);
   // Plafond doux : au-delà de 85 %, chaque point ne compte que pour moitié (et jamais plus de 92 %)
   const v = Math.round(clamp(raw > 85 ? 85 + (raw - 85) / 2 : raw, 5, 92));
@@ -983,7 +1144,7 @@ function chanceParts(base) {
 let lastParts = null;
 const fightChance = base => { const r = chanceParts(base); lastParts = r.p; return r.v; };
 // Boss : sans Salle d'armes, ils sont presque imbattables (de plus en plus avec les chapitres)
-const bossChance = () => { advT = 'geant'; const v = fightChance(20 - 6 * G.chap + 8 * G.up.arsenal + genB('boss')); advT = null; return v; };
+const bossChance = () => { advT = 'geant'; const v = fightChance(20 - 6 * G.chap + 8 * G.up.arsenal + genB('boss') + (G.rep.chevalier >= 3 ? 8 : 0)); advT = null; return v; };
 const bossPhases = () => G.chap < 2 ? 2 : G.chap < 5 ? 3 : 4;
 const B = () => 40 * mult();
 const goldRate = () => (1 / 40) * (1 + .5 * G.perm.etoile);
@@ -1258,12 +1419,13 @@ function makeItem(r, slot) {
   return it;
 }
 const statTxt = it => [it.ch && `+${it.ch} % chance`, it.l && `−${it.l} % pertes`, it.g && `+${it.g} % d'or`, it.cr && `+${it.cr} % critique`].filter(Boolean).join(' · ')
+  + (it.ench ? ` · <span class="etag">${ENCH[it.ench][0]} +${ENCH[it.ench][3]} ${{ cr: '% crit', l: '% pertes', g: "% d'or", ch: '% chance' }[ENCH[it.ench][2]]}</span>` : '')
   + (it.set ? ` · <span class="stag">${SETS[it.set].e} ${SETS[it.set].n}</span>` : '');
 const itemScore = it => it ? (it.ch || 0) * 4 + (it.l || 0) + (it.g || 0) + (it.cr || 0) * 2 : -1;
 const sellVal = it => Math.round([15, 50, 180, 700, 3000][it.r] * mult() * (1 + (it.f || 0)) * (TL('marchand', 2) ? 1.5 : 1));
 const eclVal = it => Math.round(ECL[it.r] * (1 + (it.f || 0)) * (TL('pillard', 2) ? 1.5 : 1));
 const setCount = k => Object.values(G.eq).filter(it => it && it.set === k).length;
-const setLvl = k => { const n = setCount(k); return n >= 4 ? 2 : n >= 2 ? 1 : 0; };
+const setLvl = k => { const n = setCount(k); return n >= 4 ? 3 : n >= 3 ? 2 : n >= 2 ? 1 : 0; };
 const setBonus = st => Object.entries(SETS).reduce((a, [k, S]) => a + (S.st === st && setLvl(k) ? S.v[setLvl(k) - 1] : 0), 0);
 /* Fusion : deux objets de même rareté, même type et mêmes attributs donnent un objet
    un peu meilleur (+10 % par attribut, plafonné à +30 % du meilleur tirage possible, 3 fusions max) */
@@ -1344,7 +1506,7 @@ function bestKill(key) {
   const ch = +key.split('_')[0];
   if (G.bestR[ch] || ![0, 1, 2, 3].every(i => (G.best[ch + '_' + i] || 0) >= 5)) return;
   G.bestR[ch] = 1; G.crowns += 2;
-  later(() => { toast(`📚 PAGE DU BESTIAIRE COMPLÈTE<small>Chapitre ${roman(ch + 1)} : +2 👑</small>`, 'achv'); sfx.ach(); }, 1200);
+  later(() => { toast(`📚 PAGE DU BESTIAIRE COMPLÈTE<small>Chapitre ${roman(ch + 1)} : +2 👑 et +5 % de chance pour toujours dans ce chapitre</small>`, 'achv'); sfx.ach(); }, 1200);
 }
 
 function hordeMood() {
@@ -1377,12 +1539,13 @@ const MK = {
     // Les bandes normales ont un trait (les combats racontés : intro, pillage, chaînes… n'en ont pas)
     const tk = d.text ? null : FOES[G.chap][fi][1], tr = TRAITS[tk] || {};
     advT = d.text ? null : FTYPE[G.chap][fi];
+    const elite = !d.text && G.n > 20 && Math.random() < .12 ? pick(Object.keys(ELITE)) : null, ek = elite ? ELITE[elite].k || 1.6 : 1;
     return {
       kind: 'fight', who: d.who || CH.horde, art: d.art || f.e, text, src: d.src || hordeMood(), risk: P.n,
-      foe: d.text ? null : G.chap + '_' + fi, trait: tk, ftype: d.text ? null : FTYPE[G.chap][fi],
-      stake: { chance: fightChance(P.c + (d.bonus || 0) + (tr.ch || 0)), win: Math.round(B() * P.w * gainK() * streakK() * (tr.w || 1)),
-        lose: Math.round(B() * P.l * gainBase() * lossK() * (tr.l || 1)), fight: true, xp: Math.round((10 + 5 * pi) * (1 + G.chap * .3) * (tr.xp || 1)),
-        lootK: tr.loot || 1, noCrit: tr.noCrit,
+      foe: d.text ? null : G.chap + '_' + fi, trait: tk, ftype: d.text ? null : FTYPE[G.chap][fi], elite,
+      stake: { chance: fightChance(P.c + (d.bonus || 0) + (tr.ch || 0) - (elite ? 6 : 0)), win: Math.round(B() * P.w * gainK() * streakK() * (tr.w || 1) * ek),
+        lose: Math.round(B() * P.l * gainBase() * lossK() * (tr.l || 1)), fight: true, xp: Math.round((10 + 5 * pi) * (1 + G.chap * .3) * (tr.xp || 1) * (elite ? 1.5 : 1)),
+        lootK: (tr.loot || 1) * (elite ? 1.5 : 1), noCrit: tr.noCrit,
         onWin: fightWin,
         onLose: tk === 'soigneur' ? () => { fightLose(); schedule('fight', ri(2, 4), { fi, l, pi, src: 'la bande s\'est soignée et revient' }); } : fightLose },
       likeL: '⚔️ Combattre', passL: tk === 'lache' ? 'Ignorer (menace +4)' : 'Ignorer (menace +8)',
@@ -1694,6 +1857,61 @@ const MK = {
     return c;
   },
   /* Défi du jour : le même pour tout le monde, un seul essai par jour */
+  // Bastien, Ysalis et Sir Gauvin reviennent souvent. Ta réputation auprès d'eux (de −5 à +5) change ce qu'ils font
+  pnj() {
+    const k = pick(Object.keys(NPC)), N = NPC[k], rp = G.rep[k], c0 = Math.round(B() * 1.2);
+    const R = (d, m) => { repAdd(k, d); if (m) later(() => toast(m), 250); };
+    if (k === 'marchand') {
+      if (rp <= -3) { const l = Math.min(G.gold, Math.round(B() * 1.5));
+        return { kind: 'choice', who: N.who, art: '🧔', src: 'Bastien ne t\'aime pas', risk: '😠 Trahison', onShow() { G.gold -= l; floatTxt(`−${fmt(l)} 🪙`); },
+          text: `Bastien t'a refilé de la fausse monnaie à ton dernier passage : −${fmt(l)} 🪙. Il ricane derrière son étal.`,
+          opts: [{ l: '🤝 Passer l\'éponge', sub: 'réputation +2', fx() { R(2); } }, { l: '😤 Le chasser du royaume', sub: 'réputation −1 · menace −3', fx() { R(-1); G.menace -= 3; } }] }; }
+      const o = [];
+      if (rp >= 3) o.push({ l: '🎁 Accepter son cadeau', sub: 'un objet offert par un ami', fx() { const it = makeItem(rollRarity(1)); later(() => showPack(it, gainItem(it), () => {}), 300); } });
+      const pc = Math.round(c0 * (rp >= 3 ? .7 : 1));
+      o.push({ l: `🧪 Acheter un tonique (${fmt(pc)} 🪙)`, sub: '+12 % au prochain combat · réputation +1', cost: pc, ok: G.gold >= pc, fx() { G.next += 12; R(1); } });
+      o.push({ l: '🗣️ Marchander dur', sub: '50 % : tonique gratuit · réputation −1', fx() { R(-1); if (Math.random() < .5) { G.next += 12; floatTxt('✨ +12 % gratuit !'); } else floatTxt('Bastien refuse 😒'); } });
+      o.push({ l: '👋 Saluer', sub: 'rien', fx() {} });
+      return { kind: 'choice', who: N.who, art: '🧔', src: `réputation ${repTxt(k)}`, risk: '🤝 Rencontre', text: rp >= 3 ? 'Bastien te serre la main : « Pour mon meilleur client, j\'ai mis quelque chose de côté. »' : 'Bastien déballe sa charrette : « Un tonique, chef ? Ça donne du cœur au bras ! »', opts: o };
+    }
+    if (k === 'sorciere') {
+      if (rp <= -3) return { kind: 'choice', who: N.who, art: '🧙‍♀️', src: 'Ysalis est furieuse', risk: '🌩️ Malédiction', onShow() { G.menace += 10; floatTxt('🌩️ menace +10'); },
+        text: 'Ysalis pointe son bâton sur toi. Un éclair violet traverse le ciel : la Horde se sent pousser des ailes (menace +10).',
+        opts: [{ l: `🙏 S'excuser (${fmt(c0)} 🪙)`, sub: 'réputation +2', cost: c0, ok: G.gold >= c0, fx() { R(2); } }, { l: '🙄 L\'ignorer', sub: 'réputation −1', fx() { R(-1); } }] };
+      const o = [];
+      if (rp >= 3) o.push({ l: '✨ Recevoir sa bénédiction', sub: Math.random() < .25 ? 'elle te tend un œuf luisant' : '+15 % au prochain combat', fx() { if (Math.random() < .3) giveEgg('un cadeau d\'Ysalis', 1); else G.next += 15; R(0); } });
+      o.push({ l: `🌿 Lui offrir des herbes (${fmt(Math.round(c0 / 2))} 🪙)`, sub: 'réputation +2', cost: Math.round(c0 / 2), ok: G.gold >= Math.round(c0 / 2), fx() { R(2); } });
+      o.push({ l: '🔮 Se faire lire l\'avenir', sub: '60 % : +10 % au prochain combat · sinon menace +5', fx() { if (Math.random() < .6) { G.next += 10; floatTxt('🔮 +10 %'); } else { G.menace += 5; floatTxt('🔮 mauvais présage'); } } });
+      o.push({ l: '🚶 Passer son chemin', sub: 'réputation −1', fx() { R(-1); } });
+      return { kind: 'choice', who: N.who, art: '🧙‍♀️', src: `réputation ${repTxt(k)}`, risk: '🌙 Rencontre', text: rp >= 3 ? 'Ysalis sourit : « Les étoiles parlent de toi, ami. Approche. »' : 'Une jeune sorcière cueille des herbes au bord du chemin. Ses yeux brillent comme la lune.', opts: o };
+    }
+    // Sir Gauvin
+    if (rp <= -3) { const s = { chance: fightChance(28), win: Math.round(B() * 5 * gainK()), lose: Math.round(B() * 2 * gainBase() * lossK()), fight: true, xp: 40, loot: 1,
+        onWin() { R(2, '🛡️ GAUVIN S\'INCLINE<small>« Tu es digne du trône. » Réputation +2</small>'); }, onLose() { R(-1); } };
+      return { kind: 'choice', who: N.who, art: '🤺', src: 'Gauvin te défie', risk: '⚔️ Rival', text: 'Sir Gauvin, vexé, te provoque en duel devant tout le royaume. Refuser, c\'est perdre la face.',
+        opts: [{ l: '⚔️ Relever le défi', sub: `${s.chance} % · +${fmt(s.win)} / −${fmt(s.lose)} 🪙 · objet`, risk: '⚔️ Duel de rival', stake: s }, { l: '🏳️ Refuser', sub: 'réputation −1 · menace +5', fx() { R(-1); G.menace += 5; } }] }; }
+    const o = [];
+    o.push({ l: `🗡️ S'entraîner avec lui (${fmt(c0)} 🪙)`, sub: `+${Math.round(xpNeed() * .4)} XP · réputation +1`, cost: c0, ok: G.gold >= c0, fx() { const lv = addXp(Math.round(xpNeed() * .4)); if (lv) toast(`⭐ NIVEAU ${G.lvl} !`); R(1); } });
+    o.push({ l: '🍺 Trinquer ensemble', sub: 'réputation +1', fx() { R(1); } });
+    o.push({ l: '🙄 L\'éviter', sub: 'réputation −1', fx() { R(-1); } });
+    return { kind: 'choice', who: N.who, art: '🤺', src: `réputation ${repTxt(k)}`, risk: '🛡️ Rencontre',
+      text: rp >= 3 ? 'Sir Gauvin pose un genou à terre : « Contre les boss, mon épée est à toi » (+8 % de chance contre les boss tant que ta réputation reste haute).' : 'Sir Gauvin astique son armure : « Un petit entraînement, mon roi ? »', opts: o };
+  },
+  // Un coffre verrouillé : mini-jeu de crochetage en rythme
+  crochet() {
+    G.lockCd = G.n + 12;
+    const g = Math.round(B() * 3 * gainK()), s = { chance: 45, win: Math.round(g * .8), lose: Math.round(B() * gainBase() * lossK()), xp: 10 };
+    return { kind: 'choice', who: CH.pik, art: '🗝️', src: 'Pik a trouvé un coffre', risk: '🔐 Crochetage',
+      text: 'Un coffre en fer, fermé à quatre goupilles. Pik te tend ses crochets : « Tape quand l\'aiguille passe dans l\'encoche dorée. »',
+      opts: [{ l: '🔐 Crocheter', sub: `mini-jeu · +${fmt(g)} 🪙 et 35 % : un objet`, game(cb) {
+          lockGame(cur.el, 4, ok => {
+            if (ok) { G.gold += g; G.rs.gold += g; coins(10); sfx.win(); floatTxt(`🔓 +${fmt(g)} 🪙`); if (Math.random() < .35) { const it = makeItem(rollRarity(1)); later(() => showPack(it, gainItem(it), cb), 700); return; } }
+            else { sfx.lose(); floatTxt('🔒 Le crochet a cassé'); }
+            later(cb, 700);
+          }); } },
+        { l: '🔨 Forcer le coffre', sub: `${s.chance} % · +${fmt(s.win)} / −${fmt(s.lose)} 🪙`, risk: '🔨 Force brute', stake: s },
+        { l: '🚶 Laisser', sub: 'rien', fx() {} }] };
+  },
   daily() {
     const R = seeded(today()), ch = Math.floor(R() * (lastChap() + 1)), fi = Math.floor(R() * 4);
     const chance = 30 + Math.floor(R() * 16), k = 8 + Math.floor(R() * 7), [n, tk] = FOES[ch][fi];
@@ -1757,7 +1975,7 @@ function rollKind() {
   return wpick([['fight', 46], ['mission', 16], ['dice', G.gold >= 20 ? 7 : 0], ['chest', G.gold >= B() ? 4 + 3 * G.up.tresor : 0], ['boost', G.gold > 40 ? 8 : 0], ['flavor', 6],
     ['wheel', G.gold >= B() * 1.5 ? 3 : 0], ['legend', G.lvl >= 4 && G.n > 60 ? .7 : 0],
     ['chain', Object.keys(G.chains).length < 3 && !queued('chainEnd') && G.n > 15 ? 4 : 0],
-    ['dilemma', G.n > 8 ? 7 : 0], ['evcard', realEv() ? 6 : 0]]);
+    ['dilemma', G.n > 8 ? 7 : 0], ['evcard', realEv() ? 6 : 0], ['pnj', G.n > 20 ? 4 : 0], ['crochet', G.n > 12 && G.n >= G.lockCd ? 3 : 0]]);
 }
 function pickNext() {
   lastParts = null; advT = null;
@@ -1817,8 +2035,9 @@ const ART = { '🎪': 'colporteur', '🕷️': 'creature', '🗼': 'tourinf', '�
   '🧪': 'potion', '🪓': 'hache', '🔮': 'boule', '🗺️': 'carte', '🦎': 'lezard', '💸': 'pieces', '🧳': 'valise', '🪕': 'luth',
   '🧹': 'morgrel', '🐂': 'kragor', '☠️': 'malvorn', '🌋': 'azgal', '🌑': 'nyxthar', '🦟': 'moustique', '🐊': 'croco', '🧟': 'noye', '🍄': 'champi',
   '🦂': 'scorpion', '🐍': 'serpent', '🗿': 'golem', '🦇': 'chauvesouris', '👻': 'spectre', '🧛': 'vampire', '⚰️': 'cercueil', '🕯️': 'cultiste',
-  '🦹': 'demon', '☄️': 'meteore', '🐕': 'chien', '⚒️': 'forgedemon', '🌀': 'portail', '👁️': 'oeil', '🦑': 'tentacule', '🎭': 'masque' };
-const POR = new Set(['roi_aldric', 'la_horde', 'gazette_du_royaume', 'bastien_marchand', 'rosa_la_fermiere', 'pik_espion',
+  '🦹': 'demon', '☄️': 'meteore', '🐕': 'chien', '⚒️': 'forgedemon', '🌀': 'portail', '👁️': 'oeil', '🦑': 'tentacule', '🎭': 'masque',
+  '🧙‍♀️': 'ysalis', '🚪': 'porte', '🐟': 'poisson', '🗝️': 'cle', '🏺': 'relique', '👅': 'mimique', '📌': 'piege', '🏕️': 'feu', '🧑‍🌾': 'paysan', '👩‍🦰': 'paysanne', '🥷': 'voleur' };
+const POR = new Set(['ysalis_sorciere', 'roi_aldric', 'la_horde', 'gazette_du_royaume', 'bastien_marchand', 'rosa_la_fermiere', 'pik_espion',
   'ysolde_voit_tout', 'sir_gauvin', 'marchand_louche', 'margot_potions', 'brac_mercenaires', 'krotz_preteur', 'bourbak_les_des',
   'grizzlak_roi_gobelin', 'vorthax_l_ancien', 'skrag_hurleur', 'reine_vexa', 'grand_chaman_murg', 'bouldour',
   'morgrel_sorciere', 'kragor_minotaure', 'malvorn_roi_liche', 'azgal_flammes', 'nyxthar_empereur', 'elwen_elfe', 'orlan_mage']);
@@ -1885,7 +2104,7 @@ function buildCard(c) {
   const h = ri(h1, h2);
   c.likes = ri(200, 90000);
   const el = document.createElement('div');
-  el.className = 'card below k-' + c.kind + (c.golden ? ' golden' : '');
+  el.className = 'card below k-' + c.kind + (c.golden ? ' golden' : '') + (G.skin && G.skin.frame ? ' fr-' + G.skin.frame : '');
   el.style.setProperty('--kt', c.golden ? '#ffc8403a' : `hsl(${h} 60% 30% / .14)`);
   const s = c.stake;
   let stake = '';
@@ -1914,6 +2133,7 @@ function buildCard(c) {
     </div>`;
   el.querySelector('.text').textContent = c.text;
   if (c.trait) { const t = TRAITS[c.trait], d = document.createElement('div'), tn = c.foe && G.tribe[c.foe]; d.className = 'trait'; d.textContent = `${t.e} ${t.n} : ${t.d}${tn ? ` · 👹 ${tn}/3 avant leur chef` : ''}`; el.querySelector('.text').after(d); }
+  if (c.elite) { const E = ELITE[c.elite], d = document.createElement('div'); d.className = 'trait elite'; d.textContent = `${E.e} ÉLITE ${E.n} : ${E.d} · gains ×${E.k || 1.6}`; el.querySelector('.text').after(d); el.classList.add('elitec'); }
   if (c.bhp) { const d = document.createElement('div'); d.className = 'bhp'; d.innerHTML = Array.from({ length: c.bhp[1] }, (_, i) => `<i class="${i < c.bhp[0] ? 'f' : ''}"></i>`).join(''); el.querySelector('.text').before(d); }
   feed.appendChild(el);
   c.el = el;
@@ -1966,6 +2186,7 @@ function advance() {
   mineTick();
   armyTick();
   tickWorld();
+  kevTick();
   const pc = pickNext();
   if (pc.kind === 'fight' && pc.stake && G.n > 3 && Math.random() < goldRate()) makeGolden(pc);
   const next = buildCard(pc);
@@ -2002,6 +2223,8 @@ function updateHud() {
   const buffs = [];
   if (G.next) buffs.push(`✨+${G.next}%`);
   if (G.merc > 0) buffs.push(`🪓×${G.merc}`);
+  if (G.frenzy > 0) buffs.push(`🔥×2 (${G.frenzy})`);
+  const pws = Object.keys(PW).filter(k => G.pw[k]).map(k => PW[k][0] + G.pw[k]).join(''); if (pws) buffs.push(pws);
   $('res').innerHTML = `<span>🪙 <b id="gold">${fmt(shownGold)}</b></span>
     <span>⭐ Niv ${G.lvl}<span class="xpb"><i style="width:${Math.min(100, G.xp / xpNeed() * 100)}%"></i></span></span>
     ${G.streak > 0 ? `<span class="fire t${G.streak >= 10 ? 3 : G.streak >= 5 ? 2 : 1}"><i class="fl">🔥</i>${G.streak} ×${streakK().toFixed(1)}</span>` : ''}
@@ -2015,6 +2238,8 @@ function updateHud() {
     || G.inv.some(isBetter) || G.cycle > 1);
   $('tabA').querySelector('.badge').classList.toggle('on', G.menace >= 70 && Object.keys(UNITS).some(k => G.gold >= uCost(k)));
   $('tabM').querySelector('.badge').classList.toggle('on', mineOn() && G.mine.stock >= mineCap() * .5);
+  $('tabX').querySelector('.badge').classList.toggle('on', !!G.run || G.dd.day !== today());
+  $('tabK').querySelector('.badge').classList.toggle('kev', !!G.kev);
   const m = G.menace;
   document.documentElement.style.setProperty('--tint', `rgb(${Math.round(25 + m * 1.3)},${Math.round(30 - m * .15)},${Math.round(40 - m * .2)})`);
   phone.classList.toggle('danger', m >= 85);
@@ -2089,6 +2314,7 @@ function pickOpt(i, x, y) {
     if (useTiming(c)) timingBar(c, () => gamble(c)); else gamble(c); return;
   }
   if (o.cost) G.gold -= o.cost;
+  if (o.game) { o.game(() => { finish(); later(advance, SP(600)); }); return; }
   if (o.fx) o.fx();
   finish();
   later(advance, SP(450));
@@ -2103,42 +2329,395 @@ function finish() {
 // Combats normaux : à toi d'arrêter l'aiguille. La zone verte fait la taille de ta chance,
 // placée au hasard ; le centre exact (« PARFAIT ») donne un coup critique. En auto-clic : tirage classique.
 const useTiming = c => c.stake && c.stake.fight && !c.assault && c.kind !== 'boss' && !autoOn;
-function timingBar(c, done) {
-  // la zone verte ne fait que 40 % de ta chance, et l'aiguille change de vitesse sans prévenir : il faut viser juste
-  const s = c.stake, ch = clamp(Math.round(s.chance * .4), 3, 40);
-  const z0 = rnd(0, 100 - ch), mid = z0 + ch / 2;
-  const box = document.createElement('div'); box.className = 'roll timing';
-  box.innerHTML = `<div class="rlabel">🎯 ${Math.round(s.chance)}% · arrête l'aiguille dans le vert !</div><div class="track"><div class="zone" style="left:${z0}%;width:${ch}%"></div><div class="perf" style="left:${mid}%"></div><div class="needle" style="transition:none;left:0"></div></div><div class="rres"><span class="thint">👆 TAPE !</span></div>`;
-  c.el.appendChild(box);
-  const nd = box.querySelector('.needle'), P = Math.max(380, 600 - G.chap * 22);
-  let pos = 0, stopped = false, raf, to;
+/* Moteur de l'aiguille, réutilisé par les combats, les expéditions et le donjon du jour.
+   cfg : w (largeur de la zone, %), P (ms par traversée), hits (coups à réussir), drift (zone mobile),
+   ghost (aiguille clignotante), perfW (largeur du PARFAIT), tools (pouvoirs et familier), label.
+   done({ inZ, frac, perfect, gold2, box }) */
+function runNeedle(host, cfg, done) {
+  let w = cfg.w, P = cfg.P, need = cfg.hits || 1, got = 0, fr = 0, retry = 0, gold2 = false;
+  const perfW = cfg.perfW || 4, tools = cfg.tools && !autoOn;
+  const box = document.createElement('div'); box.className = 'roll timing' + (cfg.cls ? ' ' + cfg.cls : '');
+  box.innerHTML = `<div class="rlabel">${cfg.label}</div>${need > 1 ? '<div class="nhits"></div>' : ''}<div class="track"><div class="zone"></div><div class="perf"></div><div class="needle${G.skin.needle ? ' sk-' + G.skin.needle : ''}" style="transition:none;left:0"></div></div><div class="pwr"></div><div class="rres"><span class="thint">👆 TAPE !</span></div>`;
+  host.appendChild(box);
+  const zn = box.querySelector('.zone'), pf = box.querySelector('.perf'), nd = box.querySelector('.needle'), hEl = box.querySelector('.nhits'), pwr = box.querySelector('.pwr');
+  let z0 = 0, zdir = Math.random() < .5 ? 1 : -1;
+  const paint = () => {
+    zn.style.left = z0 + '%'; zn.style.width = w + '%';
+    pf.style.left = (z0 + w / 2) + '%'; pf.style.width = perfW + '%'; pf.style.marginLeft = (-perfW / 2) + '%';
+    if (hEl) hEl.textContent = '🩸'.repeat(need - got) + '✔️'.repeat(got);
+  };
+  const place = () => { z0 = rnd(0, 100 - w); paint(); };
+  place();
+  // Boutons de pouvoirs (ne déclenchent pas l'arrêt de l'aiguille)
+  const btn = (ic, lab, fn) => { const b = document.createElement('button'); b.className = 'pwb'; b.innerHTML = `${ic}<small>${lab}</small>`;
+    b.addEventListener('pointerdown', e => { e.stopPropagation(); e.preventDefault(); if (b.disabled || stopped) return; b.disabled = true; b.classList.add('used'); fn(); tone(1320, .08, { type: 'triangle', vol: .08 }); buzz(15); }); pwr.appendChild(b); };
+  const widen = k => { const ow = w; w = Math.min(90, w * k); z0 = clamp(z0 - (w - ow) / 2, 0, 100 - w); paint(); };
+  if (tools) {
+    if (G.pw.sablier > 0) btn('⏳', `Sablier ×${G.pw.sablier}`, () => { G.pw.sablier--; P *= 1.8; box.classList.add('slowed'); });
+    if (G.pw.oeil > 0) btn('🔍', `Œil ×${G.pw.oeil}`, () => { G.pw.oeil--; widen(1.6); });
+    if (petReady()) { const [ic, n, , k] = PETPW[G.pet]; btn(ic, n, () => {
+      G.petCd = G.n + 20;
+      if (k === 'zone') widen(1.5); else if (k === 'slow') { P *= 2.2; box.classList.add('slowed'); } else if (k === 'retry') retry++;
+      else if (k === 'gold') { gold2 = true; spawn('gain', '🦊 Or ×2 !'); } else if (k === 'auto') { pos = z0 + w / 2; nd.style.left = pos + '%'; later(() => stop(null), 60); }
+    }); }
+    if (G.pw.seconde > 0) { const t = document.createElement('span'); t.className = 'pws'; t.textContent = `🔁×${G.pw.seconde}`; pwr.appendChild(t); }
+  }
+  let pos = 0, stopped = false, paused = false, raf, to;
   let last = performance.now(), dir = 1, k = 1, nextK = last + rnd(250, 550);
   const step = now => {
     if (stopped) return;
     const dt = Math.min(50, now - last); last = now;
-    if (now > nextK) { k = rnd(.6, 1.7); nextK = now + rnd(250, 550); }
-    pos += dir * dt / P * 100 * k;
-    if (pos >= 100) { pos = 200 - pos; dir = -1; } else if (pos <= 0) { pos = -pos; dir = 1; }
-    nd.style.left = pos + '%'; raf = requestAnimationFrame(step);
+    if (!paused) {
+      if (now > nextK) { k = rnd(.6, 1.7); nextK = now + rnd(250, 550); }
+      pos += dir * dt / P * 100 * k;
+      if (pos >= 100) { pos = 200 - pos; dir = -1; } else if (pos <= 0) { pos = -pos; dir = 1; }
+      if (cfg.drift) { z0 += zdir * dt / (P * 2.6) * 100; if (z0 <= 0) { z0 = 0; zdir = 1; } else if (z0 >= 100 - w) { z0 = 100 - w; zdir = -1; } paint(); }
+      if (cfg.ghost) nd.style.opacity = Math.sin(now / 150) > .15 ? 1 : 0;
+      nd.style.left = pos + '%';
+    }
+    raf = requestAnimationFrame(step);
   };
   raf = requestAnimationFrame(step);
-  const stop = e => {
-    if (stopped) return;
-    if (e && e.type === 'pointerdown') { e.stopPropagation(); e.preventDefault(); }
-    if (e && e.type === 'keydown') { if (![' ', 'Enter', 'ArrowUp'].includes(e.key)) return; e.preventDefault(); e.stopPropagation(); }
-    stopped = true; cancelAnimationFrame(raf); clearTimeout(to);
+  const arm = () => { clearTimeout(to); to = setTimeout(() => stop(null), cfg.timeout || 4000); };
+  const finish = ok => {
+    stopped = true; cancelAnimationFrame(raf); clearTimeout(to); nd.style.opacity = 1;
     phone.removeEventListener('pointerdown', stop, true); document.removeEventListener('keydown', stop, true);
-    const inZ = pos >= z0 && pos <= z0 + ch, perfect = inZ && Math.abs(pos - mid) <= 2;
-    const r = inZ ? (pos - z0) / ch * s.chance * .999 : Math.min(99.9, s.chance + Math.max(.5, Math.min(Math.abs(pos - z0), Math.abs(pos - z0 - ch))));
-    c.tim = { r, perfect, box };
-    box.querySelector('.thint')?.remove();
-    tone(inZ ? 990 : 260, .08, { type: 'square', vol: .08 }); buzz(25);
+    box.querySelector('.thint')?.remove(); pwr.remove();
+    const perfect = ok && Math.abs(pos - (z0 + w / 2)) <= perfW / 2;
+    tone(ok ? 990 : 260, .08, { type: 'square', vol: .08 }); buzz(25);
     if (perfect) { box.classList.add('perfect'); spawn('combo', '🎯 PARFAIT !'); tone(1568, .2, { type: 'triangle', at: .08, vol: .1 }); }
-    later(done, SP(perfect ? 520 : 300));
+    save(); done({ inZ: ok, frac: got ? fr / got : 0, perfect, gold2, box });
   };
+  function stop(e) {
+    if (stopped) return;
+    if (e && e.type === 'pointerdown') { if (e.target.closest && e.target.closest('.pwb')) return; e.stopPropagation(); e.preventDefault(); }
+    if (e && e.type === 'keydown') { if (![' ', 'Enter', 'ArrowUp'].includes(e.key)) return; e.preventDefault(); e.stopPropagation(); }
+    if (paused) return;
+    const inZ = pos >= z0 && pos <= z0 + w;
+    if (inZ) {
+      got++; fr += (pos - z0) / w;
+      if (got >= need) return finish(true);
+      // coup réussi mais il en faut d'autres : la zone saute ailleurs et l'aiguille accélère
+      paused = true; tone(1100, .07, { type: 'square', vol: .08 }); buzz(20); spawn('gain', '🩸 Touché ! Encore !');
+      box.classList.remove('punch'); void box.offsetWidth; box.classList.add('punch');
+      later(() => { P *= .85; place(); paused = false; arm(); }, 380); return;
+    }
+    if (retry > 0 || (tools && G.pw.seconde > 0)) {
+      if (retry > 0) retry--; else { G.pw.seconde--; const t = pwr.querySelector('.pws'); if (t) t.textContent = `🔁×${G.pw.seconde}`; }
+      paused = true; tone(330, .1, { type: 'triangle', vol: .08 }); buzz([20, 20, 20]); spawn('gain', '🔁 Seconde chance !');
+      later(() => { place(); paused = false; arm(); }, 450); return;
+    }
+    finish(false);
+  }
   later(() => { if (stopped) return; phone.addEventListener('pointerdown', stop, true); document.addEventListener('keydown', stop, true); }, 150);
-  to = setTimeout(stop, 4000);
+  arm();
 }
+// Combat : la zone verte fait 40 % de ta chance (modifiée par l'élite), au hasard sur la barre
+function timingBar(c, done) {
+  const s = c.stake, E = c.elite ? ELITE[c.elite] : null;
+  const w = Math.max(3, Math.round(clamp(Math.round(s.chance * .4), 3, 40) * (E ? E.w : 1)));
+  const lab = `${E ? `<b class="elab">${E.e} ÉLITE ${E.n}</b> · ` : ''}🎯 ${Math.round(s.chance)}% · arrête l'aiguille dans le vert !${G.frenzy > 0 ? ' <b class="frz">🔥×2</b>' : ''}`;
+  runNeedle(c.el, { w, P: Math.max(380, 600 - G.chap * 22), hits: E && E.hits, drift: E && E.drift, ghost: E && E.ghost, tools: true, perfW: 4, label: lab }, res => {
+    const r = res.inZ ? res.frac * s.chance * .999 : Math.min(99.9, s.chance + rnd(.5, 5));
+    c.tim = { r, perfect: res.perfect, box: res.box, gold2: res.gold2 };
+    // Frénésie : 3 PARFAIT d'affilée = gains ×2 pendant 5 combats
+    if (res.perfect) {
+      G.perfRow = (G.perfRow || 0) + 1;
+      if (G.perfRow >= 3) { G.perfRow = 0; G.frenzy = 5; later(() => { spawn('jackpot', '🔥 FRÉNÉSIE 🔥'); toast('🔥 FRÉNÉSIE !<small>3 PARFAIT d\'affilée : gains ×2 pendant 5 combats</small>', 'achv'); sfx.jackpot(); buzz([60, 40, 60, 40, 160]); }, 250); }
+    } else G.perfRow = 0;
+    later(done, SP(res.perfect ? 520 : 300));
+  });
+}
+/* ---------- PNJ récurrents ---------- */
+const NPC = { marchand: { who: CH.bastien, n: 'Bastien', e: '🧔' }, sorciere: { who: CH.ysalis, n: 'Ysalis', e: '🧙‍♀️' }, chevalier: { who: CH.gauvin, n: 'Sir Gauvin', e: '🛡️' } };
+const repAdd = (k, d) => { G.rep[k] = clamp((G.rep[k] || 0) + d, -5, 5); };
+const repTxt = k => { const r = G.rep[k] || 0; return r >= 3 ? `💚 ${r} (ami)` : r <= -3 ? `💢 ${r} (ennemi)` : `${r > 0 ? '+' : ''}${r}`; };
+
+/* ---------- Mini-jeu : crochetage en rythme ---------- */
+function lockGame(host, pins, done, o = {}) {
+  const box = document.createElement('div'); box.className = 'roll lockg';
+  box.innerHTML = `<div class="rlabel">🔐 Tape quand l'aiguille passe dans l'encoche dorée</div><div class="lring"><div class="larc"></div><div class="lpin"></div><span class="lpins"></span></div><div class="rres"><span class="thint">👆 TAPE !</span></div>`;
+  host.appendChild(box);
+  const arc = box.querySelector('.larc'), pin = box.querySelector('.lpin'), lp = box.querySelector('.lpins');
+  let a = 0, t0 = 0, size = o.size || 44, sp = o.sp || .2, got = 0, miss = 0, stopped = false, raf, last = performance.now(), dir = 1;
+  const place = () => { t0 = (a + rnd(100, 260)) % 360; arc.style.background = `conic-gradient(from ${t0}deg, #ffcf4a 0deg ${size}deg, transparent ${size}deg)`;
+    lp.textContent = '🔓'.repeat(got) + '🔒'.repeat(pins - got) + (miss ? '\n' + '❌'.repeat(miss) : ''); };
+  place();
+  const step = now => { if (stopped) return; const dt = Math.min(50, now - last); last = now; a = ((a + dir * dt * sp) % 360 + 360) % 360; pin.style.transform = `rotate(${a}deg)`; raf = requestAnimationFrame(step); };
+  raf = requestAnimationFrame(step);
+  const end = ok => { stopped = true; cancelAnimationFrame(raf); phone.removeEventListener('pointerdown', tap, true); document.removeEventListener('keydown', tap, true);
+    box.querySelector('.thint')?.remove(); box.querySelector('.rres').innerHTML = ok ? '<b class="win">🔓 OUVERT !</b>' : '<b class="lose">🔒 RATÉ</b>';
+    later(() => { box.remove(); done(ok); }, 700); };
+  function tap(e) {
+    if (stopped) return;
+    if (e.type === 'keydown') { if (![' ', 'Enter', 'ArrowUp'].includes(e.key)) return; }
+    e.preventDefault(); e.stopPropagation();
+    const d = ((a - t0) % 360 + 360) % 360;
+    if (d <= size) { got++; tone(900 + got * 150, .07, { type: 'square', vol: .08 }); buzz(15); if (got >= pins) return end(true); dir = -dir; sp *= 1.15; size = Math.max(26, size - 4); place(); }
+    else { miss++; tone(200, .12, { type: 'sawtooth', vol: .08 }); buzz(60); box.classList.remove('punch'); void box.offsetWidth; box.classList.add('punch'); if (miss >= (o.lives || 2)) return end(false); place(); }
+  }
+  later(() => { if (stopped) return; phone.addEventListener('pointerdown', tap, true); document.addEventListener('keydown', tap, true); }, 200);
+}
+
+/* ---------- Expéditions rogue-like : 10 salles, des portes à choisir, des reliques temporaires, un boss ---------- */
+const RELIC = {
+  loupe: ['🔍', 'Loupe', 'zone verte +25 %'], plume: ['🪶', 'Plume', 'aiguille plus lente'], coeur: ['❤️', 'Cœur de chêne', '+1 vie max'],
+  bourse: ['💰', 'Bourse sans fond', '+30 % de butin'], trefle: ['🍀', 'Trèfle', 'PARFAIT deux fois plus large'],
+  bouclier: ['🛡️', 'Écu béni', 'ignore le premier coup reçu'], aimant: ['🧲', 'Aimant', 'trésors ×2'],
+};
+const ROOM = {
+  combat: ['⚔️', 'Combat', 'une bande garde la salle'], tresor: ['🗝️', 'Trésor', 'un coffre à crocheter'], marchand: ['🧔', 'Marchand', 'reliques et potions'],
+  piege: ['📌', 'Piège', 'saute au bon moment'], repos: ['🏕️', 'Repos', 'soigne-toi ou fouille'], pnj: ['❔', 'Rencontre', 'un visage connu…'], boss: ['💀', 'Boss', 'le gardien du donjon'],
+};
+const hasR = k => G.run && G.run.rel.includes(k);
+const runGain = (m = 1) => Math.round(B() * (.6 + .18 * G.run.room) * gainK() * m * (hasR('bourse') ? 1.3 : 1));
+const expReady = () => G.n >= G.expCd;
+function runMap(rng) {
+  const W = [['combat', 40], ['tresor', 15], ['marchand', 12], ['piege', 13], ['repos', 10], ['pnj', 10]], map = [];
+  for (let i = 1; i <= 9; i++) {
+    const n = rng() < .5 ? 2 : 3, ds = [];
+    while (ds.length < n) { let t = rng() * 100, k = 'combat'; for (const [x, w] of W) { if (t < w) { k = x; break; } t -= w; } if (!ds.includes(k) || ds.length >= 5) ds.push(k); }
+    map.push(ds);
+  }
+  map.push(['boss']);
+  return map;
+}
+function runStart(daily) {
+  if (G.run) return runView();
+  if (daily) { if (G.dd.day === today()) return; G.dd.day = today(); G.dd.done = 0; G.dd.score = 0; }
+  else { if (!expReady()) return; G.expCd = G.n + 30; }
+  const rng = daily ? seeded(today() + 'donjon') : Math.random;
+  G.run = { room: 1, hp: 3, max: 3, pot: 0, rel: [], map: runMap(rng), st: 'doors', daily: !!daily, sh: 0, ally: 0, msg: daily ? '🗝️ Donjon du jour : le même pour tout le monde aujourd\'hui. Une seule tentative !' : '🧭 Choisis ta porte. Les reliques ne durent que le temps de l\'expédition.' };
+  if (daily) G.run.rel.push(['loupe', 'plume', 'trefle', 'bouclier'][Math.floor(rng() * 4)]);
+  save(); sfx.reveal(2); runView();
+}
+let runBusy = false;
+function runView() {
+  const R = G.run; if (!R) { document.querySelector('.run')?.remove(); return; }
+  let d = document.querySelector('.run');
+  if (!d) { d = document.createElement('div'); d.className = 'run'; $('phone').append(d); d.onclick = runClick; }
+  const hearts = '❤️'.repeat(Math.max(0, R.hp)) + '🖤'.repeat(Math.max(0, R.max - R.hp));
+  const rel = R.rel.map(k => `<span title="${RELIC[k][1]} : ${RELIC[k][2]}">${RELIC[k][0]}</span>`).join('') || '<i>aucune relique</i>';
+  const prog = R.map.map((_, i) => `<i class="${i + 1 < R.room ? 'ok' : i + 1 === R.room ? 'on' : ''}">${i === 9 ? '💀' : ''}</i>`).join('');
+  let body = '';
+  if (R.st === 'doors') {
+    const ds = R.map[R.room - 1];
+    body = `<div class="rtxt">${R.msg || ''}</div><div class="doors">${ds.map((t, i) => `<button class="door" data-r="door:${i}">${pic('img/a_porte.png')}<b>${ROOM[t][0]} ${ROOM[t][1]}</b><small>${ROOM[t][2]}</small></button>`).join('')}</div>`;
+  } else body = roomHtml(R);
+  d.innerHTML = `<div class="rhead"><b>${R.daily ? '🗝️ Donjon du jour' : '🧭 Expédition'} · salle ${R.room}/10</b><span>${hearts}</span><span>💰 ${fmt(R.pot)}</span></div>
+    <div class="rprog">${prog}</div><div class="rrel">${rel}</div><div class="rbody">${body}</div>
+    <div class="rfoot"><button data-r="pause">⏸️ Plus tard</button>${R.pot ? `<button data-r="flee">🏃 Fuir (garder ${fmt(Math.round(R.pot * .7))} 🪙)</button>` : ''}</div>`;
+}
+function roomHtml(R) {
+  const t = R.st, btn = (k, l, sub, dis) => `<button class="rbtn" data-r="${k}" ${dis ? 'disabled' : ''}>${l}${sub ? `<small>${sub}</small>` : ''}</button>`;
+  const art = a => `<div class="rart">${a}</div>`;
+  if (t === 'combat') return art(artImg(R.foe)) + `<div class="rtxt">${R.msg || 'Une bande de la Horde garde la salle.'}</div>` + btn('fight', '⚔️ Combattre', `+${fmt(runGain())} 🪙 au butin · une défaite coûte ❤️`);
+  if (t === 'tresor') return art(pic('img/a_coffre.png')) + `<div class="rtxt">${R.msg || 'Un coffre fermé à goupilles. Et s\'il mordait ?'}</div>` + btn('pick', '🔐 Crocheter', `+${fmt(runGain(2 * (hasR('aimant') ? 2 : 1)))} 🪙 · 35 % : une relique`) + btn('next', '🚶 Laisser le coffre');
+  if (t === 'piege') return art(pic('img/a_piege.png')) + `<div class="rtxt">${R.msg || 'Des pics sortent du sol en rythme. Saute au bon moment !'}</div>` + btn('trap', '🦘 Traverser', 'aiguille rapide · raté = ❤️');
+  if (t === 'repos') return art(pic('img/a_feu.png')) + `<div class="rtxt">${R.msg || 'Un feu de camp encore chaud. Le calme avant la tempête.'}</div>` + btn('heal', '❤️ Se reposer', '+1 vie', R.hp >= R.max) + btn('search', '🔎 Fouiller les sacs', `+${fmt(runGain())} 🪙`);
+  if (t === 'marchand') {
+    const k = G.rep.marchand, pk = k >= 3 ? .7 : k <= -3 ? 1.5 : 1, offer = R.offer || [];
+    return art(porImg(CH.bastien)) + `<div class="rtxt">${R.msg || `Bastien a installé son étal dans le donjon${k >= 3 ? ' : « Prix d\'ami ! »' : k <= -3 ? ' et te regarde de travers (prix ×1,5)' : ''}. Il ne prend que le butin de l'expédition.`}</div>`
+      + offer.map(r => btn('buy:' + r, `${RELIC[r][0]} ${RELIC[r][1]} · ${fmt(Math.round(runGain(1.5) * pk))} 🪙`, RELIC[r][2], R.pot < Math.round(runGain(1.5) * pk))).join('')
+      + btn('potion', `🧪 Potion · ${fmt(Math.round(runGain() * pk))} 🪙`, '+1 vie', R.pot < Math.round(runGain() * pk) || R.hp >= R.max) + btn('next', '🚶 Continuer');
+  }
+  if (t === 'pnj') {
+    const n = R.npc, N = NPC[n], rp = G.rep[n];
+    if (n === 'sorciere') return art(porImg(N.who)) + `<div class="rtxt">${R.msg || (rp >= 3 ? 'Ysalis : « Tiens, prends ceci. Les amis ne paient pas. »' : rp <= -3 ? 'Ysalis : « Toi ! » Elle lève son bâton…' : 'Ysalis : « Une relique contre un peu de ta vie ? »')}</div>`
+      + (rp <= -3 ? btn('curse', '🌩️ Encaisser la malédiction', 'perd une relique (ou ❤️)') : rp >= 3 ? btn('gift', '✨ Accepter la relique', 'gratuit · réputation +1') : btn('deal', '🩸 Accepter', '−1 ❤️ · une relique', R.hp <= 1) + btn('next', '🙅 Refuser'));
+    if (n === 'chevalier') return art(porImg(N.who)) + `<div class="rtxt">${R.msg || (rp <= -3 ? 'Sir Gauvin te barre la route : « Pas sans un duel ! »' : 'Sir Gauvin : « Je t\'accompagne pour le prochain combat ! »')}</div>`
+      + (rp <= -3 ? btn('duel', '⚔️ Duel du rival', `2 coups · +${fmt(runGain(3))} 🪙 / ❤️`) : btn('ally', '🤝 Accepter son aide', 'le prochain combat est gagné d\'office · réputation +1') + btn('next', '🙅 Refuser poliment'));
+    return art(porImg(N.who)) + `<div class="rtxt">${R.msg || (rp <= -3 ? 'Bastien file avec une partie de ton butin !' : 'Bastien : « Double ou rien sur ton butin ? Pile ou face ! »')}</div>`
+      + (rp <= -3 ? btn('robbed', '😤 Le maudire', 'il t\'a volé 25 % du butin') : btn('flip', '🪙 Pile ou face', '50 % : butin ×2 · sinon ÷2', !R.pot) + btn('next', '🙅 Non merci'));
+  }
+  if (t === 'boss') { const b = CHAPS[G.chap].boss;
+    return art(porImg({ e: b.e, h: b.h })) + `<div class="rtxt">${R.msg || `Le gardien du donjon, l'ombre ${deN(b.name)}, se dresse devant toi. Il faut 3 coups dans le vert !`}</div>` + btn('boss', '💀 Affronter le gardien', '3 coups · zone minuscule · défaite = ❤️'); }
+  return '';
+}
+function runClick(e) {
+  const b = e.target.closest('[data-r]'); if (!b || b.disabled || runBusy) return;
+  const R = G.run; if (!R) return;
+  const [a, v] = b.dataset.r.split(':');
+  sfx.tick(4);
+  if (a === 'pause') { document.querySelector('.run')?.remove(); refresh(); return; }
+  if (a === 'flee') { ask(`<b>Fuir le donjon ?</b>Tu repars avec ${fmt(Math.round(R.pot * .7))} 🪙 (70 % du butin).`, '🏃 Fuir', () => runEnd('flee')); return; }
+  if (a === 'door') {
+    const t = R.map[R.room - 1][+v]; R.st = t; R.msg = '';
+    if (t === 'combat') R.foe = pick(CHAPS[G.chap].foes).e;
+    if (t === 'marchand') R.offer = Object.keys(RELIC).filter(k => !R.rel.includes(k)).sort(() => Math.random() - .5).slice(0, 2);
+    if (t === 'pnj') R.npc = pick(Object.keys(NPC));
+    sfx.reveal(1); save(); runView(); return;
+  }
+  const host = document.querySelector('.run .rbody');
+  const W = base => base * (hasR('loupe') ? 1.25 : 1), PP = base => base * (hasR('plume') ? 1.3 : 1), pw = hasR('trefle') ? 8 : 4;
+  const needle = (cfg, cb) => { runBusy = true; host.querySelectorAll('.rbtn').forEach(x => x.disabled = true); runNeedle(host, Object.assign({ perfW: pw, tools: true }, cfg), r => { runBusy = false; later(() => cb(r), 650); }); };
+  if (a === 'fight') {
+    if (R.ally) { R.ally = 0; const g = runGain(); R.pot += g; coins(6); sfx.win(); return runNext(`🛡️ Sir Gauvin balaie la bande à ta place ! +${fmt(g)} 🪙`); }
+    const deep = R.room >= 4 && Math.random() < .35, ghost = R.room >= 7 && Math.random() < .35;
+    needle({ w: W(clamp(24 - R.room * 1.3, 9, 24)), P: PP(Math.max(380, 560 - R.room * 16)), drift: deep, ghost, label: `⚔️ Salle ${R.room}${deep ? ' · 💨 zone mobile' : ''}${ghost ? ' · 👻 aiguille fantôme' : ''}` }, r => {
+      if (r.inZ) { const g = runGain(r.perfect ? 1.6 : 1) * (r.gold2 ? 2 : 1); R.pot += g; coins(6); sfx.win(); runNext(`✅ Bande vaincue ! +${fmt(g)} 🪙${r.perfect ? ' (PARFAIT)' : ''}`); }
+      else { sfx.lose(); if (runHurt()) runNext('❌ Tu passes, mais blessé.'); }
+    }); return;
+  }
+  if (a === 'trap') { needle({ w: W(26), P: PP(400), label: '📌 Saute au-dessus des pics !', tools: false }, r => { if (r.inZ) { sfx.win(); runNext('🦘 Tu passes sans une égratignure.'); } else { sfx.lose(); if (runHurt()) runNext('📌 Aïe ! Les pics t\'ont eu.'); } }); return; }
+  if (a === 'pick') {
+    runBusy = true; host.querySelectorAll('.rbtn').forEach(x => x.disabled = true);
+    lockGame(host, R.room > 5 ? 4 : 3, ok => {
+      runBusy = false;
+      if (ok) { const g = runGain(2 * (hasR('aimant') ? 2 : 1)); R.pot += g; coins(10); sfx.win(); let m = `🔓 +${fmt(g)} 🪙`;
+        if (Math.random() < .35) { const k = runRelic(); if (k) m += ` · relique : ${RELIC[k][0]} ${RELIC[k][1]}`; } runNext(m); }
+      else if (Math.random() < .3) { sfx.lose(); if (runHurt()) runNext('👅 C\'était une mimique ! Elle t\'a mordu.'); }
+      else runNext('🔒 Le crochet casse. Le coffre reste fermé.');
+    }); return;
+  }
+  if (a === 'next') return runNext('');
+  if (a === 'heal') { R.hp = Math.min(R.max, R.hp + 1); sfx.level(); return runNext('❤️ Tu reprends des forces.'); }
+  if (a === 'search') { const g = runGain(); R.pot += g; coins(5); return runNext(`🔎 +${fmt(g)} 🪙 dans un vieux sac.`); }
+  const pk = G.rep.marchand >= 3 ? .7 : G.rep.marchand <= -3 ? 1.5 : 1;
+  if (a === 'buy') { const c = Math.round(runGain(1.5) * pk); if (R.pot < c) return; R.pot -= c; runRelic(v); R.offer = R.offer.filter(x => x !== v); repAdd('marchand', 1); sfx.buy(); R.msg = `${RELIC[v][0]} ${RELIC[v][1]} achetée !`; save(); runView(); return; }
+  if (a === 'potion') { const c = Math.round(runGain() * pk); if (R.pot < c || R.hp >= R.max) return; R.pot -= c; R.hp++; sfx.buy(); R.msg = '🧪 +1 vie'; save(); runView(); return; }
+  if (a === 'gift') { repAdd('sorciere', 1); const k = runRelic(); return runNext(k ? `✨ Ysalis t'offre : ${RELIC[k][0]} ${RELIC[k][1]}` : '✨ Ysalis te bénit.'); }
+  if (a === 'deal') { R.hp--; repAdd('sorciere', 1); const k = runRelic(); return runNext(`🩸 −1 vie · ${k ? RELIC[k][0] + ' ' + RELIC[k][1] : 'rien de plus'}`); }
+  if (a === 'curse') { if (R.rel.length) { const k = R.rel.splice(ri(0, R.rel.length - 1), 1)[0]; repAdd('sorciere', 1); return runNext(`🌩️ Ta relique ${RELIC[k][0]} ${RELIC[k][1]} tombe en poussière.`); } repAdd('sorciere', 1); if (runHurt()) runNext('🌩️ La foudre te frappe.'); return; }
+  if (a === 'ally') { R.ally = 1; repAdd('chevalier', 1); return runNext('🤝 Sir Gauvin marche à tes côtés.'); }
+  if (a === 'duel') { needle({ w: W(16), P: PP(480), hits: 2, label: '⚔️ Duel contre Sir Gauvin' }, r => { if (r.inZ) { const g = runGain(3); R.pot += g; repAdd('chevalier', 2); sfx.win(); coins(10); runNext(`🛡️ Gauvin s'incline : +${fmt(g)} 🪙 · réputation +2`); } else { repAdd('chevalier', -1); sfx.lose(); if (runHurt()) runNext('🛡️ Gauvin te met à terre.'); } }); return; }
+  if (a === 'robbed') { const l = Math.round(R.pot * .25); R.pot -= l; repAdd('marchand', 1); return runNext(`😤 −${fmt(l)} 🪙. Bastien a disparu.`); }
+  if (a === 'flip') { repAdd('marchand', 1); if (Math.random() < .5) { R.pot *= 2; coins(12); sfx.jackpot(); return runNext(`🪙 PILE ! Butin doublé : ${fmt(R.pot)} 🪙`); } R.pot = Math.round(R.pot / 2); sfx.lose(); return runNext(`🪙 Face… butin divisé par 2.`); }
+  if (a === 'boss') {
+    needle({ w: W(14), P: PP(480), hits: 3, drift: true, label: '💀 Le gardien · 3 coups dans le vert !' }, r => {
+      if (r.inZ) { flashIt('#fff', .8); shakeIt(2); sfx.jackpot(); runEnd('win'); }
+      else { sfx.lose(); if (runHurt()) { R.msg = '💀 Le gardien te repousse… et se relève. Recommence !'; save(); runView(); } }
+    }); return;
+  }
+}
+function runRelic(k) {
+  const R = G.run; k = k || pick(Object.keys(RELIC).filter(x => !R.rel.includes(x)));
+  if (!k || R.rel.includes(k)) return null;
+  R.rel.push(k); if (k === 'coeur') { R.max++; R.hp++; }
+  return k;
+}
+function runHurt() {
+  const R = G.run;
+  if (hasR('bouclier') && !R.sh) { R.sh = 1; floatTxt('🛡️ L\'écu béni absorbe le coup'); return true; }
+  R.hp--; flashIt('#f0244a', .4); shakeIt(1); buzz(150);
+  if (R.hp <= 0) { runEnd('dead'); return false; }
+  return true;
+}
+function runNext(msg) {
+  const R = G.run; if (!R) return;
+  R.room++; R.st = 'doors'; R.msg = msg; save(); runView();
+}
+function runEnd(how) {
+  const R = G.run; if (!R) return;
+  const k = how === 'win' ? 1 : how === 'flee' ? .7 : .3, g = Math.round(R.pot * k), reached = how === 'win' ? 10 : R.room - 1;
+  G.gold += g; G.rs.gold += g;
+  let msg = `${fmt(g)} 🪙`, item = null;
+  if (R.daily) { G.dd.score = reached * 100 + Math.round(R.pot / Math.max(1, B()) * 10); G.dd.best = Math.max(G.dd.best || 0, G.dd.score); G.dd.done = 1; }
+  else G.expBest = Math.max(G.expBest || 0, reached);
+  if (how === 'win') {
+    item = makeItem(rollRarity(1.5, 2));
+    if (Math.random() < .3) giveEgg('trouvé au fond du donjon', 1.5);
+    if (R.daily) { G.crowns += 1; msg += ' · +1 👑'; }
+  }
+  G.run = null; save();
+  document.querySelector('.run')?.remove();
+  const title = how === 'win' ? (R.daily ? '🗝️ DONJON DU JOUR VAINCU !' : '🧭 EXPÉDITION RÉUSSIE !') : how === 'flee' ? '🏃 TU AS FUI LE DONJON' : '💀 TU T\'ES ÉVANOUI';
+  toast(`${title}<small>salle ${reached}/10 · ${msg}${R.daily ? ` · score ${G.dd.score}` : ''}</small>`, how === 'win' ? 'achv' : '');
+  if (how === 'win') { coins(16); spawn('jackpot', '🏆 VICTOIRE 🏆'); }
+  if (item) showPack(item, gainItem(item), refresh); else refresh();
+}
+
+/* ---------- Mini-jeu : pêche au lac (3 lancers, tape quand ça mord) ---------- */
+function fishGame() {
+  if (G.n < G.fishCd) return;
+  G.fishCd = G.n + 15; save();
+  const d = document.createElement('div'); d.className = 'mg2 fish';
+  d.innerHTML = `<div class="mgt">🎣 Pêche au lac</div><div class="mgs">Attends… et tape dès que tu vois ❗</div><div class="bob">🎣</div><div class="mgr"></div><button class="mgx" style="display:none">Rentrer</button>`;
+  $('phone').append(d);
+  const st = d.querySelector('.mgs'), bob = d.querySelector('.bob'), res = d.querySelector('.mgr');
+  let cast = 0, phase = 'wait', t0 = 0, tm, total = 0; const got = [];
+  const next = () => {
+    if (cast >= 3) { phase = 'end'; st.innerHTML = `Fini ! ${got.length ? got.join(' ') : 'rien cette fois'}${total ? `<br><b>+${fmt(total)} 🪙</b>` : ''}`; d.querySelector('.mgx').style.display = ''; G.gold += total; G.rs.gold += total; if (total) coins(8); save(); return; }
+    cast++; phase = 'wait'; bob.className = 'bob'; bob.textContent = '🎣'; st.textContent = `Lancer ${cast}/3 · attends…`;
+    tm = setTimeout(() => { phase = 'bite'; t0 = performance.now(); bob.className = 'bob bite'; bob.textContent = '❗'; tone(1200, .08, { type: 'square', vol: .1 }); buzz(30);
+      tm = setTimeout(() => { if (phase !== 'bite') return; phase = 'miss'; st.textContent = '💨 Trop lent, il s\'est décroché !'; bob.className = 'bob'; later(next, 1100); }, 480); }, rnd(1200, 3600));
+  };
+  d.addEventListener('pointerdown', e => {
+    e.stopPropagation(); e.preventDefault();
+    if (e.target.closest('.mgx')) { d.remove(); refresh(); return; }
+    if (phase === 'wait') { clearTimeout(tm); phase = 'miss'; st.textContent = '🙊 Trop tôt ! Le poisson a fui.'; sfx.near(); later(next, 1100); return; }
+    if (phase !== 'bite') return;
+    clearTimeout(tm); phase = 'got';
+    const rt = performance.now() - t0, q = Math.random() + (rt < 250 ? .25 : 0);
+    let m;
+    if (q > 1.12) { const it = makeItem(rollRarity(1)); m = '🍾'; gainItem(it); st.innerHTML = `🍾 Une bouteille ! Dedans : <span style="color:${RAR[it.r].c}">${esc(it.n)}</span>`; }
+    else if (q > .9) { const g = Math.round(B() * 5 * gainK()); total += g; m = '🐠'; st.textContent = `✨ Poisson doré ! +${fmt(g)} 🪙`; G.shards += 3; }
+    else if (q > .55) { const g = Math.round(B() * 2.5 * gainK()); total += g; m = '🐟'; st.textContent = `🐟 Belle prise ! +${fmt(g)} 🪙`; }
+    else { const g = Math.round(B() * gainK()); total += g; m = '🐡'; st.textContent = `🐡 Petit poisson. +${fmt(g)} 🪙`; }
+    got.push(m); res.textContent = got.join(' '); bob.className = 'bob'; bob.innerHTML = pic('img/a_poisson.png');
+    sfx.win(); buzz(40); later(next, 1300);
+  });
+  ['pointerup', 'click'].forEach(ev => d.addEventListener(ev, e => e.stopPropagation()));
+  later(next, 500);
+}
+
+/* ---------- Mini-jeu : course de familiers (pari) ---------- */
+const RACERS = [['loup', 'Loup', 2, .42], ['renard', 'Renard', 3, .27], ['hibou', 'Hibou', 4, .19], ['slime', 'Slime', 6, .12]];
+function raceGame() {
+  if (G.n < G.raceCd) return;
+  const bet = Math.min(G.gold, Math.round(B() * 2));
+  if (bet < 1) { floatTxt("Pas assez d'or 😢"); return; }
+  const d = document.createElement('div'); d.className = 'mg2 race';
+  d.innerHTML = `<div class="mgt">🏁 Course de familiers</div><div class="mgs">Mise : <b>${fmt(bet)} 🪙</b> · sur qui paries-tu ?</div>
+    <div class="lanes">${RACERS.map(([k, n, o], i) => `<div class="lane"><span class="rc" data-i="${i}">${pic(`img/a_${PETS[k].img}.png`)}</span><i class="fin">🏁</i></div>`).join('')}</div>
+    <div class="rbets">${RACERS.map(([k, n, o], i) => `<button data-b="${i}">${n}<small>×${o}</small></button>`).join('')}</div><button class="mgx">Annuler</button>`;
+  $('phone').append(d);
+  const st = d.querySelector('.mgs');
+  ['pointerdown', 'pointerup'].forEach(ev => d.addEventListener(ev, e => e.stopPropagation()));
+  d.addEventListener('click', e => {
+    e.stopPropagation();
+    if (e.target.closest('.mgx')) { d.remove(); refresh(); return; }
+    const b = e.target.closest('[data-b]'); if (!b || d.dataset.go) return;
+    d.dataset.go = 1; const pickI = +b.dataset.b;
+    G.raceCd = G.n + 10; G.gold -= bet; save(); updateHud();
+    d.querySelector('.rbets').remove(); d.querySelector('.mgx').style.display = 'none';
+    let t = Math.random(), win = 0; for (let i = 0; i < RACERS.length; i++) { if (t < RACERS[i][3]) { win = i; break; } t -= RACERS[i][3]; }
+    const T = RACERS.map((_, i) => i === win ? 4200 : 4200 + rnd(250, 1100)), off = RACERS.map(() => rnd(0, 6));
+    st.innerHTML = `Tu paries sur <b>${RACERS[pickI][1]}</b>… PARTEZ !`; tone(660, .2, { type: 'square', vol: .08 });
+    const els = [...d.querySelectorAll('.rc')], t0 = performance.now();
+    const step = now => {
+      const e = now - t0;
+      els.forEach((el, i) => { const p = Math.min(1, e / T[i]), w = p < 1 ? Math.sin(e / 160 + off[i]) * .035 * (1 - p) : 0; el.style.left = (clamp(p + w, 0, 1) * 82) + '%'; });
+      if (e < Math.max(...T)) requestAnimationFrame(step);
+      else {
+        const ok = win === pickI, g = ok ? bet * RACERS[pickI][2] : 0;
+        G.gold += g; if (ok) { G.rs.gold += g - bet; coins(12); sfx.jackpot(); } else sfx.lose();
+        st.innerHTML = `${RACERS[win][1]} gagne !<br>${ok ? `<b class="win">+${fmt(g)} 🪙</b>` : `<b class="lose">−${fmt(bet)} 🪙</b>`}`;
+        els[win].classList.add('won'); save(); updateHud();
+        const x = d.querySelector('.mgx'); x.textContent = 'Rentrer'; x.style.display = '';
+      }
+    };
+    requestAnimationFrame(step);
+  });
+}
+
+/* ---------- Onglet Expé : expéditions, donjon du jour, pêche, course, réputation ---------- */
+function renderExp() {
+  const R = G.run, dd = G.dd.day === today();
+  const cd = (n, k) => G.n >= n ? '' : ` · dans ${n - G.n} carte${n - G.n > 1 ? 's' : ''}`;
+  $('kingdom').innerHTML = `<div class="xhero"><b>🧭 Expéditions</b><span>Explore, pêche, parie… et fais-toi des amis.</span></div>
+    <div class="xcard">${pic('img/a_porte.png')}<div><b>🧭 Expédition rogue-like</b><small>10 salles · tu choisis tes portes · reliques temporaires · un gardien au bout. 3 vies. Record : salle ${G.expBest || 0}/10</small>
+      ${R && !R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre l\'expédition</button>' : `<button class="btn pres" data-a="xp:start" ${!expReady() || R ? 'disabled' : ''}>🧭 Partir${cd(G.expCd)}</button>`}</div></div>
+    <div class="xcard">${pic('img/a_cle.png')}<div><b>🗝️ Donjon du jour</b><small>Le même donjon pour tout le monde aujourd'hui, une seule tentative. Vaincu : +1 👑 et un objet. Meilleur score : ${G.dd.best || 0}${dd && G.dd.done ? ` · aujourd'hui : ${G.dd.score}` : ''}</small>
+      ${R && R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre le donjon</button>' : `<button class="btn pres" data-a="xp:daily" ${dd || R ? 'disabled' : ''}>${dd ? '✅ Déjà tenté aujourd\'hui' : '🗝️ Entrer'}</button>`}</div></div>
+    <div class="xcard">${pic('img/a_poisson.png')}<div><b>🎣 Pêche au lac</b><small>3 lancers. Tape dès que ça mord : poissons, poissons dorés, et parfois une bouteille…</small>
+      <button class="btn pres" data-a="xp:fish" ${G.n < G.fishCd ? 'disabled' : ''}>🎣 Pêcher${cd(G.fishCd)}</button></div></div>
+    <div class="xcard">${pic('img/a_renard.png')}<div><b>🏁 Course de familiers</b><small>Mise ${fmt(Math.round(B() * 2))} 🪙 sur un coureur : ×2 à ×6.</small>
+      <button class="btn pres" data-a="xp:race" ${G.n < G.raceCd || G.gold < 1 ? 'disabled' : ''}>🏁 Parier${cd(G.raceCd)}</button></div></div>
+    <div class="ksec">🤝 Réputation</div><div class="khint">À +3, ils t'aident (cadeaux, bénédictions, +8 % contre les boss). À −3, ils te trahissent. Tu les croises en Aventure et dans les expéditions.</div>
+    <div class="reps">${Object.entries(NPC).map(([k, N]) => `<div><span class="rp">${porImg(N.who)}</span><b>${N.n}</b><i class="rbar"><i style="left:${(G.rep[k] + 5) * 10}%"></i></i>${repTxt(k)}</div>`).join('')}</div>`;
+}
+
 function bossDuel(c, done) {
   const s = c.stake, art = c.el.querySelector('.art span')?.innerHTML || esc(c.art || '💀');
   const GOAL = 30, DUR = 6500;
@@ -2202,6 +2781,8 @@ function gamble(c) {
     amt = s.win;
     if (s.fight && TL('marchand', 4)) amt += Math.min(G.gold * .01, B() * 3);
     if (s.fight && !s.noCrit && (c.tim?.perfect || Math.random() * 100 < critP())) { crit = true; amt *= TL('guerrier', 4) ? 4 : 3; G.f.crit = 1; }
+    if (s.fight && G.frenzy > 0) { amt *= 2; c.frz = 1; }
+    if (c.tim && c.tim.gold2) amt *= 2;
     amt = Math.round(amt); G.gold += amt; G.bigWin = Math.max(G.bigWin, amt);
     if (s.golden) G.f.golden = 1;
     if (s.bet === 10) G.f.tout = 1;
@@ -2225,8 +2806,8 @@ function gamble(c) {
   }
   if (s.bet === 10) G.bet = 1;
   if (s.fight) {
-    G.next = 0; if (G.merc > 0) G.merc--;
-    if (win) { G.W++; G.streak++; G.bestStreak = Math.max(G.bestStreak, G.streak); G.lossStreak = 0; G.menace -= 2; questProg('streak', G.streak, 1); }
+    G.next = 0; if (G.merc > 0) G.merc--; if (G.frenzy > 0) G.frenzy--;
+    if (win) { G.W++; G.streak++; if (G.streak % 3 === 0) gainPw(); G.bestStreak = Math.max(G.bestStreak, G.streak); G.lossStreak = 0; G.menace -= 2; questProg('streak', G.streak, 1); }
     else { G.L++; G.streak = 0; G.lossStreak++; G.menace += 4; }
     // succès caché : perdre 5 fois de suite à 90 % ou plus
     G.f.l90 = !win && s.chance >= 90 ? (G.f.l90 || 0) + 1 : 0; if (G.f.l90 >= 5) G.f.l90ok = 1;
@@ -2251,7 +2832,7 @@ function gamble(c) {
   save();
   (c.assault ? battleAnim : c.tim ? (c2, ch, dp, cb) => cb(c.tim.box) : roll)(c, s.chance, disp, box => {
     box.querySelector('.rres').innerHTML = win
-      ? `<b class="win">${crit ? `💥 CRITIQUE ×${TL('guerrier', 4) ? 4 : 3} !` : c.assault ? 'LES MURS TIENNENT !' : c.winTxt || 'VICTOIRE !'}</b><span>+${fmt(amt)} 🪙</span>${s.fight && G.streak >= 2 ? `<small class="cmb">🔥 Combo ${G.streak} · gains ×${streakK().toFixed(1)}</small>` : ''}`
+      ? `<b class="win">${crit ? `💥 CRITIQUE ×${TL('guerrier', 4) ? 4 : 3} !` : c.assault ? 'LES MURS TIENNENT !' : c.winTxt || 'VICTOIRE !'}</b><span>+${fmt(amt)} 🪙${c.frz ? ' <b class="frz">🔥×2</b>' : ''}</span>${s.fight && G.streak >= 2 ? `<small class="cmb">🔥 Combo ${G.streak} · gains ×${streakK().toFixed(1)}</small>` : ''}`
       : `<b class="lose">${c.assault ? '🔥 LES MURS CÈDENT' : near ? '😱 SI PRÈS !' : 'DÉFAITE'}</b><span>−${fmt(amt)} 🪙</span>`;
     box.classList.remove('tense'); box.classList.add('punch');
     const bossKill = c.kind === 'boss' && !c.phaseMid && !c.assault;
@@ -2458,8 +3039,10 @@ function tone(f, d, o = {}) {
   const t = c.currentTime + (o.at || 0), os = c.createOscillator(), g = c.createGain();
   os.type = o.type || 'sine'; os.frequency.setValueAtTime(f, t);
   if (o.to) os.frequency.exponentialRampToValueAtTime(o.to, t + d);
-  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(o.vol || .15, t + .01); g.gain.exponentialRampToValueAtTime(.0001, t + d);
-  os.connect(g); g.connect(o.bus || AU.m); os.start(t); os.stop(t + d + .05);
+  g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(o.vol || .15, t + (o.att || .01)); g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  let src = os;
+  if (o.lp) { const fl = c.createBiquadFilter(); fl.type = 'lowpass'; fl.Q.value = o.q || 1; fl.frequency.setValueAtTime(o.lp, t); if (o.lpTo) fl.frequency.exponentialRampToValueAtTime(o.lpTo, t + d); os.connect(fl); src = fl; }
+  src.connect(g); g.connect(o.bus || AU.m); os.start(t); os.stop(t + d + .05);
 }
 function noise(d, o = {}) {
   const c = actx(); if (!c) return;
@@ -2468,8 +3051,9 @@ function noise(d, o = {}) {
   const s = c.createBufferSource(), f = c.createBiquadFilter(), g = c.createGain();
   s.buffer = AU.nb; f.type = o.hp ? 'highpass' : 'lowpass'; f.frequency.setValueAtTime(o.f || 1000, t);
   if (o.to) f.frequency.exponentialRampToValueAtTime(o.to, t + d);
-  g.gain.setValueAtTime(o.vol || .15, t); g.gain.exponentialRampToValueAtTime(.0001, t + d);
-  s.connect(f); f.connect(g); g.connect(AU.m); s.start(t); s.stop(t + d + .05);
+  if (o.att) { g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(o.vol || .15, t + o.att); } else g.gain.setValueAtTime(o.vol || .15, t);
+  g.gain.exponentialRampToValueAtTime(.0001, t + d);
+  s.connect(f); f.connect(g); g.connect(o.bus || AU.m); s.start(t); s.stop(t + d + .05);
 }
 const chord = (fs, d, o) => fs.forEach(f => tone(f, d, o));
 const sfx = {
@@ -2490,34 +3074,71 @@ const sfx = {
   buy: () => { tone(1200, .07, { type: 'square', vol: .05 }); tone(1800, .15, { type: 'triangle', at: .06, vol: .08 }); },
 };
 const buzz = p => { if (OPT.snd && navigator.vibrate) try { navigator.vibrate(p); } catch (e) {} };
-/* Musique d'ambiance générée : une gamme, un tempo et un timbre par chapitre (et un thème de boss) */
+/* Musique house : séquenceur à 16 pas calé sur l'horloge audio.
+   Grosse caisse sur chaque temps, clap sur 2 et 4, charleston ouvert à contretemps, basse syncopée filtrée,
+   nappe qui « pompe » sur la grosse caisse, accords de piano en staccato et mélodie pincée.
+   Boucle de 16 mesures qui se construit : batterie → basse → nappe → piano et mélodie → pause avec montée → retour. */
 const MUS = [
-  { s: [0, 2, 4, 7, 9], r: 220, step: 330, w: 'triangle' },        // forêt : pentatonique, léger
-  { s: [0, 2, 3, 5, 7, 8, 10], r: 196, step: 300, w: 'triangle' }, // champs : mode éolien
-  { s: [0, 1, 4, 5, 7, 8, 10], r: 185, step: 420, w: 'sine' },     // brume : mystérieux
-  { s: [0, 3, 5, 7, 10], r: 147, step: 380, w: 'sawtooth' },       // trolls : grave
-  { s: [0, 2, 3, 6, 7, 8, 11], r: 165, step: 280, w: 'square' },   // Grizzlak : menaçant
+  { bpm: 122, r: 220, s: [0, 2, 3, 5, 7, 8, 10], p: [0, 5, 2, 6] },  // la mineur : Lam Fa Do Sol
+  { bpm: 124, r: 196, s: [0, 2, 3, 5, 7, 9, 10], p: [0, 3, 0, 3] },  // sol dorien : Solm7 Do7
+  { bpm: 120, r: 185, s: [0, 1, 3, 5, 7, 8, 10], p: [0, 1, 0, 5] },  // phrygien : brume mystérieuse
+  { bpm: 124, r: 165, s: [0, 2, 3, 5, 7, 8, 10], p: [0, 6, 5, 6] },  // mi mineur
+  { bpm: 126, r: 175, s: [0, 2, 3, 5, 7, 8, 11], p: [0, 3, 4, 0] },  // mineur harmonique : menaçant
+  { bpm: 123, r: 208, s: [0, 2, 4, 5, 7, 9, 11], p: [1, 4, 0, 5] },  // majeur : II V I VI, solaire
 ];
-const MUS_BOSS = { s: [0, 1, 3, 6, 7], r: 110, step: 240, w: 'sawtooth' };
+const MUS_BOSS = { bpm: 128, r: 147, s: [0, 1, 3, 5, 7, 8, 10], p: [0, 0, 1, 0], boss: 1 };
 if (OPT.mus == null) OPT.mus = 1;
-let musI = 0, musDeg = 0;
-setInterval(() => {
-  if (!OPT.snd || !OPT.mus || !started || document.hidden || !AU.c || AU.c.state !== 'running') return;
-  if (!AU.mg) { AU.mg = AU.c.createGain(); AU.mg.gain.value = .55; AU.mg.connect(AU.m); }
-  const M = cur && (cur.kind === 'boss' || cur.kind === 'legend') ? MUS_BOSS : MUS[G.chap] || MUS[0];
-  // le pas de base est de 140 ms : on ne joue qu'au rythme du morceau
-  musI++;
-  const per = Math.round(M.step / 140);
-  if (musI % per) return;
-  const b = musI / per;
-  const f = d => M.r * Math.pow(2, (M.s[((d % M.s.length) + M.s.length) % M.s.length] + 12 * Math.floor(d / M.s.length)) / 12);
-  if (b % 16 === 0) { tone(f(0) / 2, 4, { type: 'sine', vol: .05, bus: AU.mg }); tone(f(2) / 2, 4, { type: 'sine', vol: .03, bus: AU.mg }); }
-  if (b % 8 === 4) tone(f(4) / 2, 2, { type: 'sine', vol: .03, bus: AU.mg });
-  if (Math.random() < .5) {
-    musDeg = clamp(musDeg + pick([-2, -1, -1, 1, 1, 2, 0]), 0, M.s.length * 2 - 1);
-    tone(f(musDeg), M.step / 1000 * 1.8, { type: M.w, vol: M.w === 'triangle' || M.w === 'sine' ? .035 : .012, bus: AU.mg });
+let musT = 0, musS = 0, musTh = null, musMot = null;
+const musFreq = (M, d, o) => { const n = M.s.length, k = ((d % n) + n) % n; return M.r * Math.pow(2, (M.s[k] + 12 * (Math.floor(d / n) + o)) / 12); };
+// Motif de 2 mesures en « question / réponse », aéré (la house laisse respirer la mélodie)
+function musMotif() {
+  const m = Array(32).fill(null); let d = pick([4, 6, 7]);
+  for (let i = 0; i < 16;) {
+    if (Math.random() < (i % 4 === 0 ? .6 : i % 4 === 3 ? .45 : i % 2 === 0 ? .35 : .1)) {
+      d = clamp(d + pick([-2, -1, -1, 1, 1, 2, 0, 0]), 2, 11); m[i] = { d, l: pick([1, 2, 2, 3]) }; i += 2;
+    } else i++;
   }
-}, 140);
+  for (let i = 0; i < 12; i++) m[16 + i] = m[i];
+  m[28] = { d: pick([7, 7, 4, 9]), l: 4 };
+  return m;
+}
+function musStep(M, i, t, sd) {
+  const at = Math.max(0, t - AU.c.currentTime), st = i % 16, bar = Math.floor(i / 16), bus = AU.mg, beat = sd * 4;
+  const ph = M.boss ? 4 + bar % 12 : bar % 16, cd = M.p[bar % M.p.length], brk = ph >= 14;
+  // grosse caisse sur chaque temps (coupée pendant la pause), avec un clic pour les haut-parleurs de téléphone
+  if (!brk && st % 4 === 0) { tone(155, .26, { type: 'sine', to: 45, vol: .26, at, bus }); noise(.012, { f: 3500, vol: .06, at, bus }); }
+  // clap sur 2 et 4 : trois éclats rapprochés
+  if (st === 4 || st === 12) [0, .011, .022].forEach((o, k) => noise(k < 2 ? .02 : .17, { f: 2200, vol: .075, at: at + o, bus }));
+  // charleston ouvert à contretemps (le « tss ») et shaker en doubles croches
+  if (st % 4 === 2) noise(.12, { f: 8000, hp: 1, vol: .04, at, bus });
+  else if (ph >= 2) noise(.022, { f: 10000, hp: 1, vol: st % 2 ? .012 : .02, at, bus });
+  // montée de bruit pendant la pause, roulement de clap à la fin
+  if (ph === 14 && st === 0) noise(beat * 7.8, { f: 600, to: 9000, hp: 1, vol: .05, att: beat * 7.6, at, bus });
+  if (ph === 15 && st >= 8 && st % 2 === 0) noise(.05, { f: 2200, vol: .03 + (st - 8) * .006, at, bus });
+  // basse syncopée : contretemps + notes fantômes, scie filtrée et sous-basse
+  if (ph >= 2 && !brk && (st % 4 === 2 || st === 7 || st === 15)) {
+    const d = st === 15 ? cd + 4 : cd, b = musFreq(M, d, -1) * (st === 7 ? 2 : 1), len = st % 4 === 2 ? sd * 1.7 : sd * .9;
+    tone(b, len, { type: 'sawtooth', vol: .08, lp: M.boss ? 900 : 600, lpTo: 180, q: 5, at, bus });
+    tone(b / 2, len, { type: 'sine', vol: .09, at, bus });
+  }
+  // nappe d'accords qui « pompe » : elle repart de zéro à chaque grosse caisse
+  if (ph >= 4 && st % 4 === 0) [0, 2, 4, 6].forEach(k => tone(musFreq(M, cd + k, 0), beat * .97, { type: 'sawtooth', vol: .011, att: beat * .6, lp: 1300, at, bus }));
+  // accords de piano en staccato (rythme house classique)
+  if (ph >= 8 && [3, 6, 10, 13].includes(st)) [0, 2, 4, 6].forEach(k => tone(musFreq(M, cd + k, 1), sd * 1.3, { type: 'square', vol: .011, lp: 2600, lpTo: 900, at, bus }));
+  // mélodie pincée (motif B sur la 2e moitié)
+  const mo = ph >= 8 && ph < 14 && musMot[ph >= 12 ? 1 : 0][(bar % 2) * 16 + st];
+  if (mo) tone(musFreq(M, cd + mo.d, 0), sd * mo.l + .1, { type: 'square', vol: .03, lp: 3200, lpTo: 500, at, bus });
+  if (i % 256 === 255) musMot = [musMotif(), musMotif()]; // nouveau motif à chaque boucle de 16 mesures
+}
+setInterval(() => {
+  if (!OPT.snd || !OPT.mus || !started || document.hidden || !AU.c || AU.c.state !== 'running') { musT = 0; return; }
+  if (!AU.mg) { AU.mg = AU.c.createGain(); AU.mg.gain.value = .55; AU.mg.connect(AU.m); }
+  const M = cur && (cur.kind === 'boss' || cur.kind === 'legend') ? MUS_BOSS : MUS[(G.chap || 0) % MUS.length];
+  if (M !== musTh) { musTh = M; musMot = [musMotif(), musMotif()]; musS = 0; musT = 0; }
+  const c = AU.c, sd = 60 / M.bpm / 4;
+  if (musT < c.currentTime) musT = c.currentTime + .05;
+  while (musT < c.currentTime + .25) { musStep(M, musS, musT, sd); musS++; musT += sd; }
+}, 60);
 function toggleMus() {
   OPT.mus = OPT.mus ? 0 : 1;
   localStorage.setItem('lalgo_opt', JSON.stringify(OPT));
@@ -2576,8 +3197,71 @@ function village() {
   for (let i = 0; i < Math.min(10, gob); i++) h += `<span class="vg" style="left:${(i * 29 + 7) % 90}%;bottom:${(i * 3) % 5}px;animation-delay:${i * .13}s">${bldImg('ouvrier')}</span>`;
   const night = G.menace > 75;
   if (G.pet) h += `<span class="vpet">${pic(`img/a_${PETS[G.pet].img}.png`)}</span>`;
-  return `<div class="village${night ? ' night' : ''}">${G.prestige ? `<span class="flag">${bldImg('drapeau')}</span>` : ''}<span class="vc">${bldImg(castle)}</span>${h}</div>
+  // Les villageois se promènent (plus nombreux avec le niveau)
+  const nv = Math.min(5, 1 + Math.floor(G.lvl / 4));
+  for (let i = 0; i < nv; i++) h += `<span class="vv${i % 2 ? ' rev' : ''}" style="bottom:${2 + (i * 7) % 12}px;animation-duration:${14 + (i * 5) % 9}s;animation-delay:-${i * 3.7}s">${pic(`img/a_${i % 2 ? 'paysanne' : 'paysan'}.png`)}</span>`;
+  const K = G.kev;
+  if (K && K.k === 'feu') K.f.forEach((on, i) => { if (on) h += `<span class="kfire" data-a="kev:feu:${i}" style="left:${[14, 44, 74][i]}%">${pic('img/a_feu.png')}</span>`; });
+  if (K && K.k === 'voleur') h += `<span class="kthief" data-a="kev:voleur">${pic('img/a_voleur.png')}</span>`;
+  if (K && K.k === 'fete') h += `<span class="kfete">🎉🎊🎉</span>`;
+  const ban = G.skin && G.skin.banner ? `<span class="vban b-${G.skin.banner}"></span>` : '';
+  return `${kevBox()}<div class="village${night ? ' night' : ''}${K && K.k === 'feu' ? ' burning' : ''}">${ban}${G.prestige ? `<span class="flag">${bldImg('drapeau')}</span>` : ''}<span class="vc">${bldImg(castle)}</span>${h}</div>
     <div class="vcap">${gob ? `👺 ${gob} gobelin${gob > 1 ? 's' : ''} capturé${gob > 1 ? 's' : ''} travaillent pour toi` : 'Gagne des combats pour capturer des gobelins'}${night ? ' · 🔥 la Horde est aux portes' : ''}</div>`;
+}
+/* Événements du royaume : un incendie à éteindre, une fête à organiser, un voleur à attraper (15 cartes pour réagir) */
+const KEV = {
+  feu: ['🔥', 'INCENDIE AU VILLAGE', 'Touche les 3 feux dans le village pour les éteindre !'],
+  fete: ['🎉', 'FÊTE AU VILLAGE', 'Les villageois veulent faire la fête. Offre la tournée ?'],
+  voleur: ['🥷', 'UN VOLEUR AU ROYAUME', 'Un voleur file avec ton or ! Touche-le pour l\'attraper.'],
+};
+function kevTick() {
+  const K = G.kev;
+  if (K && G.n >= K.until) {
+    if (K.k === 'feu') { const n = K.f.filter(Boolean).length, l = Math.min(G.gold, Math.round(B() * 2 * n)); G.gold -= l; later(() => toast(`🔥 LE FEU A FAIT DES DÉGÂTS<small>−${fmt(l)} 🪙 de réparations</small>`), 600); }
+    if (K.k === 'voleur') { const l = Math.min(G.gold, Math.round(B() * 3)); G.gold -= l; later(() => toast(`🥷 LE VOLEUR S'EST ENFUI<small>−${fmt(l)} 🪙</small>`), 600); }
+    G.kev = null; return;
+  }
+  if (!K && G.n > 30 && Math.random() < .025) {
+    const k = pick(Object.keys(KEV));
+    G.kev = { k, until: G.n + 15, f: [1, 1, 1] };
+    later(() => toast(`${KEV[k][0]} ${KEV[k][1]} !<small>${KEV[k][2]} · onglet 🏰 Royaume · 15 cartes pour réagir</small>`, 'achv'), 700);
+    buzz([60, 40, 60]);
+  }
+}
+function kevBox() {
+  const K = G.kev; if (!K) return '';
+  const left = Math.max(0, K.until - G.n), c = Math.round(B() * 1.5);
+  return `<div class="kev k-${K.k}"><b>${KEV[K.k][0]} ${KEV[K.k][1]}</b><span>${KEV[K.k][2]} · encore ${left} carte${left > 1 ? 's' : ''}</span>
+    ${K.k === 'fete' ? `<button class="btn pres" data-a="kev:fete" ${G.gold < c ? 'disabled' : ''}>🍻 Offrir la tournée · ${fmt(c)} 🪙</button>` : ''}</div>`;
+}
+function kevAct(v, w) {
+  const K = G.kev; if (!K) return;
+  if (K.k === 'feu' && v === 'feu') {
+    if (!K.f[+w]) return; K.f[+w] = 0; noise(.3, { f: 1200, to: 300, vol: .15 }); buzz(25);
+    if (!K.f.some(Boolean)) { G.kev = null; const g = Math.round(B() * 2); G.gold += g; addXp(15); sfx.win(); coins(6); toast(`💧 INCENDIE ÉTEINT !<small>Les villageois te remercient : +${fmt(g)} 🪙 · +15 XP</small>`); }
+  } else if (K.k === 'voleur' && v === 'voleur') {
+    G.kev = null; const g = Math.round(B() * 4); G.gold += g; G.menace -= 3; sfx.jackpot(); coins(10); toast(`🥷 VOLEUR ATTRAPÉ !<small>Tu récupères son butin : +${fmt(g)} 🪙</small>`);
+  } else if (K.k === 'fete' && v === 'fete') {
+    const c = Math.round(B() * 1.5); if (G.gold < c) return;
+    G.gold -= c; G.kev = null; G.next += 15; G.menace -= 8; sfx.level(); spawn('jackpot', '🎉 FÊTE ! 🎉');
+    toast('🎉 QUELLE FÊTE !<small>+15 % au prochain combat · menace −8</small>', 'achv');
+  }
+  G.menace = clamp(G.menace, 0, 100); save(); refresh();
+}
+
+/* ---------- Apparence : aiguille, cadre des cartes et bannière, débloqués par les succès et le prestige ---------- */
+const SKINS = {
+  needle: { '': ['⚪', 'Classique', 0, 0], epee: ['🗡️', 'Épée', 8, 0], fleche: ['🏹', 'Flèche', 16, 0], eclair: ['⚡', 'Éclair', 28, 1] },
+  frame: { '': ['▫️', 'Sans cadre', 0, 0], or: ['🟨', 'Cadre doré', 10, 0], runes: ['🔷', 'Runes', 20, 0], feu: ['🔥', 'Flammes', 32, 2] },
+  banner: { '': ['➖', 'Aucune', 0, 0], rouge: ['🟥', 'Bannière rouge', 5, 0], bleu: ['🟦', 'Bannière bleue', 14, 0], noir: ['⬛', 'Bannière noire', 24, 1] },
+};
+const SKN = { needle: '🎯 Aiguille', frame: '🖼️ Cadre des cartes', banner: '🚩 Bannière du château' };
+const achN = () => ACH.filter(a => G.ach[a[0]]).length;
+const skinOk = (t, k) => { const [, , a, p] = SKINS[t][k]; return achN() >= a && G.prestige >= p; };
+function skinHtml() {
+  return Object.entries(SKINS).map(([t, o]) => `<div class="skr"><b>${SKN[t]}</b><div class="sko">${Object.entries(o).map(([k, [e, n, a, p]]) => {
+    const ok = skinOk(t, k), on = (G.skin[t] || '') === k;
+    return `<button class="${on ? 'on' : ''}" data-a="${ok ? `skin:${t}:${k}` : `skinlock:${t}:${k}`}" ${ok ? '' : 'style="opacity:.45"'}>${ok ? e : '🔒'}<small>${n}${ok ? '' : `<br>${a} succès${p ? ` · règne ${roman(p + 1)}` : ''}`}</small></button>`; }).join('')}</div></div>`).join('');
 }
 function questBox() {
   const q = G.quest; if (!q) return '';
@@ -2610,7 +3294,7 @@ function eqTab() {
       : `<div class="${cl}"><span class="se" style="opacity:.3">${S.e}</span><b>${S.n}</b>vide</div>`;
   }).join('');
   const sets = Object.entries(SETS).filter(([k]) => setCount(k) || G.inv.some(o => o.set === k)).map(([k, S]) =>
-    `<span class="${setLvl(k) ? 'on' : ''}">${S.e} ${S.n} ${Math.min(setCount(k), 4)}/4 · 2 : ${statTxt({ [S.st]: S.v[0] })} · 4 : ${statTxt({ [S.st]: S.v[1] })}</span>`).join('');
+    `<span class="${setLvl(k) ? 'on' : ''}">${S.e} ${S.n} ${Math.min(setCount(k), 4)}/4 · ${[2, 3, 4].map((n, i) => `<i class="${setLvl(k) > i ? 'ok' : ''}">${n} : ${statTxt({ [S.st]: S.v[i] })}</i>`).join(' ')}</span>`).join('');
   const shopRows = SHOP.map((s, i) => {
     const cost = Math.round(s.k * B());
     return `<div class="bld"><div class="be">${s.e}</div><div class="bt"><b>${s.n}</b><br>${s.d}</div>
@@ -2628,7 +3312,7 @@ function eqTab() {
     ${G.merch && G.merch.items.length ? `<div class="ksec">🎪 Colporteur · part dans ${Math.max(0, G.merch.until - G.n)} cartes</div><button class="btn pres" data-a="merch">🛒 Voir les ${G.merch.items.length} trésors de Zéphyr</button>` : ''}
     <div class="ksec">Armurerie</div>${shopRows}
     <div class="ksec">Sac (${G.inv.length}/12) · 💎 ${fmt(G.shards)} éclats <button class="mini sell" data-a="sort" style="float:right;padding:4px 8px">Trier : ${SORTS[G.sort] || 'rareté'}</button></div>
-    <div class="khint">Touche un objet pour le verrouiller 🔒, le recycler en éclats 💎, relancer ses attributs ou le renforcer. 🔨 Fusion : deux objets de même rareté et de même type deviennent un objet plus fort (${MAXF} fois max). Panoplies : 2 ou 4 pièces équipées donnent un bonus.</div>
+    <div class="khint">Touche un objet pour le verrouiller 🔒, le recycler en éclats 💎, relancer ses attributs ou le renforcer. 🔨 Fusion : deux objets de même rareté et de même type deviennent un objet plus fort (${MAXF} fois max). ⬆️ Ascension : trois objets de même rareté et de même type deviennent un objet de la rareté au-dessus. ✨ Enchantement : un bonus de plus, payé en éclats. Panoplies : 2, 3 ou 4 pièces équipées donnent un bonus.</div>
     <div class="inv">${inv}</div>`;
 }
 function sucTab() {
@@ -2638,23 +3322,29 @@ function sucTab() {
     return `<div class="${n ? '' : 'no'}"><span class="ae">${porImg(b)}</span>${n ? esc(b.name) + (n > 1 ? ` ×${n}` : '') : '???'}</div>`;
   }).join('');
   const nb = ACH.filter(a => G.ach[a[0]]).length;
-  const best = FOES.map((fs, ch) => `<div class="bch">Chapitre ${roman(ch + 1)} : ${esc(CHAPS[ch].n)}${G.bestR[ch] ? ' · ✅ +2 👑' : ''}</div><div class="best">${fs.map(([n, tk], i) => {
+  const best = FOES.map((fs, ch) => `<div class="bch">Chapitre ${roman(ch + 1)} : ${esc(CHAPS[ch].n)}${G.bestR[ch] ? ' · ✅ +2 👑 · +5 % de chance' : ''}</div><div class="best">${fs.map(([n, tk], i) => {
     const k = G.best[ch + '_' + i] || 0, t = TRAITS[tk];
     return k ? `<div class="${k >= 5 ? 'full' : ''}"><span class="bi">${artImg(CHAPS[ch].foes[i].e)}</span><b>${esc(n)}</b><br>${t.e} ${t.n}<br>${k >= 5 ? fmt(k) + ' vaincus' : k + '/5'}</div>`
       : `<div class="no"><span class="bi">🔒</span>???</div>`;
   }).join('')}</div>`).join('');
   return `<div class="ksec">📖 Album des boss</div><div class="album">${album}</div>
-    <div class="ksec">📚 Bestiaire</div><div class="khint">Vaincs 5 fois chaque bande d'un chapitre pour compléter sa page : +2 👑.</div>${best}
+    <div class="ksec">📚 Bestiaire</div><div class="khint">Vaincs 5 fois chaque bande d'un chapitre pour compléter sa page : +2 👑 et +5 % de chance dans ce chapitre, pour toujours.</div>${best}
+    <div class="ksec">🎨 Apparence</div><div class="khint">Chaque succès débloqué et chaque règne te donnent de nouveaux styles.</div>${skinHtml()}
     <div class="ksec">🏆 Succès (${nb}/${ACH.length})</div>
     <div class="ach">${ACH.map(([id, e, n, d, t, hid]) => G.ach[id] ? `<div class="ok"><b>${e} ${esc(n)}</b>${esc(d)}</div>`
       : `<div><b>🔒 ${hid ? '???' : esc(n)}</b>${hid ? 'Succès caché' : esc(d)}</div>`).join('')}</div>`;
 }
 function petTab() {
   const cards = Object.entries(PETS).map(([k, p]) => G.pets[k]
-    ? `<div class="${G.pet === k ? 'on' : ''}" style="--rc:${RAR[p.r].c}" data-a="pet:${k}">${pic(`img/a_${p.img}.png`)}<b>${p.n}</b><i class="pr">${RAR[p.r].n} · niv ${petLvl(k)}</i>${petDesc(k)}<span class="pxp"><i style="width:${petLvl(k) >= 5 ? 100 : ((G.petXp[k] || 0) % 100)}%"></i></span>${G.pet === k ? '✅ t\'accompagne' : 'Toucher pour l\'emmener'}</div>`
+    ? `<div class="${G.pet === k ? 'on' : ''}${G.petEvo[k] ? ' evo' : ''}" style="--rc:${RAR[p.r].c}" data-a="pet:${k}">${pic(`img/a_${p.img}.png`)}<b>${G.petEvo[k] ? '★ ' : ''}${p.n}</b><i class="pr">${RAR[p.r].n} · niv ${petLvl(k)}</i>${petDesc(k)}<span class="pxp"><i style="width:${petLvl(k) >= 5 ? 100 : ((G.petXp[k] || 0) % 100)}%"></i></span>${G.pet === k ? '✅ t\'accompagne' : 'Toucher pour l\'emmener'}</div>`
     : `<div class="no" style="--rc:${RAR[p.r].c}"><span style="font-size:40px;display:block">❔</span><b>???</b><i class="pr">${RAR[p.r].n}</i>${k === 'loup' ? 'Adopte le louveteau de Rosa' : `Sort d'un œuf ${RAR[p.r].n.toLowerCase()}`}</div>`).join('');
   const eggs = G.eggs.length ? G.eggs.map(e => `<span class="egg" style="--rc:${RAR[e.r || 0].c}">🥚 ${e.r == null ? 'œuf' : 'œuf ' + rarSpan(e.r)} · ${Math.ceil(e.left)} carte${Math.ceil(e.left) > 1 ? 's' : ''}</span>`).join('') : '<span>Aucun œuf pour l\'instant</span>';
-  return `<div class="ksec">🐾 Familiers</div><div class="khint">Un seul familier t'accompagne à la fois. Ils restent d'un règne à l'autre. Tous les 100 cartes passées ensemble, il gagne un niveau (max 5) et ses bonus grandissent de 25 %.</div>
+  const P = G.pet && PETS[G.pet], pp = P && PETPW[G.pet], fd = P ? (G.petFood[G.pet] || 0) : 0, fc = feedCost();
+  const feed = P ? `<div class="pfeed${G.petEvo[G.pet] ? ' evo' : ''}">${pic(`img/a_${P.img}.png`)}<div><b>${G.petEvo[G.pet] ? '★ ' + P.n + ' évolué' : P.n}</b>
+      ${G.petEvo[G.pet] ? `<small>Bonus ×1,3. Pouvoir en combat : ${pp[0]} <b>${pp[1]}</b> (${pp[2]}), un bouton sous l'aiguille, une fois toutes les 20 cartes${G.n < (G.petCd || 0) ? ` · prêt dans ${G.petCd - G.n} cartes` : ' · ✅ prêt'}.</small>`
+        : `<small>Nourris-le ${FEED} fois pour qu'il évolue : bonus ×1,3 et un pouvoir en combat, ${pp[0]} ${pp[1]} (${pp[2]}).</small><span class="pxp"><i style="width:${fd / FEED * 100}%"></i></span>
+        <button class="btn pres" data-a="feed" ${G.gold < fc ? 'disabled' : ''}>🍖 Nourrir (${fd}/${FEED}) · ${fmt(fc)} 🪙</button>`}</div></div>` : '';
+  return `${feed}<div class="ksec">🐾 Familiers</div><div class="khint">Un seul familier t'accompagne à la fois. Ils restent d'un règne à l'autre. Tous les 100 cartes passées ensemble, il gagne un niveau (max 5) et ses bonus grandissent de 25 %.</div>
     <div class="pets">${cards}</div>
     <div class="ksec">🥚 Œufs</div><div class="ores">${eggs}</div>
     <div class="khint">Plus l'œuf est rare, plus le familier qui en sort est puissant. Les œufs se trouvent dans les expéditions de la mine (plus elles sont longues et profondes, plus les œufs sont rares), chez les boss, sur Vorthax (souvent légendaire), chez les créatures de la mine et dans l'œuf de wyverne d'Ysolde.</div>`;
@@ -2879,7 +3569,7 @@ function renderArmy() {
     }).join('')}
     ${armyExtra()}`;
 }
-const renderPanel = () => view === 'mine' ? renderMine() : view === 'army' ? renderArmy() : renderKingdom();
+const renderPanel = () => view === 'mine' ? renderMine() : view === 'army' ? renderArmy() : view === 'exp' ? renderExp() : renderKingdom();
 // La mine se remplit sous tes yeux
 setInterval(() => {
   if (!started || !G || !mineOn()) return;
@@ -2895,6 +3585,7 @@ $('kingdom').addEventListener('click', e => {
   if (!b || b.disabled || document.querySelector('.pack')) return;
   const [a, v, w] = b.dataset.a.split(':');
   if (a === 'tab') { ktab = v; renderKingdom(); $('kingdom').scrollTop = 0; return; }
+  if (a === 'xp') { if (v === 'start') runStart(0); else if (v === 'daily') runStart(1); else if (v === 'resume') runView(); else if (v === 'fish') fishGame(); else if (v === 'race') raceGame(); return; }
   if (a === 'buy') buy(v);
   else if (a === 'equip') equip(v);
   else if (a === 'sell') sell(v);
@@ -2918,6 +3609,17 @@ $('kingdom').addEventListener('click', e => {
   else if (a === 'forge2') forgeItem(v, 1);
   else if (a === 'cri') tradeCri(+v);
   else if (a === 'pet') { G.pet = v; sfx.ach(); refresh(); }
+  else if (a === 'kev') kevAct(v, w);
+  else if (a === 'skin') { G.skin[v] = w; sfx.ach(); save(); refresh(); }
+  else if (a === 'skinlock') { const [, n, ac, p] = SKINS[v][w]; floatTxt(`🔒 ${n} : ${ac} succès${p ? ` et règne ${roman(p + 1)}` : ''} (tu en as ${achN()})`); }
+  else if (a === 'feed') {
+    const k = G.pet, c = feedCost(); if (!k || G.petEvo[k] || G.gold < c) return;
+    G.gold -= c; G.petFood[k] = (G.petFood[k] || 0) + 1; sfx.buy(); buzz(20);
+    if (G.petFood[k] >= FEED) { G.petEvo[k] = 1; const pp = PETPW[k]; flashIt('#ffd76a', .6); shakeIt(1); sfx.level(); spawn('jackpot', '★ ÉVOLUTION ★');
+      later(() => toast(`★ ${PETS[k].n.toUpperCase()} A ÉVOLUÉ !<small>Bonus ×1,3 · nouveau pouvoir en combat : ${pp[0]} ${pp[1]} (${pp[2]})</small>`, 'achv'), 400); }
+    else floatTxt(`🍖 Miam ! ${G.petFood[k]}/${FEED}`);
+    refresh();
+  }
   else if (a === 'tower') { if (LOCKS.tour()) towerOpen(); else lockInfo('tour'); }
   else if (a === 'locked') lockInfo(v);
   else if (a === 'gen') { if (G.gens[v]) { G.gen = G.gen === v ? '' : v; sfx.ach(); refresh(); } }
@@ -3137,6 +3839,8 @@ function itemMenu(id) {
   const rr = RERO[it.r], rf = RENF[it.r], maxed = (it.f || 0) >= MAXF, opts = [];
   if (inBag) opts.push(['equip', `Équiper${isBetter(it) ? ' ▲' : ''}`, 1]);
   if (mate) opts.push(['merge', '🔨 Fusionner', 1]);
+  if (inBag && it.r < 4) { const n = ascMates(it).length; opts.push(['asc', `⬆️ Ascension ${RAR[it.r + 1].n.toLowerCase()} (${Math.min(n, 3)}/3 ${SLOTS[it.s] ? SLOTS[it.s].n.toLowerCase() : ''} ${RAR[it.r].n.toLowerCase()})`, n >= 3]); }
+  opts.push(['ench', it.ench ? `${ENCH[it.ench][0]} Enchanté ${ENCH[it.ench][1]} · changer : ${enchCost(it)} 💎` : `✨ Enchanter · ${enchCost(it)} 💎`, G.shards >= enchCost(it)]);
   opts.push(['reroll', `🎲 Relancer les attributs · ${rr} 💎`, G.shards >= rr]);
   opts.push(['renf', maxed ? '🔨 Renforcé au maximum' : `🔨 Renforcer (+1) · ${rf} 💎`, !maxed && G.shards >= rf]);
   if (mineOn()) opts.push(['sock', (it.so || 0) >= 2 ? '🔶 2 gemmes serties (max)' : `🔶 Sertir une gemme (${it.so || 0}/2) · ${gemCost(it)} 🔶`, (it.so || 0) < 2 && G.mine.gem >= gemCost(it)]);
@@ -3155,7 +3859,35 @@ function itemMenu(id) {
     const a = b.dataset.m;
     if (a === 'equip') equip(id); else if (a === 'merge') merge(id); else if (a === 'sell') sell(id);
     else if (a === 'lock') { it.lk = !it.lk; sfx.tick(5); refresh(); }
+    else if (a === 'asc') ascend(id); else if (a === 'ench') enchMenu(id);
     else if (a === 'recy') recycle(id); else if (a === 'reroll') reroll(id); else if (a === 'renf') reinforce(id); else if (a === 'sock') socket(id);
+  };
+  $('phone').append(d);
+}
+// Ascension : l'objet choisi et deux autres du même type et de la même rareté (non verrouillés) → un objet plus rare
+const ascMates = it => G.inv.filter(o => o.s === it.s && o.r === it.r && !o.lk);
+function ascend(id) {
+  const f = findItem(id); if (!f || f.slot) return;
+  const it = f.it, m = ascMates(it); if (m.length < 3 || it.r >= 4) return;
+  const use = [it, ...m.filter(o => o !== it)].slice(0, 3), ids = new Set(use.map(o => o.id));
+  G.inv = G.inv.filter(o => !ids.has(o.id));
+  const nw = makeItem(it.r + 1, it.s); if (it.set) nw.set = it.set; if (it.ench) nw.ench = it.ench;
+  G.inv.push(nw); G.f.asc = 1;
+  flashIt(RAR[nw.r].c, .5); shakeIt(1);
+  showPack(nw, `⬆️ ASCENSION ! 3 objets ${RAR[it.r].n.toLowerCase()}s fondus en un seul`, refresh);
+}
+function enchMenu(id) {
+  const f = findItem(id); if (!f) return;
+  const it = f.it, c = enchCost(it);
+  const d = document.createElement('div'); d.className = 'ask menu';
+  d.innerHTML = `<div class="askb"><p><b>✨ Enchanter ${itemName(it)}</b>Un seul enchantement par objet (le nouveau remplace l'ancien). Coût : ${c} 💎 · tu en as ${fmt(G.shards)}.</p>
+    <div class="mb">${Object.entries(ENCH).map(([k, [e, n, st, v]]) => `<button data-m="${k}" ${G.shards < c || it.ench === k ? 'disabled' : ''}>${e} Enchantement ${n} : ${statTxt({ [st]: v })}</button>`).join('')}</div><button class="no">Fermer</button></div>`;
+  d.onclick = e => {
+    if (e.target === d || e.target.closest('.no')) { d.remove(); return; }
+    const b = e.target.closest('[data-m]'); if (!b || b.disabled) return;
+    d.remove(); if (G.shards < c) return;
+    G.shards -= c; it.ench = b.dataset.m;
+    sfx.reveal(2); flashIt('#b98cff', .3); refresh(); toast(`${ENCH[it.ench][0]} ENCHANTÉ !<small>${itemName(it)} : ${statTxt(it)}</small>`);
   };
   $('phone').append(d);
 }
@@ -3220,6 +3952,7 @@ function doPrestige() {
   const keep = { crowns: G.crowns + gain, prestige: G.prestige + 1, perm: G.perm, ach: G.ach, album: G.album,
     tal: G.tal, best: G.best, bestR: G.bestR, daily: G.daily, pets: G.pets, pet: G.pet, eggs: G.eggs, towerBest: G.towerBest,
     petXp: G.petXp, evDone: G.evDone, evNote: G.evNote, gens: G.gens, gen: G.gen, ban: G.ban,
+    petEvo: G.petEvo, petFood: G.petFood, rep: G.rep, skin: G.skin, dd: G.dd, expBest: G.expBest,
     reigns: [...G.reigns, { n: G.prestige + 1, lvl: G.lvl, gold: Math.round(rs.gold), boss: rs.boss, items: rs.items, best: rs.best }].slice(-5) };
   G = Object.assign(fresh(), keep);
   G.gold = startGold(); G.lvl = 1 + 3 * G.perm.elan; G.mine.at = Date.now();
@@ -3235,7 +3968,8 @@ function setView(v) {
   if (v !== view) $('kingdom').scrollTop = 0;
   view = v;
   $('kingdom').classList.toggle('hidden', v === 'feed');
-  for (const [id, k] of [['tabK', 'kingdom'], ['tabF', 'feed'], ['tabM', 'mine'], ['tabA', 'army']]) $(id).classList.toggle('cur', v === k);
+  for (const [id, k] of [['tabK', 'kingdom'], ['tabF', 'feed'], ['tabM', 'mine'], ['tabA', 'army'], ['tabX', 'exp']]) $(id).classList.toggle('cur', v === k);
+  phone.classList.toggle('inpanel', v !== 'feed');
   if (v !== 'feed') renderPanel();
   else if (cur && cur.base) { applyBet(cur); fitArt(cur.el); }
 }
@@ -3243,6 +3977,25 @@ $('tabK').onclick = () => started && setView('kingdom');
 $('tabF').onclick = () => started && setView('feed');
 $('tabM').onclick = () => started && (mineOn() ? setView('mine') : lockInfo('mine'));
 $('tabA').onclick = () => started && setView('army');
+$('tabX').onclick = () => started && setView('exp');
+// Menu ⚙️ : son, musique, vitesse, apparence (libère le haut de l'écran sur téléphone)
+function gearMenu() {
+  const d = document.createElement('div'); d.className = 'ask menu';
+  const row = (m, on, l) => `<button data-m="${m}" class="tg${on ? ' on' : ''}">${l}<i>${on ? 'OUI' : 'NON'}</i></button>`;
+  d.innerHTML = `<div class="askb"><p><b>⚙️ Réglages</b></p><div class="mb">${row('snd', OPT.snd, '🔊 Bruitages')}${row('mus', OPT.mus, '🎵 Musique')}${row('fast', OPT.fast, '⏩ Animations rapides')}
+    <button data-m="look">🎨 Apparence (aiguille, cadre, bannière)</button></div><button class="no">Fermer</button></div>`;
+  d.onclick = e => {
+    if (e.target === d || e.target.closest('.no')) { d.remove(); return; }
+    const b = e.target.closest('[data-m]'); if (!b) return;
+    const m = b.dataset.m;
+    if (m === 'look') { d.remove(); if (started) { ktab = 'suc'; setView('kingdom'); later(() => { const x = [...document.querySelectorAll('#kingdom .ksec')].find(s => s.textContent.includes('Apparence')); if (x) $('kingdom').scrollTop = x.offsetTop - 130; }, 30); } return; }
+    if (m === 'snd') toggleSnd(); else if (m === 'mus') toggleMus(); else if (m === 'fast') toggleFast();
+    const on = m === 'snd' ? OPT.snd : m === 'mus' ? OPT.mus : OPT.fast;
+    b.classList.toggle('on', !!on); b.querySelector('i').textContent = on ? 'OUI' : 'NON';
+  };
+  $('phone').append(d);
+}
+$('gear').onclick = e => { e.stopPropagation(); gearMenu(); };
 
 /* =====================================================================
    CONTRÔLES
