@@ -189,22 +189,16 @@
   /* Mini-jeux plein écran */
   .mg2 { position: absolute; inset: 0; z-index: 62; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px; padding: 20px; color: #fff; text-align: center; touch-action: none; user-select: none; -webkit-user-select: none; }
   .mg2.fish { background: linear-gradient(#0004, #000a), url(bg/lac.png) center / cover; }
-  .mg2.race { background: radial-gradient(#2a4a1a, #0b1505); }
   .mg2 .mgt { font-size: 24px; font-weight: 900; color: #ffd76a; text-shadow: 0 2px 0 #000; }
   .mg2 .mgs { font-size: 17px; font-weight: 700; background: #000a; border-radius: 12px; padding: 10px 14px; min-height: 48px; }
   .mg2 .mgs b.win { color: #5dff9a; } .mg2 .mgs b.lose { color: #ff6b81; }
   .mg2 .bob { font-size: 64px; height: 96px; animation: bob 1.6s ease-in-out infinite; } .mg2 .bob img { height: 96px; image-rendering: pixelated; }
   .mg2 .bob.bite { animation: bite .18s infinite alternate; color: #ff4a4a; font-weight: 900; }
   @keyframes bob { 50% { transform: translateY(8px); } } @keyframes bite { to { transform: translateY(14px) scale(1.2); } }
-  .mg2 .mgr { font-size: 28px; min-height: 34px; }
+  .mg2 .mgr { font-size: 28px; min-height: 48px; display: flex; gap: 8px; justify-content: center; } .mg2 .mgr img { height: 48px; image-rendering: pixelated; }
+  .mg2 .bob.rare img { filter: drop-shadow(0 0 14px #ffcf4a); animation: hot .5s infinite alternate; }
+  .xcard small img { height: 22px; vertical-align: middle; image-rendering: pixelated; }
   .mg2 .mgx { min-width: 160px; min-height: 48px; border: 0; border-radius: 12px; background: #ffffff22; color: #fff; font-weight: 800; font-size: 16px; }
-  .mg2 .lanes { width: 100%; display: flex; flex-direction: column; gap: 8px; }
-  .mg2 .lane { position: relative; height: 58px; background: #00000055; border-radius: 10px; border-bottom: 3px dashed #ffffff22; }
-  .mg2 .lane .rc { position: absolute; left: 0; top: 3px; height: 52px; } .mg2 .lane .rc img { height: 52px; image-rendering: pixelated; }
-  .mg2 .lane .rc.won { filter: drop-shadow(0 0 12px #ffcf4a); } .mg2 .lane .fin { position: absolute; right: 4px; top: 14px; font-style: normal; font-size: 22px; }
-  .mg2 .rbets { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; width: 100%; }
-  .mg2 .rbets button { min-height: 54px; border: 0; border-radius: 12px; background: linear-gradient(#ffcf4a, #e09a1a); color: #2a1800; font-weight: 900; font-size: 16px; }
-  .mg2 .rbets small { display: block; font-size: 13px; }
   /* Onglet Expé */
   .xhero { text-align: center; padding: 18px 12px; margin-bottom: 12px; border-radius: 16px; background: linear-gradient(#0006, #000a), url(bg/donjon.png) center / cover; }
   .xhero b { display: block; font-size: 24px; color: #ffd76a; } .xhero span { font-size: 13px; opacity: .85; }
@@ -322,6 +316,20 @@
   .village .sun { display: none; }
   .village .flag { position: absolute; left: 50%; bottom: 14px; margin-left: 58px; width: 30px; z-index: 7; }
   .vcap { text-align: center; font-size: 11px; opacity: .7; margin-top: 6px; }
+  /* Royaume : décor en profondeur (rangées arrière plus petites), ombres au sol, nuages, lumière dorée */
+  .village.vk { height: 214px; background: url(bg/village.png) center bottom / cover, #6a9a3a; box-shadow: 0 8px 24px #000a, inset 0 0 40px #0006; }
+  .village.vk::before { content: ''; position: absolute; inset: 0; z-index: 25; pointer-events: none; background: radial-gradient(ellipse 60% 70% at 18% 8%, #ffd98a44, transparent 70%), linear-gradient(transparent 70%, #1a100822); }
+  .village.vk .vc { bottom: 52px; z-index: 6; }
+  .village.vk .vb { transform: translateX(-50%); }
+  .village.vk .vb::before, .village.vk .vc::before { content: ''; position: absolute; left: 8%; right: 8%; bottom: -4px; height: 10px; border-radius: 50%; background: radial-gradient(#0a14066e, transparent 70%); }
+  .village.vk img { filter: drop-shadow(0 2px 2px #0008); }
+  .village.vk .vb:hover img { filter: drop-shadow(0 2px 2px #0008) brightness(1.15); }
+  .village .cloud { position: absolute; z-index: 1; height: 14px; border-radius: 10px; background: #fff; opacity: .55; box-shadow: 10px -6px 0 2px #fff, 24px 0 0 #fff; animation: cloud linear infinite; }
+  @keyframes cloud { from { left: -22%; } to { left: 110%; } }
+  .village .mote { position: absolute; z-index: 24; width: 3px; height: 3px; background: #fff6c8; box-shadow: 0 0 4px #ffe58a; animation: mote ease-in-out infinite; opacity: 0; }
+  @keyframes mote { 0% { opacity: 0; transform: translate(0, 0); } 30% { opacity: .9; } 100% { opacity: 0; transform: translate(14px, -40px); } }
+  .village.vk.night .mote { background: #d8ff6a; box-shadow: 0 0 6px #b8ff4a; }
+  .village.vk .vban { bottom: auto; }
   .ksec { font-family: Fell, serif; font-weight: 400; font-size: 19px; color: #f3dca4; margin: 16px 0 8px; border-bottom: 1px solid #e2b65c33; padding-bottom: 3px; }
   .slots { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
   .slot.royal { border-style: dashed; }
@@ -354,6 +362,7 @@
   .bet { display: flex; gap: 6px; margin-top: 7px; }
   .bet span { flex: 1; text-align: center; font-size: 12px; font-weight: 800; padding: 6px 0; border-radius: 8px; background: #ffffff14; border: 1px solid #ffffff22; cursor: pointer; }
   .bet span.on { background: #ffcf4a; color: #000; border-color: #ffcf4a; }
+  .bet span.off { opacity: .3; text-decoration: line-through; }
   .bet span.all.on { background: #c0392b; color: #fff; border-color: #c0392b; animation: hot .6s infinite alternate; }
 
   /* Vidéo dorée et dragon légendaire */
@@ -1102,7 +1111,7 @@ function fresh() {
     petXp: {}, evDone: {}, petEvo: {}, petFood: {}, rep: { marchand: 0, sorciere: 0, chevalier: 0 },
     skin: { needle: '', frame: '', banner: '' }, dd: { day: '', best: 0, done: 0 }, expBest: 0,
     // pouvoirs de combo, frénésie, expédition en cours, évènements du royaume, délais des mini-jeux
-    pw: { sablier: 0, oeil: 0, seconde: 0 }, perfRow: 0, frenzy: 0, petCd: 0, run: null, expCd: 0, kev: null, fishCd: 0, raceCd: 0, lockCd: 0,
+    pw: { sablier: 0, oeil: 0, seconde: 0 }, perfRow: 0, frenzy: 0, petCd: 0, run: null, expCd: 0, kev: null, fishCd: 0, lockCd: 0,
     // par règne : journal, combos de tribus, route du chapitre, défi
     log: [], tribe: {}, path: '', route: {}, chal: null, chalOff: null, peekK: '' };
 }
@@ -2009,19 +2018,24 @@ function betChance(base, k) {
   return Math.max(50, Math.round(base / (1 + .2 * (k - 1))));
 }
 // Mise ×1, ×2 ou ×10 (après un pari à ×10, la mise revient à ×1)
+// On ne peut pas miser plus que l'or qu'on a : ×2 et ×10 se grisent, la perte à ×1 est plafonnée.
+const betOk = (b, k) => k <= 1 || Math.round(b.lose * k) <= G.gold;
 function applyBet(c) {
   if (G.bet === 'all') G.bet = 10; // anciennes sauvegardes (bouton TOUT)
-  const b = c.base, s = c.stake, v = G.bet, k = v;
-  s.win = Math.round(b.win * k); s.lose = Math.round(b.lose * k);
+  const b = c.base, s = c.stake;
+  let v = G.bet; while (v > 1 && !betOk(b, v)) v = v === 10 ? 2 : 1;
+  const k = v;
+  s.win = Math.round(b.win * k); s.lose = Math.min(Math.round(b.lose * k), Math.max(0, Math.floor(G.gold)));
   s.chance = betChance(b.chance, k);
   s.xp = Math.round(b.xp * (v === 10 ? 2 : v === 2 ? 1.5 : 1)); s.bet = v;
   const el = c.el; if (!el) return;
   el.querySelector('.stake .row').innerHTML = stakeRow(s);
   el.querySelector('.stake .odds').innerHTML = `🎲 ${s.chance}%<small>de chance${s.chance < b.chance ? ` <s>${b.chance}%</s>` : ''}</small>`;
-  el.querySelectorAll('.bet span').forEach(x => x.classList.toggle('on', x.dataset.b === String(v)));
+  el.querySelectorAll('.bet span').forEach(x => { x.classList.toggle('on', x.dataset.b === String(v)); x.classList.toggle('off', !betOk(b, +x.dataset.b)); });
 }
 function setBet(v) {
   if (!cur || !cur.base || busy) return;
+  if (!betOk(cur.base, +v)) { floatTxt(`Pas assez d'or pour miser ×${v} 😢`); buzz(20); return; }
   G.bet = +v;
   applyBet(cur); sfx.tick(G.bet === 10 ? 9 : G.bet * 3); save();
 }
@@ -2046,7 +2060,7 @@ const artImg = e => ART[e] ? pic(`img/a_${ART[e]}.png`) : e;
 const porImg = w => POR.has(w.h) ? pic(`img/p_${w.h}.png`) : artImg(w.e);
 const bldImg = n => pic(`img/v_${n}.png`);
 /* Icônes pixel art : chaque emoji affiché est remplacé par son image img/i_<nom>.png */
-const ICO = {"🪙": "coin", "👑": "crown", "⚔": "swords", "🛡": "shield", "🎲": "dice", "⛏": "pickaxe", "🔥": "flame", "💰": "bag", "💀": "skull", "✨": "sparkle", "🎡": "wheel", "🐲": "dragon", "🐉": "dragon", "👹": "ogre", "👺": "goblin", "🪓": "axe", "🏆": "trophy", "🏰": "castle", "🏯": "castle", "🎁": "gift", "🔮": "orb", "🧪": "potion", "💎": "gem", "⭐": "star", "🌟": "bigstar", "📜": "scroll", "🏹": "bow", "🗡": "dagger", "🎒": "backpack", "💥": "boom", "🔊": "sound", "🔇": "mute", "🍀": "clover", "🏦": "bank", "🎯": "target", "🔒": "padlock", "📯": "horn", "🐎": "horse", "🐴": "horse", "🔨": "hammer", "📿": "amulet", "👢": "boot", "🩸": "blood", "🔁": "cycle", "🏗": "build", "📲": "phone", "🚩": "flag", "🥁": "drum", "🤴": "prince", "🧔": "beard", "👩‍🌾": "farmer", "🔦": "torch", "🧗": "climb", "🫳": "dive", "🏃": "run", "🏪": "shop", "🗝": "key", "🔑": "key", "🍺": "beer", "🔭": "telescope", "🔱": "trident", "🪃": "boomerang", "🦯": "rapier", "🪵": "log", "🔰": "ecu", "🐢": "turtle", "🪞": "mirror", "🥋": "mail", "🧿": "eye", "💍": "ring", "🪬": "talisman", "🐚": "shell", "🥾": "shoes", "🩴": "sandal", "🪶": "feather", "🧤": "gloves", "🚀": "rocket", "💂": "guard", "📚": "books", "☄": "comet", "🌋": "volcano", "🎰": "slot", "⚜": "fleur", "🎖": "medal", "🪖": "helmet", "🧱": "bricks", "🏛": "temple", "👼": "angel", "♾": "infinity", "🛒": "cart", "🏇": "rider", "🤝": "deal", "🏠": "house", "🎶": "music", "⚖": "scale", "📖": "book", "😤": "angry", "😱": "scream", "😒": "meh", "😢": "sad", "😈": "devil", "🎉": "party", "🎩": "tophat", "📦": "crate", "💸": "flycoins", "🗺": "map", "🦎": "lizard", "🧙": "wizard", "🧙‍♂": "wizard", "🐺": "wolf", "🧌": "troll", "🪨": "rock", "🌉": "bridge", "🧰": "chest", "🍎": "apple", "🧳": "satchel", "🪕": "lute", "🐄": "cow", "🥚": "egg", "🦴": "bone", "🏚": "ruin", "🕳": "hole", "🐗": "boar", "🐸": "frog", "🛶": "boat", "🌫": "fog", "👸": "queen", "🤺": "duel", "🟢": "dgreen", "🟡": "dyellow", "🟠": "dorange", "🔴": "dred", "✖": "cross", "❌": "cross", "✅": "check", "✔": "check"};
+const ICO = {"🪙": "coin", "👑": "crown", "⚔": "swords", "🛡": "shield", "🎲": "dice", "⛏": "pickaxe", "🔥": "flame", "💰": "bag", "💀": "skull", "✨": "sparkle", "🎡": "wheel", "🐲": "dragon", "🐉": "dragon", "👹": "ogre", "👺": "goblin", "🪓": "axe", "🏆": "trophy", "🏰": "castle", "🏯": "castle", "🎁": "gift", "🔮": "orb", "🧪": "potion", "💎": "gem", "⭐": "star", "🌟": "bigstar", "📜": "scroll", "🏹": "bow", "🗡": "dagger", "🎒": "backpack", "💥": "boom", "🔊": "sound", "🔇": "mute", "🍀": "clover", "🏦": "bank", "🎯": "target", "🔒": "padlock", "📯": "horn", "🐎": "horse", "🐴": "horse", "🔨": "hammer", "📿": "amulet", "👢": "boot", "🩸": "blood", "🔁": "cycle", "🏗": "build", "📲": "phone", "🚩": "flag", "🥁": "drum", "🤴": "prince", "🧔": "beard", "👩‍🌾": "farmer", "🔦": "torch", "🧗": "climb", "🫳": "dive", "🏃": "run", "🏪": "shop", "🗝": "key", "🔑": "key", "🍺": "beer", "🔭": "telescope", "🔱": "trident", "🪃": "boomerang", "🦯": "rapier", "🪵": "log", "🔰": "ecu", "🐢": "turtle", "🪞": "mirror", "🥋": "mail", "🧿": "eye", "💍": "ring", "🪬": "talisman", "🐚": "shell", "🥾": "shoes", "🩴": "sandal", "🪶": "feather", "🧤": "gloves", "🚀": "rocket", "💂": "guard", "📚": "books", "☄": "comet", "🌋": "volcano", "🎰": "slot", "⚜": "fleur", "🎖": "medal", "🪖": "helmet", "🧱": "bricks", "🏛": "temple", "👼": "angel", "♾": "infinity", "🛒": "cart", "🏇": "rider", "🤝": "deal", "🏠": "house", "🎶": "music", "⚖": "scale", "📖": "book", "😤": "angry", "😱": "scream", "😒": "meh", "😢": "sad", "😈": "devil", "🎉": "party", "🎩": "tophat", "📦": "crate", "💸": "flycoins", "🗺": "map", "🦎": "lizard", "🧙": "wizard", "🧙‍♂": "wizard", "🐺": "wolf", "🧌": "troll", "🪨": "rock", "🌉": "bridge", "🧰": "chest", "🍎": "apple", "🧳": "satchel", "🪕": "lute", "🐄": "cow", "🥚": "egg", "🦴": "bone", "🏚": "ruin", "🕳": "hole", "🐗": "boar", "🐸": "frog", "🛶": "boat", "🌫": "fog", "👸": "queen", "🤺": "duel", "🟢": "dgreen", "🟡": "dyellow", "🟠": "dorange", "🔴": "dred", "✖": "cross", "❌": "cross", "✅": "check", "✔": "check", "🧹": "img/a_morgrel.png", "🦟": "img/a_moustique.png", "🐊": "img/a_croco.png", "🧟": "img/a_noye.png", "🍄": "img/a_champi.png", "🐂": "img/a_kragor.png", "🦂": "img/a_scorpion.png", "🐍": "img/a_serpent.png", "🗿": "img/a_golem.png", "🦇": "img/a_chauvesouris.png", "☠": "img/a_malvorn.png", "👻": "img/a_spectre.png", "🧛": "img/a_vampire.png", "⚰": "img/a_cercueil.png", "🕯": "img/a_cultiste.png", "🦹": "img/a_demon.png", "🐕": "img/a_chien.png", "⚒": "img/a_forgedemon.png", "🌑": "img/a_nyxthar.png", "🌀": "img/a_portail.png", "👁": "img/a_oeil.png", "🦑": "img/a_tentacule.png", "🎭": "img/a_masque.png", "🧙‍♀": "img/a_ysalis.png", "🗼": "img/a_tourinf.png", "🎪": "img/a_colporteur.png", "🚪": "img/a_porte.png", "🏕": "img/a_feu.png", "🕷": "img/a_creature.png", "🐟": "img/a_poisson.png", "🏺": "img/a_relique.png", "👅": "img/a_mimique.png", "📌": "img/a_piege.png", "🧑‍🌾": "img/a_paysan.png", "👩‍🦰": "img/a_paysanne.png", "🥷": "img/a_voleur.png", "🦈": "img/a_requin.png", "🙄": "meh", "🙊": "meh", "😠": "angry", "💢": "angry", "🎊": "party", "🍻": "beer", "🎵": "note", "⏩": "fast", "🙅": "cross", "🤖": "auto", "🫗": "potion", "⚙": "gear", "🧭": "compass", "🏭": "forge", "🐾": "paw", "💨": "wind", "🦅": "eagle", "🫧": "bubbles", "🦉": "owl", "🦊": "fox", "⏳": "hourglass", "🔍": "loupe", "🔎": "loupe", "❄": "snow", "🐣": "chick", "🤡": "clown", "🕊": "dove", "☁": "cloud", "☀": "sun", "🌧": "rain", "🌕": "fullmoon", "🌸": "blossom", "🍂": "leaves", "🔩": "bolt", "📉": "down", "🌲": "pine", "🌿": "herb", "🎃": "pumpkin", "🎄": "xmas", "🧺": "basket", "🚶": "boot", "🍬": "candy", "🗣": "speak", "👋": "hand", "✋": "hand", "🖐": "hand", "🌩": "storm", "🙏": "pray", "🌙": "moon", "🏳": "whiteflag", "🔐": "lockkey", "🔓": "unlock", "👆": "point", "🧲": "magnet", "🦘": "jump", "🎣": "rod", "🍾": "bottle", "🏁": "checker", "⚠": "warning", "💧": "drop", "⚡": "lightning", "🖼": "picture", "🎨": "palette", "🍖": "meat", "📍": "pin", "📅": "calendar", "🐠": "tropical", "🐡": "puffer", "🔶": "ogem", "💠": "crystal", "🔷": "bdiamond", "🟨": "syellow", "🟥": "sred", "🟦": "sblue", "⬛": "sblack", "▫": "swhite", "⚪": "circle", "➖": "dash", "▶": "play", "⬆": "up", "⏸": "pause", "❗": "excl", "❔": "quest", "❤": "heart", "💚": "gheart", "🖤": "bheart"};
 const ICO_RE = new RegExp('(' + Object.keys(ICO).sort((a, b) => b.length - a.length)
   .map(k => [...k].map(ch => ch.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\uFE0F?').join('')).join('|') + ')', 'gu');
 const ICO_SKIP = new Set(['SCRIPT', 'STYLE', 'TITLE', 'OPTION', 'TEXTAREA', 'INPUT']);
@@ -2064,7 +2078,7 @@ function emo(root) {
       const img = document.createElement('img');
       img.className = 'ico'; img.alt = m[0]; img.draggable = false;
       const e0 = m[0]; img.onerror = () => { const sp = document.createElement('span'); sp.className = 'noico'; sp.textContent = e0; img.replaceWith(sp); };
-      img.src = `img/i_${ICO[m[0].replace(/\uFE0F/g, '')]}.png`;
+      const v = ICO[m[0].replace(/\uFE0F/g, '')]; img.src = v.includes('/') ? v : `img/i_${v}.png`;
       f.append(img); last = m.index + m[0].length;
     }
     if (last < t.length) f.append(t.slice(last));
@@ -2280,6 +2294,7 @@ function choose(like, x, y) {
   if (c.opts) { floatTxt('👆 Choisis une option'); return; }
   c.g0 = G.gold; c.it0 = G.rs.items; c.pick = like ? c.likeL : c.passL;
   if (like) {
+    if (c.base) applyBet(c);
     const need = c.stake && c.stake.mise ? c.stake.lose : c.cost || 0;
     if (G.gold < need) { floatTxt("Pas assez d'or 😢"); return; }
     busy = true;
@@ -2628,6 +2643,13 @@ function runEnd(how) {
 }
 
 /* ---------- Mini-jeu : pêche au lac (3 lancers, tape quand ça mord) ---------- */
+// q : tirage + bonus de réflexe. Le requin a son propre tirage (2 %, 6 % si tu tapes en moins de 250 ms).
+const FISH = [
+  { k: 'carpe', n: 'Carpe', q: .28, g: 1, r: 0 }, { k: 'anguille', n: 'Anguille', q: .48, g: 1.5, r: 0 },
+  { k: 'truite', n: 'Truite', q: .66, g: 2, r: 1 }, { k: 'saumon', n: 'Saumon', q: .80, g: 3, r: 1 },
+  { k: 'brochet', n: 'Brochet', q: .92, g: 4, r: 2 }, { k: 'poissondore', n: 'Poisson doré', q: 1.04, g: 6, r: 3, sh: 3 },
+  { k: 'bouteille', n: 'Bouteille', q: 9, item: 1, r: 3 }, { k: 'requin', n: 'REQUIN', q: 99, g: 15, r: 4, sh: 8 }];
+const FRAR = [['Commun', '#cfd8dc'], ['Peu commun', '#5dff9a'], ['Rare', '#4aa8ff'], ['Épique', '#c77dff'], ['LÉGENDAIRE', '#ffcf4a']];
 function fishGame() {
   if (G.n < G.fishCd) return;
   G.fishCd = G.n + 15; save();
@@ -2637,7 +2659,7 @@ function fishGame() {
   const st = d.querySelector('.mgs'), bob = d.querySelector('.bob'), res = d.querySelector('.mgr');
   let cast = 0, phase = 'wait', t0 = 0, tm, total = 0; const got = [];
   const next = () => {
-    if (cast >= 3) { phase = 'end'; st.innerHTML = `Fini ! ${got.length ? got.join(' ') : 'rien cette fois'}${total ? `<br><b>+${fmt(total)} 🪙</b>` : ''}`; d.querySelector('.mgx').style.display = ''; G.gold += total; G.rs.gold += total; if (total) coins(8); save(); return; }
+    if (cast >= 3) { phase = 'end'; st.innerHTML = `Fini ! ${got.length ? '' : 'rien cette fois'}${total ? `<b class="win">+${fmt(total)} 🪙</b>` : ''}`; d.querySelector('.mgx').style.display = ''; G.gold += total; G.rs.gold += total; if (total) coins(8); save(); updateHud(); return; }
     cast++; phase = 'wait'; bob.className = 'bob'; bob.textContent = '🎣'; st.textContent = `Lancer ${cast}/3 · attends…`;
     tm = setTimeout(() => { phase = 'bite'; t0 = performance.now(); bob.className = 'bob bite'; bob.textContent = '❗'; tone(1200, .08, { type: 'square', vol: .1 }); buzz(30);
       tm = setTimeout(() => { if (phase !== 'bite') return; phase = 'miss'; st.textContent = '💨 Trop lent, il s\'est décroché !'; bob.className = 'bob'; later(next, 1100); }, 480); }, rnd(1200, 3600));
@@ -2648,72 +2670,35 @@ function fishGame() {
     if (phase === 'wait') { clearTimeout(tm); phase = 'miss'; st.textContent = '🙊 Trop tôt ! Le poisson a fui.'; sfx.near(); later(next, 1100); return; }
     if (phase !== 'bite') return;
     clearTimeout(tm); phase = 'got';
-    const rt = performance.now() - t0, q = Math.random() + (rt < 250 ? .25 : 0);
-    let m;
-    if (q > 1.12) { const it = makeItem(rollRarity(1)); m = '🍾'; gainItem(it); st.innerHTML = `🍾 Une bouteille ! Dedans : <span style="color:${RAR[it.r].c}">${esc(it.n)}</span>`; }
-    else if (q > .9) { const g = Math.round(B() * 5 * gainK()); total += g; m = '🐠'; st.textContent = `✨ Poisson doré ! +${fmt(g)} 🪙`; G.shards += 3; }
-    else if (q > .55) { const g = Math.round(B() * 2.5 * gainK()); total += g; m = '🐟'; st.textContent = `🐟 Belle prise ! +${fmt(g)} 🪙`; }
-    else { const g = Math.round(B() * gainK()); total += g; m = '🐡'; st.textContent = `🐡 Petit poisson. +${fmt(g)} 🪙`; }
-    got.push(m); res.textContent = got.join(' '); bob.className = 'bob'; bob.innerHTML = pic('img/a_poisson.png');
-    sfx.win(); buzz(40); later(next, 1300);
+    const rt = performance.now() - t0, fast = rt < 250;
+    let f;
+    if (Math.random() < (fast ? .06 : .02)) f = FISH[7];
+    else { const q = Math.random() + (fast ? .2 : 0); f = FISH.find(x => q < x.q); }
+    const [rn, rc] = FRAR[f.r], tag = `<b style="color:${rc}">${f.n}</b> <small style="color:${rc}">${rn}</small>`;
+    G.fishBook = G.fishBook || {}; const neu = !G.fishBook[f.k]; G.fishBook[f.k] = (G.fishBook[f.k] || 0) + 1;
+    if (f.item) { const it = makeItem(rollRarity(1)); gainItem(it); st.innerHTML = `${tag}<br>Dedans : <span style="color:${RAR[it.r].c}">${esc(it.n)}</span>`; }
+    else { const g = Math.round(B() * f.g * gainK()); total += g; if (f.sh) G.shards += f.sh; st.innerHTML = `${tag}${neu ? ' · nouveau !' : ''}<br>+${fmt(g)} 🪙${f.sh ? ` · +${f.sh} éclats` : ''}`; }
+    got.push(pic(`img/a_${f.k}.png`)); res.innerHTML = got.join('');
+    bob.className = 'bob' + (f.r >= 3 ? ' rare' : ''); bob.innerHTML = pic(`img/a_${f.k}.png`);
+    if (f.k === 'requin') { sfx.jackpot(); coins(14); spawn('jackpot', '🦈 REQUIN ! 🦈'); buzz([60, 40, 120]); }
+    else if (f.r >= 3) { sfx.jackpot(); buzz(60); } else { sfx.win(); buzz(40); }
+    later(next, f.r >= 3 ? 1900 : 1300);
   });
   ['pointerup', 'click'].forEach(ev => d.addEventListener(ev, e => e.stopPropagation()));
   later(next, 500);
 }
 
-/* ---------- Mini-jeu : course de familiers (pari) ---------- */
-const RACERS = [['loup', 'Loup', 2, .42], ['renard', 'Renard', 3, .27], ['hibou', 'Hibou', 4, .19], ['slime', 'Slime', 6, .12]];
-function raceGame() {
-  if (G.n < G.raceCd) return;
-  const bet = Math.min(G.gold, Math.round(B() * 2));
-  if (bet < 1) { floatTxt("Pas assez d'or 😢"); return; }
-  const d = document.createElement('div'); d.className = 'mg2 race';
-  d.innerHTML = `<div class="mgt">🏁 Course de familiers</div><div class="mgs">Mise : <b>${fmt(bet)} 🪙</b> · sur qui paries-tu ?</div>
-    <div class="lanes">${RACERS.map(([k, n, o], i) => `<div class="lane"><span class="rc" data-i="${i}">${pic(`img/a_${PETS[k].img}.png`)}</span><i class="fin">🏁</i></div>`).join('')}</div>
-    <div class="rbets">${RACERS.map(([k, n, o], i) => `<button data-b="${i}">${n}<small>×${o}</small></button>`).join('')}</div><button class="mgx">Annuler</button>`;
-  $('phone').append(d);
-  const st = d.querySelector('.mgs');
-  ['pointerdown', 'pointerup'].forEach(ev => d.addEventListener(ev, e => e.stopPropagation()));
-  d.addEventListener('click', e => {
-    e.stopPropagation();
-    if (e.target.closest('.mgx')) { d.remove(); refresh(); return; }
-    const b = e.target.closest('[data-b]'); if (!b || d.dataset.go) return;
-    d.dataset.go = 1; const pickI = +b.dataset.b;
-    G.raceCd = G.n + 10; G.gold -= bet; save(); updateHud();
-    d.querySelector('.rbets').remove(); d.querySelector('.mgx').style.display = 'none';
-    let t = Math.random(), win = 0; for (let i = 0; i < RACERS.length; i++) { if (t < RACERS[i][3]) { win = i; break; } t -= RACERS[i][3]; }
-    const T = RACERS.map((_, i) => i === win ? 4200 : 4200 + rnd(250, 1100)), off = RACERS.map(() => rnd(0, 6));
-    st.innerHTML = `Tu paries sur <b>${RACERS[pickI][1]}</b>… PARTEZ !`; tone(660, .2, { type: 'square', vol: .08 });
-    const els = [...d.querySelectorAll('.rc')], t0 = performance.now();
-    const step = now => {
-      const e = now - t0;
-      els.forEach((el, i) => { const p = Math.min(1, e / T[i]), w = p < 1 ? Math.sin(e / 160 + off[i]) * .035 * (1 - p) : 0; el.style.left = (clamp(p + w, 0, 1) * 82) + '%'; });
-      if (e < Math.max(...T)) requestAnimationFrame(step);
-      else {
-        const ok = win === pickI, g = ok ? bet * RACERS[pickI][2] : 0;
-        G.gold += g; if (ok) { G.rs.gold += g - bet; coins(12); sfx.jackpot(); } else sfx.lose();
-        st.innerHTML = `${RACERS[win][1]} gagne !<br>${ok ? `<b class="win">+${fmt(g)} 🪙</b>` : `<b class="lose">−${fmt(bet)} 🪙</b>`}`;
-        els[win].classList.add('won'); save(); updateHud();
-        const x = d.querySelector('.mgx'); x.textContent = 'Rentrer'; x.style.display = '';
-      }
-    };
-    requestAnimationFrame(step);
-  });
-}
-
-/* ---------- Onglet Expé : expéditions, donjon du jour, pêche, course, réputation ---------- */
+/* ---------- Onglet Expé : expéditions, donjon du jour, pêche, réputation ---------- */
 function renderExp() {
   const R = G.run, dd = G.dd.day === today();
   const cd = (n, k) => G.n >= n ? '' : ` · dans ${n - G.n} carte${n - G.n > 1 ? 's' : ''}`;
-  $('kingdom').innerHTML = `<div class="xhero"><b>🧭 Expéditions</b><span>Explore, pêche, parie… et fais-toi des amis.</span></div>
+  $('kingdom').innerHTML = `<div class="xhero"><b>🧭 Expéditions</b><span>Explore, pêche… et fais-toi des amis.</span></div>
     <div class="xcard">${pic('img/a_porte.png')}<div><b>🧭 Expédition rogue-like</b><small>10 salles · tu choisis tes portes · reliques temporaires · un gardien au bout. 3 vies. Record : salle ${G.expBest || 0}/10</small>
       ${R && !R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre l\'expédition</button>' : `<button class="btn pres" data-a="xp:start" ${!expReady() || R ? 'disabled' : ''}>🧭 Partir${cd(G.expCd)}</button>`}</div></div>
     <div class="xcard">${pic('img/a_cle.png')}<div><b>🗝️ Donjon du jour</b><small>Le même donjon pour tout le monde aujourd'hui, une seule tentative. Vaincu : +1 👑 et un objet. Meilleur score : ${G.dd.best || 0}${dd && G.dd.done ? ` · aujourd'hui : ${G.dd.score}` : ''}</small>
       ${R && R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre le donjon</button>' : `<button class="btn pres" data-a="xp:daily" ${dd || R ? 'disabled' : ''}>${dd ? '✅ Déjà tenté aujourd\'hui' : '🗝️ Entrer'}</button>`}</div></div>
-    <div class="xcard">${pic('img/a_poisson.png')}<div><b>🎣 Pêche au lac</b><small>3 lancers. Tape dès que ça mord : poissons, poissons dorés, et parfois une bouteille…</small>
+    <div class="xcard">${pic('img/a_requin.png')}<div><b>🎣 Pêche au lac</b><small>3 lancers. Tape dès que ça mord : carpe, anguille, truite, saumon, brochet, poisson doré, bouteille… et le requin, ultra rare. Plus tu es rapide, plus la prise est belle.${G.fishBook ? `<br>Carnet : ${FISH.filter(f => G.fishBook[f.k]).map(f => pic(`img/a_${f.k}.png`)).join('')} ${Object.keys(G.fishBook).length}/${FISH.length}` : ''}</small>
       <button class="btn pres" data-a="xp:fish" ${G.n < G.fishCd ? 'disabled' : ''}>🎣 Pêcher${cd(G.fishCd)}</button></div></div>
-    <div class="xcard">${pic('img/a_renard.png')}<div><b>🏁 Course de familiers</b><small>Mise ${fmt(Math.round(B() * 2))} 🪙 sur un coureur : ×2 à ×6.</small>
-      <button class="btn pres" data-a="xp:race" ${G.n < G.raceCd || G.gold < 1 ? 'disabled' : ''}>🏁 Parier${cd(G.raceCd)}</button></div></div>
     <div class="ksec">🤝 Réputation</div><div class="khint">À +3, ils t'aident (cadeaux, bénédictions, +8 % contre les boss). À −3, ils te trahissent. Tu les croises en Aventure et dans les expéditions.</div>
     <div class="reps">${Object.entries(NPC).map(([k, N]) => `<div><span class="rp">${porImg(N.who)}</span><b>${N.n}</b><i class="rbar"><i style="left:${(G.rep[k] + 5) * 10}%"></i></i>${repTxt(k)}</div>`).join('')}</div>`;
 }
@@ -3187,12 +3172,18 @@ function village() {
   // Un bâtiment par amélioration (2 max par type), puis les maisons qui poussent avec le niveau
   for (const k in BE) for (let i = 0; i < Math.min(G.up[k], 2); i++) items.push(k);
   for (let i = 0; i < Math.min(6, Math.floor(G.lvl / 2)); i++) items.push(i % 3 ? 'maison1' : 'maison2');
+  // Emplacements en profondeur autour du château : [centre x %, bas px, largeur px, z]. Devant = plus grand.
+  const SLOT = [[17, 6, 60, 14], [83, 6, 60, 14], [27, 40, 46, 9], [73, 40, 46, 9], [5, 14, 52, 13], [95, 14, 52, 13],
+    [12, 46, 42, 8], [88, 46, 42, 8], [33, 0, 54, 15], [67, 0, 54, 15], [31, 66, 34, 5], [69, 66, 34, 5],
+    [18, 72, 30, 4], [82, 72, 30, 4], [6, 78, 28, 3], [94, 78, 28, 3]];
   let h = '';
   items.slice(0, 16).forEach((n, i) => {
-    const side = i % 2, k = i >> 1, row = k >> 2, col = k % 4;
-    const x = side ? 62 + col * 9.5 : 1 + col * 9.5;
-    h += `<span class="vb" style="left:${x}%;bottom:${4 + row * 22}px;width:${54 - row * 12}px;z-index:${10 - row}">${bldImg(BE[n] && G.up[n] >= 4 ? n + '2' : n)}</span>`;
+    const [x, b, w, z] = SLOT[i];
+    h += `<span class="vb" style="left:${x}%;bottom:${b}px;width:${w}px;z-index:${z}">${bldImg(BE[n] && G.up[n] >= 4 ? n + '2' : n)}</span>`;
   });
+  const tier = +castle.slice(-1), cw = [0, 96, 112, 128, 146][tier];
+  for (let i = 0; i < 3; i++) h += `<span class="cloud" style="top:${8 + i * 17}px;width:${34 + i * 10}px;animation-duration:${70 + i * 25}s;animation-delay:-${i * 31}s"></span>`;
+  for (let i = 0; i < 7; i++) h += `<span class="mote" style="left:${(i * 37 + 9) % 94}%;bottom:${10 + (i * 23) % 90}px;animation-duration:${4 + i % 3}s;animation-delay:-${i * .9}s"></span>`;
   const gob = Math.floor(G.W / 8);
   for (let i = 0; i < Math.min(10, gob); i++) h += `<span class="vg" style="left:${(i * 29 + 7) % 90}%;bottom:${(i * 3) % 5}px;animation-delay:${i * .13}s">${bldImg('ouvrier')}</span>`;
   const night = G.menace > 75;
@@ -3204,8 +3195,8 @@ function village() {
   if (K && K.k === 'feu') K.f.forEach((on, i) => { if (on) h += `<span class="kfire" data-a="kev:feu:${i}" style="left:${[14, 44, 74][i]}%">${pic('img/a_feu.png')}</span>`; });
   if (K && K.k === 'voleur') h += `<span class="kthief" data-a="kev:voleur">${pic('img/a_voleur.png')}</span>`;
   if (K && K.k === 'fete') h += `<span class="kfete">🎉🎊🎉</span>`;
-  const ban = G.skin && G.skin.banner ? `<span class="vban b-${G.skin.banner}"></span>` : '';
-  return `${kevBox()}<div class="village${night ? ' night' : ''}${K && K.k === 'feu' ? ' burning' : ''}">${ban}${G.prestige ? `<span class="flag">${bldImg('drapeau')}</span>` : ''}<span class="vc">${bldImg(castle)}</span>${h}</div>
+  const ban = G.skin && G.skin.banner ? `<span class="vban b-${G.skin.banner}" style="bottom:${52 + Math.round(cw * .72)}px;margin-left:-${Math.round(cw * .42)}px"></span>` : '';
+  return `${kevBox()}<div class="village vk${night ? ' night' : ''}${K && K.k === 'feu' ? ' burning' : ''}">${ban}${G.prestige ? `<span class="flag" style="bottom:52px;margin-left:${Math.round(cw * .4)}px">${bldImg('drapeau')}</span>` : ''}<span class="vc" style="width:${cw}px">${bldImg(castle)}</span>${h}</div>
     <div class="vcap">${gob ? `👺 ${gob} gobelin${gob > 1 ? 's' : ''} capturé${gob > 1 ? 's' : ''} travaillent pour toi` : 'Gagne des combats pour capturer des gobelins'}${night ? ' · 🔥 la Horde est aux portes' : ''}</div>`;
 }
 /* Événements du royaume : un incendie à éteindre, une fête à organiser, un voleur à attraper (15 cartes pour réagir) */
@@ -3585,7 +3576,7 @@ $('kingdom').addEventListener('click', e => {
   if (!b || b.disabled || document.querySelector('.pack')) return;
   const [a, v, w] = b.dataset.a.split(':');
   if (a === 'tab') { ktab = v; renderKingdom(); $('kingdom').scrollTop = 0; return; }
-  if (a === 'xp') { if (v === 'start') runStart(0); else if (v === 'daily') runStart(1); else if (v === 'resume') runView(); else if (v === 'fish') fishGame(); else if (v === 'race') raceGame(); return; }
+  if (a === 'xp') { if (v === 'start') runStart(0); else if (v === 'daily') runStart(1); else if (v === 'resume') runView(); else if (v === 'fish') fishGame(); return; }
   if (a === 'buy') buy(v);
   else if (a === 'equip') equip(v);
   else if (a === 'sell') sell(v);

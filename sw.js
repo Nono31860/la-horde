@@ -1,5 +1,5 @@
 // Réseau d'abord, cache en secours : le jeu marche hors ligne après la première visite.
-const CACHE = 'horde-v17';
+const CACHE = 'horde-v18';
 const FILES = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'fonts/IMFellDWPica-Regular.ttf',
   ...['foret', 'champs', 'brume', 'montagne', 'ruines', 'orage', 'feu', 'nuit', 'chemin', 'cloitre', 'cave', 'royaume', 'village', 'titre', 'mine', 'bd1', 'bd2', 'bd3', 'bd4', 'mine1', 'mine2', 'mine3'].map(n => `bg/${n}.png`),
   ...['gobelin', 'loup', 'archer', 'pyro', 'pillard', 'barque', 'sanglier', 'coupebourse', 'chaman', 'squelette', 'brume', 'crapaud', 'troll',
@@ -14,6 +14,9 @@ const FILES = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.pn
     'ouvrier', 'drapeau', 'caserne', 'taverne', 'tour', 'banque', 'atelier', 'mine', 'wagon', 'arsenal'].map(n => `img/v_${n}.png`),
   ...['forge', 'remparts', 'ecuries', 'chapelle', 'marche', 'tresor', 'caserne', 'taverne', 'tour', 'banque', 'atelier', 'arsenal'].map(n => `img/v_${n}2.png`),
   ...['milice', 'archers', 'chevaliers', 'catapultes', 'mages'].map(n => `img/u_${n}.png`),
+  // v18 : poissons, requin, icônes pixel restantes
+  ...['carpe', 'truite', 'saumon', 'brochet', 'anguille', 'poissondore', 'requin', 'bouteille'].map(n => `img/a_${n}.png`),
+  ...'volcano ruin rocket boomerang compass herb paw wind bolt pine xmas pumpkin storm rod snow lockkey unlock checker gear loupe fullmoon moon point hourglass chick cloud sun rain jump bottle puffer palette meat forge eagle bubbles dove blossom leaves down basket candy speak pray whiteflag magnet tropical warning drop lightning picture pin calendar hand owl fox clown ogem crystal bdiamond syellow sred sblue sblack swhite circle dash play up pause excl quest heart gheart bheart'.split(' ').map(n => `img/i_${n}.png`),
   // v17 : expéditions, PNJ, royaume vivant
   'bg/donjon.png', 'bg/lac.png', ...['cle', 'feu', 'mimique', 'paysan', 'paysanne', 'piege', 'poisson', 'porte', 'relique', 'voleur', 'ysalis'].map(n => `img/a_${n}.png`), 'img/p_ysalis_sorciere.png',
   // v14 : chapitres VI à X, nouveaux bâtiments, icônes pixel
