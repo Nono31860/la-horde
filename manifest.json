@@ -1,7 +1,7 @@
 {
-  "name": "La Horde",
-  "short_name": "La Horde",
-  "description": "Scrolle, like, combats la Horde de gobelins.",
+  "name": "Le Dernier Rempart",
+  "short_name": "Dernier Rempart",
+  "description": "Tiens le dernier rempart du royaume face à la Horde.",
   "start_url": "./",
   "scope": "./",
   "display": "fullscreen",

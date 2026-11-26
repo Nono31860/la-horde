@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
-<title>La Horde</title>
+<title>Le Dernier Rempart</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#0c0c10">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="La Horde">
+<meta name="apple-mobile-web-app-title" content="Dernier Rempart">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
 <style>
@@ -424,8 +424,10 @@
   /* ---------- Écran titre ---------- */
   .screen { position: absolute; inset: 0; z-index: 50; display: flex; flex-direction: column; align-items: center; justify-content: safe center; overflow-y: auto; text-align: center; padding: 22px 24px; background: linear-gradient(#0005, #000c 75%), url(bg/titre.png) center / cover, #08060c; }
   .screen.hidden { display: none; }
-  .logo { font-family: Fell, serif; font-size: 66px; font-weight: 400; color: #f3dca4; text-shadow: 0 4px 20px #000; }
-  .logo i { font-style: normal; color: #9be05a; text-shadow: 0 0 24px #4a8a1a, 0 3px 0 #1a3a0a; }
+  .logo { font-family: Fell, serif; font-size: 40px; line-height: 1.05; margin-top: 4px; font-weight: 400; color: #f3dca4; text-shadow: 0 4px 20px #000; }
+  .logo i { display: block; font-style: normal; font-size: 1.15em; line-height: .9; color: #ffcf5a; text-shadow: 0 0 24px #c8401a, 0 3px 0 #5a1a08; }
+  .emblem { width: 120px; image-rendering: pixelated; filter: drop-shadow(0 0 18px #ff6a2a88) drop-shadow(0 6px 6px #000c); animation: emb 3s ease-in-out infinite alternate; }
+  @keyframes emb { to { transform: translateY(-5px); filter: drop-shadow(0 0 26px #ff8a2aaa) drop-shadow(0 6px 6px #000c); } }
   .sub { opacity: .85; margin: 10px 0 20px; line-height: 1.4; max-width: 320px; }
   .bd { position: relative; max-width: 340px; width: 100%; margin: 20px 0 6px; padding: 14px 12px 12px; color: #3b2512; border-radius: 6px;
     background: radial-gradient(ellipse at 50% 40%, #f3e2b8 0%, #e6cc93 60%, #c9a463 100%);
@@ -633,7 +635,8 @@
   <div id="kingdom" class="hidden"></div>
   <nav id="tabs"><span id="tabF" class="cur"><b>⚔️</b>Aventure</span><span id="tabK"><b>🏰</b>Royaume<i class="badge"></i></span><span id="tabX"><b>🧭</b>Expé<i class="badge"></i></span><span id="tabA"><b>🛡️</b>Armée<i class="badge"></i></span><span id="tabM"><b>⛏️<img class="pad" src="img/i_padlock.png" alt=""></b>Mine<i class="badge"></i></span></nav>
   <div id="start" class="screen">
-    <div class="logo">La <i>Horde</i></div>
+    <img class="emblem" src="img/logo.png" alt="" draggable="false">
+    <div class="logo">Le Dernier <i>Rempart</i></div>
     <div class="bd">
       <div class="bdt">Chronique de la Horde</div>
       <div class="bdg">
