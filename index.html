@@ -315,6 +315,15 @@
   @keyframes work { 50% { transform: translateY(-4px) rotate(10deg); } }
   .village .sun { display: none; }
   .village .flag { position: absolute; left: 50%; bottom: 14px; margin-left: 58px; width: 30px; z-index: 7; }
+  .dgs { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; margin-bottom: 8px; }
+  .dgs .dg { display: flex; flex-direction: column; align-items: center; font-size: 15px; padding: 3px 0; border-radius: 6px; background: #0005; opacity: .55; }
+  .dgs .dg b { font-size: 9px; } .dgs .dg.got { opacity: .3; } .dgs .dg.on { opacity: 1; background: #ffd76a33; box-shadow: 0 0 0 2px #ffd76a; }
+  .recs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin: 6px 0; }
+  .recs div { background: #0004; border-radius: 8px; padding: 8px 4px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 2px; }
+  .recs b { color: #ffd76a; font-size: 15px; } .recs small { font-size: 10px; opacity: .7; }
+  .visit { position: fixed; inset: 0; z-index: 9999; background: #120c07f2; display: flex; flex-direction: column; justify-content: center; gap: 10px; padding: 16px; max-width: 480px; margin: 0 auto; }
+  .visit .vcap { display: none; }
+  .visit .vt { text-align: center; font-size: 22px; font-weight: bold; color: #ffd76a; } .visit .vs { text-align: center; font-size: 13px; opacity: .85; }
   .vcap { text-align: center; font-size: 11px; opacity: .7; margin-top: 6px; }
   /* Royaume : décor en profondeur (rangées arrière plus petites), ombres au sol, nuages, lumière dorée */
   .village.vk { height: 214px; background: url(bg/village.png) center bottom / cover, #6a9a3a; box-shadow: 0 8px 24px #000a, inset 0 0 40px #0006; }
@@ -1044,6 +1053,26 @@ function hatch(e) {
   const better = !G.pet || PETS[k].r > PETS[G.pet].r; if (better) G.pet = k;
   toast(`🐣 ${PETS[k].n.toUpperCase()} ${RAR[r].n} !<small>${petDesc(k)}${better ? ' · il te suit déjà' : ' · choisis-le dans Royaume → Familiers'}</small>`, 'achv'); sfx.reveal(r);
 }
+/* ---------- Récompenses quotidiennes (série de 7 jours) ---------- */
+const dGold = g => () => { G.gold += g; G.rs.gold += g; coins(10); floatTxt(`+${fmt(g)} 🪙`); };
+const dItem = r => () => { const it = makeItem(r); later(() => showPack(it, gainItem(it), () => {}), 300); };
+// Un familier rare ou mieux, que tu n'as pas encore (sinon des éclats)
+function dailyPet() {
+  const ks = Object.keys(PETS).filter(k => PETS[k].r >= 1 && !G.pets[k]);
+  if (!ks.length) { G.shards += 80; later(() => toast('🐾 TU AS DÉJÀ TOUS CES FAMILIERS<small>échangé contre 80 💎 éclats</small>', 'achv'), 400); return; }
+  const k = wpick(ks.map(k => [k, [0, 70, 22, 7, 1][PETS[k].r]])), r = PETS[k].r;
+  G.pets[k] = 1; const better = !G.pet || PETS[k].r > PETS[G.pet].r; if (better) G.pet = k;
+  later(() => { toast(`🐣 ${PETS[k].n.toUpperCase()} ${RAR[r].n} !<small>${petDesc(k)}${better ? ' · il te suit déjà' : ' · choisis-le dans Royaume → Familiers'}</small>`, 'achv'); sfx.reveal(r); }, 400);
+}
+const DAILY_GIFTS = [
+  ['🪙', '100 pièces', dGold(100)],
+  ['🐾', 'un familier rare (ou mieux)', dailyPet],
+  ['🪙', '150 pièces', dGold(150)],
+  ['🎒', 'un objet commun', dItem(0)],
+  ['💎', '25 éclats et 150 pièces', () => { G.shards += 25; dGold(150)(); }],
+  ['🎒', 'un objet rare', dItem(1)],
+  ['🏆', 'un objet LÉGENDAIRE', dItem(3)],
+];
 /* ---------- Météo (change toutes les 12 cartes) et saisons (40 cartes chacune) ---------- */
 const WX = { soleil: { e: '☀️', n: 'Beau temps', d: 'aucun effet' }, pluie: { e: '🌧️', n: 'Pluie', d: 'arcs trempés : −5 % de chance, archers de l\'armée −30 %' },
   lune: { e: '🌕', n: 'Pleine lune', d: "plus de loups, +50 % d'objets" } };
@@ -1112,7 +1141,7 @@ function fresh() {
     tal: { guerrier: 0, marchand: 0, pillard: 0 }, best: {}, bestR: {}, reigns: [], daily: '',
     pets: { loup: 0, slime: 0, hibou: 0, renard: 0, griffon: 0, dragon: 0, phenix: 0 }, pet: '', eggs: [], towerBest: 0,
     petXp: {}, evDone: {}, petEvo: {}, petFood: {}, rep: { marchand: 0, sorciere: 0, chevalier: 0 },
-    skin: { needle: '', frame: '', banner: '' }, dd: { day: '', best: 0, done: 0 }, expBest: 0,
+    skin: { needle: '', frame: '', banner: '' }, dd: { day: '', best: 0, done: 0 }, expBest: 0, hcBest: 0, login: { day: '', n: 0, best: 0 }, curse: 0,
     // pouvoirs de combo, frénésie, expédition en cours, évènements du royaume, délais des mini-jeux
     pw: { sablier: 0, oeil: 0, seconde: 0 }, perfRow: 0, frenzy: 0, petCd: 0, run: null, expCd: 0, kev: null, fishCd: 0, lockCd: 0,
     // par règne : journal, combos de tribus, route du chapitre, défi
@@ -1122,7 +1151,7 @@ const save = () => { try { localStorage.setItem(SAVE, JSON.stringify(G)); } catc
 function load() {
   try {
     const s = JSON.parse(localStorage.getItem(SAVE));
-    if (s && s.up) { const f = fresh(), g = Object.assign(f, s); for (const k of ['up', 'eq', 'perm', 'mine', 'army', 'tal', 'rs', 'pets', 'wx', 'armyXp', 'wounded', 'walls', 'ban', 'gens', 'pw', 'petEvo', 'petFood', 'rep', 'skin', 'dd']) g[k] = Object.assign(fresh()[k], s[k]);
+    if (s && s.up) { const f = fresh(), g = Object.assign(f, s); for (const k of ['up', 'eq', 'perm', 'mine', 'army', 'tal', 'rs', 'pets', 'wx', 'armyXp', 'wounded', 'walls', 'ban', 'gens', 'pw', 'petEvo', 'petFood', 'rep', 'skin', 'dd', 'login']) g[k] = Object.assign(fresh()[k], s[k]);
       if (g.wolf && !g.pets.loup) { g.pets.loup = 1; if (!g.pet) g.pet = 'loup'; } return g; }
   } catch (e) {}
   return null;
@@ -1146,7 +1175,7 @@ const lvlBonus = () => Math.min(15, 1.5 * (G.lvl - 1));
 function chanceParts(base) {
   const p = [['🎯 ennemi', base + CHAPS[G.chap].diff], ['⭐ niveau', lvlBonus()], ['⚔️ forge', 3 * G.up.forge], ['🎒 objets', eq('ch')],
     ['👑 lignée', 3 * G.perm.sang + (TL('guerrier', 1) ? 3 : 0) + (TL('guerrier', 3) ? 5 : 0)], ['🛡️ armée', armyBonus()],
-    ['✨ renforts', G.next + (G.merc > 0 ? 10 : 0)], ['🐾 familier', petB('ch')], [advT && counterOf(advT) ? `${UICO[counterOf(advT)]} avantage` : '🎯 avantage', advBonus(advT)], ['🎖️ général', genB('ch')], ['📚 bestiaire', G.bestR[G.chap] ? 5 : 0], ['🌧️ pluie', G.wx.k === 'pluie' ? -5 : 0], ['🔁 cycle', -10 * (G.cycle - 1)]];
+    ['✨ renforts', G.next + (G.merc > 0 ? 10 : 0)], ['🐾 familier', petB('ch')], [advT && counterOf(advT) ? `${UICO[counterOf(advT)]} avantage` : '🎯 avantage', advBonus(advT)], ['🎖️ général', genB('ch')], ['📚 bestiaire', G.bestR[G.chap] ? 5 : 0], ['🌧️ pluie', G.wx.k === 'pluie' ? -5 : 0], ['🌩️ malédiction', G.curse > 0 ? -12 : 0], ['🔁 cycle', -10 * (G.cycle - 1)]];
   const raw = p.reduce((t, x) => t + x[1], 0);
   // Plafond doux : au-delà de 85 %, chaque point ne compte que pour moitié (et jamais plus de 92 %)
   const v = Math.round(clamp(raw > 85 ? 85 + (raw - 85) / 2 : raw, 5, 92));
@@ -1218,6 +1247,7 @@ function tribeCombo(c, win) {
 const EVS = [
   { id: 'halloween', e: '🎃', n: 'Nuit des Ombres', from: 1024, to: 1103 },
   { id: 'noel', e: '🎄', n: 'Fêtes du Givre', from: 1215, to: 106 },
+  { id: 'fleurs', e: '🌸', n: 'Fête des Fleurs', from: 401, to: 415 },
 ];
 function realEv() {
   const d = new Date(), md = (d.getMonth() + 1) * 100 + d.getDate();
@@ -1683,6 +1713,13 @@ const MK = {
           { l: '🔮 Choisir le sort', sub: `50 % : +${fmt(g)} 🪙, sinon −${fmt(toll)} 🪙`, stake: { chance: 50, win: g, lose: toll, xp: 6 } },
           { l: '🚪 Fermer la porte', sub: 'rien ne se passe… ou presque', fx() { G.menace += 2; } }] };
     }
+    if (ev.id === 'fleurs') {
+      const g = Math.round(B() * 2.5 * gainK());
+      return { kind: 'choice', ev: ev.e, who: { e: '🌸', h: '', n: 'La Reine des Fleurs' }, art: '🧺', tag: 'gold', src: `${ev.e} ${ev.n}`, risk: '🌸 Fête des Fleurs',
+        text: "Les champs sont en fleurs et le village danse. La Reine des Fleurs t'offre de choisir un panier : l'un d'eux cache un œuf.",
+        opts: [{ l: '🧺 Le panier de gauche', sub: `+${fmt(g)} 🪙 · 25 % : un œuf`, fx() { G.gold += g; coins(8); floatTxt(`+${fmt(g)} 🪙`); if (Math.random() < .25) giveEgg('caché dans un panier de fleurs', 1); } },
+          { l: '🌿 Le panier de droite', sub: 'menace −12 · 25 % : un œuf', fx() { G.menace -= 12; floatTxt('🌸 menace −12'); if (Math.random() < .25) giveEgg('caché dans un panier de fleurs', 1); } }] };
+    }
     const g = Math.round(B() * 4 * gainK());
     return { kind: 'boost', safe: 1, ev: ev.e, scene: 'nuit', who: { e: '🎄', h: '', n: 'Le Père Givre' }, art: '🧰', tag: 'gold', src: `${ev.e} ${ev.n}`, risk: '🎁 Cadeau',
       text: "Un vieil homme à la barbe de glace dépose un coffre au pied de ton trône. « Pour le roi qui tient bon tout l'hiver. »",
@@ -1690,10 +1727,11 @@ const MK = {
       likeFx() { G.gold += g; coins(10); floatTxt(`+${fmt(g)} 🪙`); if (Math.random() < .12) giveEgg('un œuf était caché sous le sapin', 1); } };
   },
   evboss(ev) {
-    const H = ev.id === 'halloween', name = H ? 'le Roi Citrouille' : 'le Géant du Givre';
-    return { kind: 'legend', ev: ev.e, who: { e: H ? '🎃' : '❄️', h: '', n: H ? 'Roi Citrouille' : 'Géant du Givre' }, art: H ? '💀' : '🧌', tag: 'legend',
+    const H = ev.id === 'halloween', F = ev.id === 'fleurs', name = H ? 'le Roi Citrouille' : F ? 'la Ronce Reine' : 'le Géant du Givre';
+    return { kind: 'legend', ev: ev.e, who: { e: H ? '🎃' : F ? '🌸' : '❄️', h: '', n: H ? 'Roi Citrouille' : F ? 'Ronce Reine' : 'Géant du Givre' }, art: H ? '💀' : F ? '🐍' : '🧌', tag: 'legend',
       src: `${ev.e} ${ev.n} · boss de saison`, risk: `${ev.e} Boss de saison`,
       text: H ? "Les tombes s'ouvrent et le Roi Citrouille sort du brouillard, sa lanterne pleine d'âmes. Il ne vient qu'une fois par an et garde un trésor ensorcelé."
+        : F ? "Une ronce géante a poussé en une nuit et étouffe les champs en fleurs. La Ronce Reine ne revient qu'une fois par an, et ses racines enserrent un trésor."
         : "Le Géant du Givre descend des montagnes dans une tempête de neige. Il ne vient qu'une fois par an, et son trésor est taillé dans la glace éternelle.",
       stake: { chance: fightChance(12 + 4 * G.up.arsenal), win: Math.round(B() * 25 * gainK()), lose: Math.round(B() * 3 * gainBase() * lossK()), fight: true, xp: 80, loot: 2,
         onWin() { G.evDone[ev.key] = 1; G.menace -= 20; later(() => toast(`${ev.e} ${name.toUpperCase()} EST VAINCU !<small>il reviendra l'an prochain</small>`, 'achv'), 300); giveEgg(`${name} gardait un œuf`, 2); } },
@@ -1924,6 +1962,24 @@ const MK = {
         { l: '🔨 Forcer le coffre', sub: `${s.chance} % · +${fmt(s.win)} / −${fmt(s.lose)} 🪙`, risk: '🔨 Force brute', stake: s },
         { l: '🚶 Laisser', sub: 'rien', fx() {} }] };
   },
+  coffrej() {
+    const L = G.login, y = new Date(); y.setDate(y.getDate() - 1);
+    const yd = y.getFullYear() + '-' + (y.getMonth() + 1) + '-' + y.getDate();
+    const n = L.day === yd ? L.n % 7 + 1 : 1, D = DAILY_GIFTS[n - 1];
+    const track = DAILY_GIFTS.map((x, i) => `<span class="dg${i + 1 < n ? ' got' : i + 1 === n ? ' on' : ''}"><b>J${i + 1}</b>${x[0]}</span>`).join('');
+    return { kind: 'boost', safe: 1, gift: 1, dgs: track, who: CH.gazette, art: n === 2 ? '🥚' : n === 7 ? '🏆' : '🧰', tag: 'gold', src: 'reviens chaque jour', risk: `📅 RÉCOMPENSE DU JOUR · JOUR ${n}/7`,
+      text: `Aujourd'hui : ${D[1]}.${n < 7 ? ` Demain : ${DAILY_GIFTS[n][1]}.` : ' La série repart au jour 1 demain.'} Si tu sautes un jour, tu repars au jour 1.`,
+      onShow() { L.day = today(); L.n = n; L.best = Math.max(L.best || 0, n); },
+      likeL: n === 2 ? '🥚 Adopter le familier' : '🧰 Récupérer', passL: 'Plus tard (perdu)',
+      likeFx() { buzz(40); D[2](); } };
+  },
+  maudit() {
+    const g = Math.round(B() * 7 * gainK());
+    return { kind: 'choice', who: CH.ysalis, art: '🌩️', tag: 'casino', src: 'un marché dangereux', risk: '🌩️ Or maudit',
+      text: `Ysalis tend un coffre noir qui bourdonne. « ${fmt(g)} pièces, tout de suite. Mais l'or maudit porte malheur : tes 5 prochains combats seront plus durs (−12 %). »`,
+      opts: [{ l: `🌩️ Prendre l'or maudit`, sub: `+${fmt(g)} 🪙 · −12 % sur 5 combats`, fx() { G.gold += g; G.rs.gold += g; G.curse = 5; coins(10); floatTxt(`+${fmt(g)} 🪙`); shakeIt(); } },
+        { l: '🙅 Refuser', sub: 'rien ne se passe', fx() {} }] };
+  },
   daily() {
     const R = seeded(today()), ch = Math.floor(R() * (lastChap() + 1)), fi = Math.floor(R() * 4);
     const chance = 30 + Math.floor(R() * 16), k = 8 + Math.floor(R() * 7), [n, tk] = FOES[ch][fi];
@@ -1987,7 +2043,7 @@ function rollKind() {
   return wpick([['fight', 46], ['mission', 16], ['dice', G.gold >= 20 ? 7 : 0], ['chest', G.gold >= B() ? 4 + 3 * G.up.tresor : 0], ['boost', G.gold > 40 ? 8 : 0], ['flavor', 6],
     ['wheel', G.gold >= B() * 1.5 ? 3 : 0], ['legend', G.lvl >= 4 && G.n > 60 ? .7 : 0],
     ['chain', Object.keys(G.chains).length < 3 && !queued('chainEnd') && G.n > 15 ? 4 : 0],
-    ['dilemma', G.n > 8 ? 7 : 0], ['evcard', realEv() ? 6 : 0], ['pnj', G.n > 20 ? 4 : 0], ['crochet', G.n > 12 && G.n >= G.lockCd ? 3 : 0]]);
+    ['dilemma', G.n > 8 ? 7 : 0], ['evcard', realEv() ? 6 : 0], ['pnj', G.n > 20 ? 4 : 0], ['crochet', G.n > 12 && G.n >= G.lockCd ? 3 : 0], ['maudit', G.n > 25 && !G.curse ? 3 : 0]]);
 }
 function pickNext() {
   lastParts = null; advT = null;
@@ -1995,6 +2051,7 @@ function pickNext() {
   const q = G.queue[0];
   if (q && q.at <= G.n) { G.queue.shift(); return MK[q.k](q.d); }
   if (G.daily !== today() && G.n > 5) return MK.daily();
+  if (G.login.day !== today() && G.n > 2) return MK.coffrej();
   if (G.gold < 20 && !G.debt) return MK.loan();
   if (G.wx.k === 'lune' && Math.random() < .3) return MK.loups();
   const ev = realEv();
@@ -2111,6 +2168,7 @@ function kindLabel(c) {
   if (c.chef) return '👹 Chef de tribu';
   if (c.ev && c.kind !== 'legend') return `${c.ev} Fête de saison`;
   if (c.daily) return '🎯 Défi du jour';
+  if (c.gift) return '📅 Récompense du jour';
   if (c.assault) return '🔥 Assaut';
   if (c.wheel) return '🎡 Roue de la Fortune';
   return { fight: '⚔️ Combat', boss: '💀 Boss', legend: '🐲 Légende', casino: '🎲 Pari', mission: '📜 Mission',
@@ -2151,6 +2209,7 @@ function buildCard(c) {
   el.querySelector('.text').textContent = c.text;
   if (c.trait) { const t = TRAITS[c.trait], d = document.createElement('div'), tn = c.foe && G.tribe[c.foe]; d.className = 'trait'; d.textContent = `${t.e} ${t.n} : ${t.d}${tn ? ` · 👹 ${tn}/3 avant leur chef` : ''}`; el.querySelector('.text').after(d); }
   if (c.elite) { const E = ELITE[c.elite], d = document.createElement('div'); d.className = 'trait elite'; d.textContent = `${E.e} ÉLITE ${E.n} : ${E.d} · gains ×${E.k || 1.6}`; el.querySelector('.text').after(d); el.classList.add('elitec'); }
+  if (c.dgs) { const d = document.createElement('div'); d.className = 'dgs'; d.innerHTML = c.dgs; el.querySelector('.text').before(d); }
   if (c.bhp) { const d = document.createElement('div'); d.className = 'bhp'; d.innerHTML = Array.from({ length: c.bhp[1] }, (_, i) => `<i class="${i < c.bhp[0] ? 'f' : ''}"></i>`).join(''); el.querySelector('.text').before(d); }
   feed.appendChild(el);
   c.el = el;
@@ -2500,12 +2559,13 @@ function runMap(rng) {
   map.push(['boss']);
   return map;
 }
-function runStart(daily) {
+function runStart(daily, hard) {
   if (G.run) return runView();
   if (daily) { if (G.dd.day === today()) return; G.dd.day = today(); G.dd.done = 0; G.dd.score = 0; }
   else { if (!expReady()) return; G.expCd = G.n + 30; }
+  hard = !daily && !!hard;
   const rng = daily ? seeded(today() + 'donjon') : Math.random;
-  G.run = { room: 1, hp: 3, max: 3, pot: 0, rel: [], map: runMap(rng), st: 'doors', daily: !!daily, sh: 0, ally: 0, msg: daily ? '🗝️ Donjon du jour : le même pour tout le monde aujourd\'hui. Une seule tentative !' : '🧭 Choisis ta porte. Les reliques ne durent que le temps de l\'expédition.' };
+  G.run = { room: 1, hp: hard ? 1 : 3, max: hard ? 1 : 3, pot: 0, rel: [], map: runMap(rng), st: 'doors', daily: !!daily, hard, sh: 0, ally: 0, msg: hard ? '💀 HARDCORE : une seule vie, aucun soin. Le butin est multiplié par 2,5.' : daily ? '🗝️ Donjon du jour : le même pour tout le monde aujourd\'hui. Une seule tentative !' : '🧭 Choisis ta porte. Les reliques ne durent que le temps de l\'expédition.' };
   if (daily) G.run.rel.push(['loupe', 'plume', 'trefle', 'bouclier'][Math.floor(rng() * 4)]);
   save(); sfx.reveal(2); runView();
 }
@@ -2522,7 +2582,7 @@ function runView() {
     const ds = R.map[R.room - 1];
     body = `<div class="rtxt">${R.msg || ''}</div><div class="doors">${ds.map((t, i) => `<button class="door" data-r="door:${i}">${pic('img/a_porte.png')}<b>${ROOM[t][0]} ${ROOM[t][1]}</b><small>${ROOM[t][2]}</small></button>`).join('')}</div>`;
   } else body = roomHtml(R);
-  d.innerHTML = `<div class="rhead"><b>${R.daily ? '🗝️ Donjon du jour' : '🧭 Expédition'} · salle ${R.room}/10</b><span>${hearts}</span><span>💰 ${fmt(R.pot)}</span></div>
+  d.innerHTML = `<div class="rhead"><b>${R.daily ? '🗝️ Donjon du jour' : R.hard ? '💀 Hardcore' : '🧭 Expédition'} · salle ${R.room}/10</b><span>${hearts}</span><span>💰 ${fmt(R.pot)}</span></div>
     <div class="rprog">${prog}</div><div class="rrel">${rel}</div><div class="rbody">${body}</div>
     <div class="rfoot"><button data-r="pause">⏸️ Plus tard</button>${R.pot ? `<button data-r="flee">🏃 Fuir (garder ${fmt(Math.round(R.pot * .7))} 🪙)</button>` : ''}</div>`;
 }
@@ -2611,7 +2671,7 @@ function runClick(e) {
 function runRelic(k) {
   const R = G.run; k = k || pick(Object.keys(RELIC).filter(x => !R.rel.includes(x)));
   if (!k || R.rel.includes(k)) return null;
-  R.rel.push(k); if (k === 'coeur') { R.max++; R.hp++; }
+  R.rel.push(k); if (k === 'coeur' && !R.hard) { R.max++; R.hp++; }
   return k;
 }
 function runHurt() {
@@ -2627,19 +2687,21 @@ function runNext(msg) {
 }
 function runEnd(how) {
   const R = G.run; if (!R) return;
-  const k = how === 'win' ? 1 : how === 'flee' ? .7 : .3, g = Math.round(R.pot * k), reached = how === 'win' ? 10 : R.room - 1;
+  const k = (how === 'win' ? 1 : how === 'flee' ? .7 : .3) * (R.hard ? 2.5 : 1), g = Math.round(R.pot * k), reached = how === 'win' ? 10 : R.room - 1;
   G.gold += g; G.rs.gold += g;
   let msg = `${fmt(g)} 🪙`, item = null;
   if (R.daily) { G.dd.score = reached * 100 + Math.round(R.pot / Math.max(1, B()) * 10); G.dd.best = Math.max(G.dd.best || 0, G.dd.score); G.dd.done = 1; }
+  else if (R.hard) G.hcBest = Math.max(G.hcBest || 0, reached);
   else G.expBest = Math.max(G.expBest || 0, reached);
   if (how === 'win') {
     item = makeItem(rollRarity(1.5, 2));
     if (Math.random() < .3) giveEgg('trouvé au fond du donjon', 1.5);
     if (R.daily) { G.crowns += 1; msg += ' · +1 👑'; }
+    if (R.hard) { G.crowns += 2; msg += ' · +2 👑'; }
   }
   G.run = null; save();
   document.querySelector('.run')?.remove();
-  const title = how === 'win' ? (R.daily ? '🗝️ DONJON DU JOUR VAINCU !' : '🧭 EXPÉDITION RÉUSSIE !') : how === 'flee' ? '🏃 TU AS FUI LE DONJON' : '💀 TU T\'ES ÉVANOUI';
+  const title = how === 'win' ? (R.daily ? '🗝️ DONJON DU JOUR VAINCU !' : R.hard ? '💀 HARDCORE RÉUSSI !' : '🧭 EXPÉDITION RÉUSSIE !') : how === 'flee' ? '🏃 TU AS FUI LE DONJON' : '💀 TU T\'ES ÉVANOUI';
   toast(`${title}<small>salle ${reached}/10 · ${msg}${R.daily ? ` · score ${G.dd.score}` : ''}</small>`, how === 'win' ? 'achv' : '');
   if (how === 'win') { coins(16); spawn('jackpot', '🏆 VICTOIRE 🏆'); }
   if (item) showPack(item, gainItem(item), refresh); else refresh();
@@ -2679,6 +2741,7 @@ function fishGame() {
     else { const q = Math.random() + (fast ? .2 : 0); f = FISH.find(x => q < x.q); }
     const [rn, rc] = FRAR[f.r], tag = `<b style="color:${rc}">${f.n}</b> <small style="color:${rc}">${rn}</small>`;
     G.fishBook = G.fishBook || {}; const neu = !G.fishBook[f.k]; G.fishBook[f.k] = (G.fishBook[f.k] || 0) + 1;
+    if (neu && !G.f.fishAll && FISH.every(x => G.fishBook[x.k])) { G.f.fishAll = 1; G.crowns += 3; later(() => toast('🎣 CARNET DE PÊCHE COMPLET !<small>les 8 prises · +3 👑</small>', 'achv'), 1500); }
     if (f.item) { const it = makeItem(rollRarity(1)); gainItem(it); st.innerHTML = `${tag}<br>Dedans : <span style="color:${RAR[it.r].c}">${esc(it.n)}</span>`; }
     else { const g = Math.round(B() * f.g * gainK()); total += g; if (f.sh) G.shards += f.sh; st.innerHTML = `${tag}${neu ? ' · nouveau !' : ''}<br>+${fmt(g)} 🪙${f.sh ? ` · +${f.sh} éclats` : ''}`; }
     got.push(pic(`img/a_${f.k}.png`)); res.innerHTML = got.join('');
@@ -2698,6 +2761,8 @@ function renderExp() {
   $('kingdom').innerHTML = `<div class="xhero"><b>🧭 Expéditions</b><span>Explore, pêche… et fais-toi des amis.</span></div>
     <div class="xcard">${pic('img/a_porte.png')}<div><b>🧭 Expédition rogue-like</b><small>10 salles · tu choisis tes portes · reliques temporaires · un gardien au bout. 3 vies. Record : salle ${G.expBest || 0}/10</small>
       ${R && !R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre l\'expédition</button>' : `<button class="btn pres" data-a="xp:start" ${!expReady() || R ? 'disabled' : ''}>🧭 Partir${cd(G.expCd)}</button>`}</div></div>
+    <div class="xcard">${pic('img/a_malvorn.png')}<div><b>💀 Expédition hardcore</b><small>Les mêmes 10 salles, mais une seule vie et aucun soin. Butin ×2,5 et +2 👑 au bout. Débloquée à la salle 5 en expédition normale. Record : salle ${G.hcBest || 0}/10</small>
+      <button class="btn pres" data-a="xp:hard" ${!expReady() || R || (G.expBest || 0) < 5 ? 'disabled' : ''}>${(G.expBest || 0) < 5 ? '🔒 Atteins la salle 5' : `💀 Tenter${cd(G.expCd)}`}</button></div></div>
     <div class="xcard">${pic('img/a_cle.png')}<div><b>🗝️ Donjon du jour</b><small>Le même donjon pour tout le monde aujourd'hui, une seule tentative. Vaincu : +1 👑 et un objet. Meilleur score : ${G.dd.best || 0}${dd && G.dd.done ? ` · aujourd'hui : ${G.dd.score}` : ''}</small>
       ${R && R.daily ? '<button class="btn pres" data-a="xp:resume">▶️ Reprendre le donjon</button>' : `<button class="btn pres" data-a="xp:daily" ${dd || R ? 'disabled' : ''}>${dd ? '✅ Déjà tenté aujourd\'hui' : '🗝️ Entrer'}</button>`}</div></div>
     <div class="xcard">${pic('img/a_requin.png')}<div><b>🎣 Pêche au lac</b><small>3 lancers. Tape dès que ça mord : carpe, anguille, truite, saumon, brochet, poisson doré, bouteille… et le requin, ultra rare. Plus tu es rapide, plus la prise est belle.${G.fishBook ? `<br>Carnet : ${FISH.filter(f => G.fishBook[f.k]).map(f => pic(`img/a_${f.k}.png`)).join('')} ${Object.keys(G.fishBook).length}/${FISH.length}` : ''}</small>
@@ -2795,6 +2860,7 @@ function gamble(c) {
   if (s.bet === 10) G.bet = 1;
   if (s.fight) {
     G.next = 0; if (G.merc > 0) G.merc--; if (G.frenzy > 0) G.frenzy--;
+    if (G.curse > 0 && --G.curse === 0) later(() => toast('🌩️ LA MALÉDICTION SE DISSIPE<small>tes combats retrouvent leur chance normale</small>'), 1200);
     if (win) { G.W++; G.streak++; if (G.streak % 3 === 0) gainPw(); G.bestStreak = Math.max(G.bestStreak, G.streak); G.lossStreak = 0; G.menace -= 2; questProg('streak', G.streak, 1); }
     else { G.L++; G.streak = 0; G.lossStreak++; G.menace += 4; }
     // succès caché : perdre 5 fois de suite à 90 % ou plus
@@ -3426,11 +3492,68 @@ function preTab() {
         <button data-a="perm:${k}" ${canPerm(k) ? '' : 'disabled'}>${maxed ? 'MAX' : `Acheter<br>${permCost(k)} 👑`}</button></div>`;
     }).join('')}`;
 }
+function recTab() {
+  const nb = Object.keys(G.best).filter(k => G.best[k] >= 5).length, fb = G.fishBook ? FISH.filter(f => G.fishBook[f.k]).length : 0;
+  const R = [['🔥', 'Meilleure série', G.bestStreak], ['💰', 'Plus gros gain', fmt(G.bigWin) + ' 🪙'], ['⚔️', 'Combats gagnés', fmt(G.W)],
+    ['🗼', 'Tour : étage', G.towerBest || 0], ['🧭', 'Expédition', `salle ${G.expBest || 0}/10`], ['💀', 'Hardcore', `salle ${G.hcBest || 0}/10`],
+    ['🗝️', 'Donjon du jour', G.dd.best || 0], ['📅', 'Série de connexion', `${G.login.best || 0} jour${G.login.best > 1 ? 's' : ''}`],
+    ['🎣', 'Carnet de pêche', `${fb}/${FISH.length}`], ['📚', 'Bestiaire', `${nb} bande${nb > 1 ? 's' : ''}`], ['👑', 'Règnes', G.prestige + 1], ['🏆', 'Succès', `${ACH.filter(a => G.ach[a[0]]).length}/${ACH.length}`]];
+  return `<div class="ksec">📜 Tes records</div><div class="recs">${R.map(([e, n, v]) => `<div><span>${e}</span><b>${v}</b><small>${n}</small></div>`).join('')}</div>
+    <div class="khint">Un classement mondial a besoin d'un serveur : pour l'instant, compare-toi à tes amis avec une image ou un lien de visite.</div>
+    <div class="ksec">🖼️ Montrer ton royaume</div>
+    <button class="btn pres" data-a="rec:img">🖼️ Partager une image</button>
+    <button class="btn pres" data-a="rec:link">📍 Lien de visite</button>
+    <div class="khint">Le lien ouvre ton royaume en lecture seule chez la personne qui le reçoit.</div>`;
+}
+const visitData = () => ({ up: G.up, lvl: G.lvl, prestige: G.prestige, W: G.W, pet: G.pet, bs: G.bestStreak, eb: G.expBest || 0, tb: G.towerBest || 0 });
+const b64e = o => btoa(unescape(encodeURIComponent(JSON.stringify(o)))).replace(/\+/g, '-').replace(/\//g, '_').replace(/=+$/, '');
+const b64d = t => JSON.parse(decodeURIComponent(escape(atob(t.replace(/-/g, '+').replace(/_/g, '/')))));
+async function shareLink() {
+  const url = location.origin + location.pathname + '#v=' + b64e(visitData());
+  try { if (navigator.share) { await navigator.share({ title: 'Le Dernier Rempart', text: 'Viens voir mon royaume !', url }); return; } } catch (e) { if (e.name === 'AbortError') return; }
+  try { await navigator.clipboard.writeText(url); toastNow('📍 LIEN COPIÉ<small>colle-le à un ami</small>'); } catch (e) { prompt('Copie ce lien :', url); }
+}
+const loadImg = src => new Promise(r => { const i = new Image(); i.onload = () => r(i); i.onerror = () => r(null); i.src = src; });
+async function shareImg() {
+  toastNow('🖼️ PRÉPARATION DE L\'IMAGE…');
+  const W = 1080, H = 1350, c = document.createElement('canvas'); c.width = W; c.height = H;
+  const x = c.getContext('2d'); x.imageSmoothingEnabled = false;
+  x.fillStyle = '#1a1008'; x.fillRect(0, 0, W, H);
+  const bg = await loadImg('bg/village.png'); if (bg) x.drawImage(bg, 0, 160, W, 720); else { x.fillStyle = '#6a9a3a'; x.fillRect(0, 160, W, 720); }
+  const tot = Object.values(G.up).reduce((a, b) => a + b, 0), castle = 'chateau' + (tot < 4 ? 1 : tot < 10 ? 2 : tot < 18 ? 3 : 4);
+  const bl = []; for (const k in BE) if (G.up[k]) bl.push(G.up[k] >= 4 ? k + '2' : k);
+  const SL = [[150, 800, 170], [930, 800, 170], [290, 690, 130], [790, 690, 130], [70, 720, 140], [1010, 720, 140], [400, 610, 100], [680, 610, 100]];
+  for (let i = Math.min(bl.length, SL.length) - 1; i >= 0; i--) { const im = await loadImg(`img/v_${bl[i]}.png`); if (im) { const [cx, by, w] = SL[i], h = w * im.height / im.width; x.drawImage(im, cx - w / 2, by - h, w, h); } }
+  const ci = await loadImg(`img/v_${castle}.png`); if (ci) { const w = 380, h = w * ci.height / ci.width; x.drawImage(ci, W / 2 - w / 2, 760 - h, w, h); }
+  x.textAlign = 'center'; x.fillStyle = '#ffd76a'; x.font = 'bold 72px Georgia, serif'; x.fillText('Le Dernier Rempart', W / 2, 110);
+  x.fillStyle = '#fff'; x.font = 'bold 44px Georgia, serif'; x.fillText(`Mon royaume · règne ${roman(G.prestige + 1)} · niveau ${G.lvl}`, W / 2, 960);
+  const st = [['Série record', G.bestStreak], ['Victoires', fmt(G.W)], ['Plus gros gain', fmt(G.bigWin)], ['Tour', 'étage ' + (G.towerBest || 0)], ['Expédition', 'salle ' + (G.expBest || 0)], ['Couronnes', G.crowns]];
+  st.forEach(([n, v], i) => { const cx = 200 + (i % 3) * 340, cy = 1080 + Math.floor(i / 3) * 140;
+    x.fillStyle = '#ffd76a'; x.font = 'bold 56px Georgia, serif'; x.fillText(String(v), cx, cy); x.fillStyle = '#cbb89a'; x.font = '30px Georgia, serif'; x.fillText(n, cx, cy + 44); });
+  x.fillStyle = '#8a7a66'; x.font = '28px Georgia, serif'; x.fillText('Défendras-tu le royaume mieux que moi ?', W / 2, 1320);
+  const blob = await new Promise(r => c.toBlob(r, 'image/png')); if (!blob) return;
+  const file = new File([blob], 'mon-royaume.png', { type: 'image/png' });
+  try { if (navigator.canShare && navigator.canShare({ files: [file] })) { await navigator.share({ files: [file], title: 'Le Dernier Rempart', text: 'Mon royaume dans Le Dernier Rempart' }); return; } } catch (e) { if (e.name === 'AbortError') return; }
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'mon-royaume.png'; document.body.append(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 5000); toastNow('🖼️ IMAGE ENREGISTRÉE<small>mon-royaume.png</small>');
+}
+// Visite d'un royaume reçu par lien (lecture seule)
+function showVisit() {
+  const m = location.hash.match(/^#v=([\w-]+)/); if (!m) return;
+  let d; try { d = b64d(m[1]); } catch (e) { return; }
+  const keep = G; G = fresh(); Object.assign(G.up, d.up || {}); G.lvl = +d.lvl || 1; G.prestige = +d.prestige || 0; G.W = +d.W || 0; G.pet = PETS[d.pet] ? d.pet : '';
+  let html; try { html = village(); } finally { G = keep; }
+  const o = document.createElement('div'); o.className = 'visit';
+  o.innerHTML = `<div class="vt">🏰 Un royaume ami</div><div class="vs">Règne ${roman((+d.prestige || 0) + 1)} · niveau ${+d.lvl || 1} · ${fmt(+d.W || 0)} victoires · série record ${+d.bs || 0}</div>${html}
+    <div class="vs">Tour : étage ${+d.tb || 0} · expédition : salle ${+d.eb || 0}/10</div><button class="btn pres">↩️ Retour à mon jeu</button>`;
+  o.querySelector('button').onclick = () => { o.remove(); history.replaceState(null, '', location.pathname + location.search); };
+  document.body.append(o);
+}
 function renderKingdom() {
   const ch = CHAPS[G.chap];
-  const tabs = [['bat', '🏗️ Bâtir'], ['map', '🗺️ Carte'], ['eq', '🎒 Objets'], ['pet', '🐾 Familiers'], ['tow', '🗼 Tour'], ['suc', '🏆 Succès'], ['pre', '👑 Prestige']];
+  const tabs = [['bat', '🏗️ Bâtir'], ['map', '🗺️ Carte'], ['eq', '🎒 Objets'], ['pet', '🐾 Familiers'], ['tow', '🗼 Tour'], ['suc', '🏆 Succès'], ['rec', '📜 Records'], ['pre', '👑 Prestige']];
   if (ktab === 'tow' && !LOCKS.tour()) ktab = 'bat';
-  const body = { bat: batTab, map: mapTab, eq: eqTab, pet: petTab, tow: towTab, suc: sucTab, pre: preTab }[ktab]();
+  const body = { bat: batTab, map: mapTab, eq: eqTab, pet: petTab, tow: towTab, suc: sucTab, rec: recTab, pre: preTab }[ktab]();
   $('kingdom').innerHTML = village() + `
     <div class="kname">Royaume d'Aldric</div>
     <div class="kera">${G.prestige ? `Règne ${roman(G.prestige + 1)} · ` : ''}${G.cycle > 1 ? `Cycle ${roman(G.cycle)} · ` : ''}Chapitre ${roman(G.chap + 1)} : ${esc(ch.n)} · butins ×${mult().toFixed(1)}</div>
@@ -3579,7 +3702,8 @@ $('kingdom').addEventListener('click', e => {
   if (!b || b.disabled || document.querySelector('.pack')) return;
   const [a, v, w] = b.dataset.a.split(':');
   if (a === 'tab') { ktab = v; renderKingdom(); $('kingdom').scrollTop = 0; return; }
-  if (a === 'xp') { if (v === 'start') runStart(0); else if (v === 'daily') runStart(1); else if (v === 'resume') runView(); else if (v === 'fish') fishGame(); return; }
+  if (a === 'rec') { if (v === 'img') shareImg(); else shareLink(); return; }
+  if (a === 'xp') { if (v === 'start') runStart(0); else if (v === 'daily') runStart(1); else if (v === 'resume') runView(); else if (v === 'fish') fishGame(); else if (v === 'hard') runStart(0, 1); return; }
   if (a === 'buy') buy(v);
   else if (a === 'equip') equip(v);
   else if (a === 'sell') sell(v);
@@ -4076,6 +4200,7 @@ if (G) {
   $('records').textContent = `Niveau ${G.lvl} · Chapitre ${roman(G.chap + 1)}${G.cycle > 1 ? ' · Cycle ' + roman(G.cycle) : ''} · meilleure série 🔥${G.bestStreak} · plus gros gain ${fmt(G.bigWin)} 🪙${G.crowns || G.prestige ? ` · 👑 ${G.crowns} · règne ${roman(G.prestige + 1)}` : ''}`;
 }
 $('go').onclick = () => begin(false);
+showVisit();
 $('reset').onclick = () => ask('<b>Nouvelle partie ?</b>Ta partie actuelle sera effacée.', 'Effacer', () => begin(true));
 
 // Son
