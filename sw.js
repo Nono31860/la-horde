@@ -1,5 +1,5 @@
 // Réseau d'abord, cache en secours : le jeu marche hors ligne après la première visite.
-const CACHE = 'rempart-v21';
+const CACHE = 'rempart-v22';
 const FILES = ['./', 'index.html', 'manifest.json', 'icon-192.png', 'icon-512.png', 'img/logo.png', 'fonts/IMFellDWPica-Regular.ttf',
   ...['foret', 'champs', 'brume', 'montagne', 'ruines', 'orage', 'feu', 'nuit', 'chemin', 'cloitre', 'cave', 'royaume', 'village', 'titre', 'mine', 'bd1', 'bd2', 'bd3', 'bd4', 'mine1', 'mine2', 'mine3'].map(n => `bg/${n}.png`),
   ...['gobelin', 'loup', 'archer', 'pyro', 'pillard', 'barque', 'sanglier', 'coupebourse', 'chaman', 'squelette', 'brume', 'crapaud', 'troll',

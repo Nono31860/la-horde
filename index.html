@@ -4091,6 +4091,8 @@ function setView(v) {
   if (v !== 'feed') renderPanel();
   else if (cur && cur.base) { applyBet(cur); fitArt(cur.el); }
 }
+// Le panneau commence sous la barre du haut, quelle que soit sa hauteur (elle grandit avec les badges)
+new ResizeObserver(() => { $('kingdom').style.paddingTop = Math.max(112, $('top').offsetHeight - 14) + 'px'; }).observe($('top'));
 $('tabK').onclick = () => started && setView('kingdom');
 $('tabF').onclick = () => started && setView('feed');
 $('tabM').onclick = () => started && (mineOn() ? setView('mine') : lockInfo('mine'));
